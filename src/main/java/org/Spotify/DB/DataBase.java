@@ -8,10 +8,8 @@ import java.util.UUID;
 
 public class DataBase {
     /*create database*/
-    public List<Users> listUser;
+    public ArrayList<Users> listUser = new ArrayList<>();
     public DataBase() {
-        //array for to list the users
-        listUser = new ArrayList<>();
         this.ContentListUser();
     }
 
