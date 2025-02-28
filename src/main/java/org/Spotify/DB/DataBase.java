@@ -3,17 +3,17 @@ package org.Spotify.DB;
 import org.Spotify.Models.Users;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class DataBase {
-    /*create database*/
-    public ArrayList<Users> listUser = new ArrayList<>();
+
+    public ArrayList<Users> listUser = new ArrayList <>();
     public DataBase() {
         this.ContentListUser();
     }
 
-    public void ContentListUser(){
+/*create database*/
+        public void ContentListUser(){
         //create elements
         Users user1 = new Users("Juan Perez", "Perez", UUID.randomUUID(), "juan.perez@example.com", "Juanito", "password1");
         Users user2 = new Users("Maria Lopez", "Lopez", UUID.randomUUID(), "maria.lopez@example.com", "María", "password2");

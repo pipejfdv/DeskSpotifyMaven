@@ -3,6 +3,7 @@ package org.Spotify.Services;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Users;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class UserService {
@@ -32,7 +33,7 @@ public class UserService {
     //Update
     public boolean updateUser(UUID idUser, String names, String lastNames, String email, String nickname, String password) {
         for (Users user : db.listUser) {
-           if (user.getIdUser() == idUser) {
+           if (user.getIdUser().equals(idUser)) {
                user.setNames(names);
                user.setLastNames(lastNames);
                user.setEmail(email);
@@ -50,7 +51,7 @@ public class UserService {
                 db.listUser.remove(user);
             }
         }*/
-        db.listUser.removeIf(user -> user.getIdUser() == idUser);
+        db.listUser.removeIf(user -> user.getIdUser().equals(idUser));
         return true;
     }
 }
