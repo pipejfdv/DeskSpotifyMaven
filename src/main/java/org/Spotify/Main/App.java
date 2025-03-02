@@ -7,13 +7,15 @@ import org.Spotify.Services.UserService;
 import javax.swing.*;
 import java.util.Scanner;
 import java.util.UUID;
+import org.Spotify.Views.Index;
 
 public class App
 {
     public static void main( String[] args )
     {
-        //Index index = new Index();
-
+        Index index = new Index();
+        index.setVisible(true);
+        index.setLocationRelativeTo(null);
         /*Interface for user*/
         UserController userController = new UserController(new UserService());
         boolean active=true;
