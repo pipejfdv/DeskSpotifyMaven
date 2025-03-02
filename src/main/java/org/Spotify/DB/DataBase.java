@@ -1,15 +1,22 @@
 package org.Spotify.DB;
 
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.Spotify.Models.Users;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import org.Spotify.Models.Album;
 
 public class DataBase {
 
     public ArrayList<Users> listUser = new ArrayList <>();
+    public ArrayList<Album> listAlbum = new ArrayList <>();
+    
     public DataBase() {
         this.ContentListUser();
+        this.ContentListAlbum();
     }
 
 /*create database*/
@@ -29,4 +36,20 @@ public class DataBase {
         listUser.add(user5);
         listUser.add(user6);
     }
+
+    private void ContentListAlbum() {
+        Album album1 = new Album(UUID.randomUUID(), "MDTF",/*LocalDate.now(),*/ UUID.randomUUID(), UUID.randomUUID());
+        Album album2 = new Album(UUID.randomUUID(), "MDTF", UUID.randomUUID(), UUID.randomUUID());
+        Album album3 = new Album(UUID.randomUUID(), "MDTF", UUID.randomUUID(), UUID.randomUUID());
+        Album album4 = new Album(UUID.randomUUID(), "MDTF", UUID.randomUUID(), UUID.randomUUID());
+
+        listAlbum.add(album1);
+        listAlbum.add(album2);
+        listAlbum.add(album3);
+        listAlbum.add(album4);
+        
+    }
+        
+    
+    
 }
