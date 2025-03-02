@@ -10,7 +10,7 @@ import java.util.UUID;
 import org.Spotify.Models.Album;
 import org.Spotify.Models.Song;
 
-public class DataBase {
+public final class DataBase {
 
     public ArrayList<Users> listUser = new ArrayList <>();
     public ArrayList<Album> listAlbum = new ArrayList <>();
@@ -55,19 +55,19 @@ public class DataBase {
     
     public void ContentListSong(){
       
-        Song Song1 = new Song("Cuatro Babys",listUser.get(1),UUID.randomUUID(),UUID.randomUUID(),"Trap");
-        Song Song2 = new Song("Aparentemente",listUser.get(2),UUID.randomUUID(),UUID.randomUUID(),"Regaetton");
-        Song Song3 = new Song("Taboo",listUser.get(3),UUID.randomUUID(),UUID.randomUUID(),"Regaetton");
-        Song Song4 = new Song("Chambea",listUser.get(4),UUID.randomUUID(),UUID.randomUUID(),"Trap");
-        Song Song5 = new Song("El cantante",listUser.get(5),UUID.randomUUID(),UUID.randomUUID(),"Salsa");
-        Song Song6 = new Song("Oh que sera",listUser.get(6),UUID.randomUUID(),UUID.randomUUID(),"Salsa");
+        Song song1 = new Song("Cuatro Babys",listUser.get(0),UUID.randomUUID(),UUID.randomUUID(),"Trap");
+        Song song2 = new Song("Aparentemente",listUser.get(1),UUID.randomUUID(),UUID.randomUUID(),"Regaetton");
+        Song song3 = new Song("Taboo",listUser.get(2),UUID.randomUUID(),UUID.randomUUID(),"Regaetton");
+        Song song4 = new Song("Chambea",listUser.get(3),UUID.randomUUID(),UUID.randomUUID(),"Trap");
+        Song song5 = new Song("El cantante",listUser.get(4),UUID.randomUUID(),UUID.randomUUID(),"Salsa");
+        Song song6 = new Song("Oh que sera",listUser.get(5),UUID.randomUUID(),UUID.randomUUID(),"Salsa");
       
-        listSong.add(Song1);
-        listSong.add(Song2);
-        listSong.add(Song3);
-        listSong.add(Song4);
-        listSong.add(Song5);
-        listSong.add(Song6);
+        listSong.add(song1);
+        listSong.add(song2);
+        listSong.add(song3);
+        listSong.add(song4);
+        listSong.add(song5);
+        listSong.add(song6);
     }
     
     

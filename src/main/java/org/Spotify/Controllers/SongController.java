@@ -1,4 +1,4 @@
-package main.java.org.Spotify.Controllers;
+package org.Spotify.Controllers;
 
 import java.util.UUID;
 import org.Spotify.Models.Song;

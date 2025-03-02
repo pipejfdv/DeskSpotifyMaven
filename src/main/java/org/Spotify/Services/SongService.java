@@ -1,5 +1,5 @@
 
-package main.java.org.Spotify.Services;
+package org.Spotify.Services;
 
 import java.util.UUID;
 import org.Spotify.DB.DataBase;
