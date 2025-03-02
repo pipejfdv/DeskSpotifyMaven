@@ -8,7 +8,7 @@ public class Users {
     private UUID idUser;
     public String email;
     public String nickname;
-    public String password;
+    private String password;
     private UUID idRol; //debate entre int o UUID
 
     public Users(){

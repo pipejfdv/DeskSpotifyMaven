@@ -8,15 +8,18 @@ import org.Spotify.Models.Users;
 import java.util.ArrayList;
 import java.util.UUID;
 import org.Spotify.Models.Album;
+import org.Spotify.Models.Song;
 
 public class DataBase {
 
     public ArrayList<Users> listUser = new ArrayList <>();
     public ArrayList<Album> listAlbum = new ArrayList <>();
+    public ArrayList<Song> listSong = new ArrayList <>();
     
     public DataBase() {
         this.ContentListUser();
         this.ContentListAlbum();
+        this.ContentListSong();
     }
 
 /*create database*/
@@ -49,7 +52,23 @@ public class DataBase {
         listAlbum.add(album4);
         
     }
-        
+    
+    public void ContentListSong(){
+      
+        Song Song1 = new Song("Cuatro Babys",listUser.get(1),UUID.randomUUID(),UUID.randomUUID(),"Trap");
+        Song Song2 = new Song("Aparentemente",listUser.get(2),UUID.randomUUID(),UUID.randomUUID(),"Regaetton");
+        Song Song3 = new Song("Taboo",listUser.get(3),UUID.randomUUID(),UUID.randomUUID(),"Regaetton");
+        Song Song4 = new Song("Chambea",listUser.get(4),UUID.randomUUID(),UUID.randomUUID(),"Trap");
+        Song Song5 = new Song("El cantante",listUser.get(5),UUID.randomUUID(),UUID.randomUUID(),"Salsa");
+        Song Song6 = new Song("Oh que sera",listUser.get(6),UUID.randomUUID(),UUID.randomUUID(),"Salsa");
+      
+        listSong.add(Song1);
+        listSong.add(Song2);
+        listSong.add(Song3);
+        listSong.add(Song4);
+        listSong.add(Song5);
+        listSong.add(Song6);
+    }
     
     
 }

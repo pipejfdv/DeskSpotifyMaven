@@ -21,6 +21,6 @@ public class UserController {
         userService.deleteUser(user);
     }
     public boolean updateUser(UUID idUser,Users user) {
-        return userService.updateUser(idUser,user.names,user.lastNames,user.email,user.nickname,user.password);
+        return userService.updateUser(idUser,user.names,user.lastNames,user.email,user.nickname,user.getPassword());
     }
 }
