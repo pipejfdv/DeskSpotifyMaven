@@ -4,8 +4,6 @@ import java.util.UUID;
 
 
 public class User {
-    public String names;
-    public String lastNames;
     private UUID idUser;
     public String firtsName;
     public String secondName;
@@ -18,9 +16,7 @@ public class User {
     private PlayList managerPlayList; 
     private Comment comment;
 
-    public User(String names, String lastNames, UUID idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
-        this.names = names;
-        this.lastNames = lastNames;
+    public User(UUID idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
         this.idUser = idUser;
         this.firtsName = firtsName;
         this.secondName = secondName;
