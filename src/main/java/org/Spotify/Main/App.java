@@ -1,7 +1,7 @@
 package org.Spotify.Main;
 
 import org.Spotify.Controllers.UserController;
-import org.Spotify.Models.Users;
+import org.Spotify.Models.User;
 import org.Spotify.Services.UserService;
 
 import javax.swing.*;
@@ -34,7 +34,7 @@ public class App
                     String dataNickname = scanner.nextLine();
                     System.out.println("contraseña");
                     String dataPassword = scanner.nextLine();
-                    Users newRegistration = new Users(dataNames,dataLastNames, UUID.randomUUID(),dataEmail, dataNickname, dataPassword);
+                    User newRegistration = new User(dataNames,dataLastNames, UUID.randomUUID(),dataEmail, dataNickname, dataPassword);
                     userController.insertUser(newRegistration);
                     break;
                 case 2:
@@ -53,7 +53,7 @@ public class App
                         String nickname = scanner.nextLine();
                         System.out.println("Nueva contrasena");
                         String password = scanner.nextLine();
-                        Users updateUser = new Users(names,lastNames,id,email,nickname,password);
+                        User updateUser = new User(names,lastNames,id,email,nickname,password);
                         boolean rt = userController.updateUser(id,updateUser);
                         if (rt){
                             System.out.println("Se ha actualizado el usuario");

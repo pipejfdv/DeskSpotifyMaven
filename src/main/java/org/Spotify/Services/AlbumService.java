@@ -5,10 +5,6 @@ import java.util.UUID;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Album;
 
-/**
- *
- * @author Yo
- */
 public class AlbumService {
     
     public DataBase db;

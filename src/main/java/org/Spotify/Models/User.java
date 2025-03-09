@@ -2,7 +2,10 @@ package org.Spotify.Models;
 
 import java.util.UUID;
 
-public class Users{
+
+public class User {
+    public String names;
+    public String lastNames;
     private UUID idUser;
     public String firtsName;
     public String secondName;
@@ -15,7 +18,9 @@ public class Users{
     private PlayList managerPlayList; 
     private Comment comment;
 
-    public Users(UUID idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
+    public User(String names, String lastNames, UUID idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
+        this.names = names;
+        this.lastNames = lastNames;
         this.idUser = idUser;
         this.firtsName = firtsName;
         this.secondName = secondName;
