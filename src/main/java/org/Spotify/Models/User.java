@@ -2,7 +2,7 @@ package org.Spotify.Models;
 
 import java.util.UUID;
 
-public class Users {
+public class User {
     public String names;
     public String lastNames;
     private UUID idUser;
@@ -11,10 +11,10 @@ public class Users {
     private String password;
     private UUID idRol; //debate entre int o UUID
 
-    public Users(){
+    public User(){
 
     }
-    public Users(String names, String lastNames, UUID idUser, String email, String nickname, String password) {
+    public User(String names, String lastNames, UUID idUser, String email, String nickname, String password) {
         this.names = names;
         this.lastNames = lastNames;
         this.idUser = idUser;

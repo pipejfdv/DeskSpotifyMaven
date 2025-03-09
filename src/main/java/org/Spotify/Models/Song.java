@@ -12,7 +12,7 @@ public class Song {
         
     }
 
-    public Song(String song,Users user,UUID idAlbum, UUID idSong, String Gender){
+    public Song(String song,User user,UUID idAlbum, UUID idSong, String Gender){
      this.song = song;
      this.user = user.getIdUser();
      this.idAlbum = idAlbum;

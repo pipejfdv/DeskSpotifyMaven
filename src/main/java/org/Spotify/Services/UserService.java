@@ -1,7 +1,7 @@
 package org.Spotify.Services;
 
 import org.Spotify.DB.DataBase;
-import org.Spotify.Models.Users;
+import org.Spotify.Models.User;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -13,7 +13,7 @@ public class UserService {
         db = new DataBase();
     }
     //Create -
-    public void addUser(Users user) {
+    public void addUser(User user) {
         db.listUser.add(user);
     }
     //Read
@@ -24,7 +24,7 @@ public class UserService {
             System.out.println(user.getLastNames());
             System.out.println(user.getIdUser());
         }*/
-        for(Users user : db.listUser) {
+        for(User user : db.listUser) {
             System.out.println("User: "+user.getNames());
             System.out.println(user.getLastNames());
             System.out.println(user.getIdUser());
@@ -32,7 +32,7 @@ public class UserService {
     }
     //Update
     public boolean updateUser(UUID idUser, String names, String lastNames, String email, String nickname, String password) {
-        for (Users user : db.listUser) {
+        for (User user : db.listUser) {
            if (user.getIdUser().equals(idUser)) {
                user.setNames(names);
                user.setLastNames(lastNames);

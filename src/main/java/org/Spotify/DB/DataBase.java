@@ -3,7 +3,7 @@ package org.Spotify.DB;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import org.Spotify.Models.Users;
+import org.Spotify.Models.User;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -12,7 +12,7 @@ import org.Spotify.Models.Song;
 
 public final class DataBase {
 
-    public ArrayList<Users> listUser = new ArrayList <>();
+    public ArrayList<User> listUser = new ArrayList <>();
     public ArrayList<Album> listAlbum = new ArrayList <>();
     public ArrayList<Song> listSong = new ArrayList <>();
     
@@ -25,12 +25,12 @@ public final class DataBase {
 /*create database*/
         public void ContentListUser(){
         //create elements
-        Users user1 = new Users("Juan Perez", "Perez", UUID.randomUUID(), "juan.perez@example.com", "Juanito", "password1");
-        Users user2 = new Users("Maria Lopez", "Lopez", UUID.randomUUID(), "maria.lopez@example.com", "María", "password2");
-        Users user3 = new Users("Carlos Sanchez", "Sanchez", UUID.randomUUID(), "carlos.sanchez@example.com", "Charlie", "password3");
-        Users user4 = new Users("Ana Gomez", "Gomez", UUID.randomUUID(), "ana.gomez@example.com", "Anita", "password4");
-        Users user5 = new Users("Luis Martinez", "Martinez", UUID.randomUUID(), "luis.martinez@example.com", "Lucho", "password5");
-        Users user6 = new Users("Sofia Ramirez", "Ramirez", UUID.randomUUID(), "sofia.ramirez@example.com", "Sofi", "password6");
+        User user1 = new User("Juan Perez", "Perez", UUID.randomUUID(), "juan.perez@example.com", "Juanito", "password1");
+        User user2 = new User("Maria Lopez", "Lopez", UUID.randomUUID(), "maria.lopez@example.com", "María", "password2");
+        User user3 = new User("Carlos Sanchez", "Sanchez", UUID.randomUUID(), "carlos.sanchez@example.com", "Charlie", "password3");
+        User user4 = new User("Ana Gomez", "Gomez", UUID.randomUUID(), "ana.gomez@example.com", "Anita", "password4");
+        User user5 = new User("Luis Martinez", "Martinez", UUID.randomUUID(), "luis.martinez@example.com", "Lucho", "password5");
+        User user6 = new User("Sofia Ramirez", "Ramirez", UUID.randomUUID(), "sofia.ramirez@example.com", "Sofi", "password6");
         // add elements to listUser
         listUser.add(user1);
         listUser.add(user2);
