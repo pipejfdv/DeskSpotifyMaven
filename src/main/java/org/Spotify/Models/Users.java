@@ -2,25 +2,29 @@ package org.Spotify.Models;
 
 import java.util.UUID;
 
-public class Users {
-    public String names;
-    public String lastNames;
+public class Users{
     private UUID idUser;
+    public String firtsName;
+    public String secondName;
+    public String firtsLastname;
+    public String secondLastname;
     public String email;
     public String nickname;
     private String password;
-    private UUID idRol; //debate entre int o UUID
+    private Rol rol; //debate entre int o UUID
+    private PlayList managerPlayList; 
+    private Comment comment;
 
-    public Users(){
-
-    }
-    public Users(String names, String lastNames, UUID idUser, String email, String nickname, String password) {
-        this.names = names;
-        this.lastNames = lastNames;
+    public Users(UUID idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
         this.idUser = idUser;
+        this.firtsName = firtsName;
+        this.secondName = secondName;
+        this.firtsLastname = firtsLastname;
+        this.secondLastname = secondLastname;
         this.email = email;
         this.nickname = nickname;
         this.password = password;
+        this.rol = rol;
     }
 
     public UUID getIdUser() {
@@ -31,20 +35,36 @@ public class Users {
         this.idUser = idUser;
     }
 
-    public String getNames() {
-        return names;
+    public String getFirtsName() {
+        return firtsName;
     }
 
-    public void setNames(String names) {
-        this.names = names;
+    public void setFirtsName(String firtsName) {
+        this.firtsName = firtsName;
     }
 
-    public String getLastNames() {
-        return lastNames;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setLastNames(String lastNames) {
-        this.lastNames = lastNames;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getFirtsLastname() {
+        return firtsLastname;
+    }
+
+    public void setFirtsLastname(String firtsLastname) {
+        this.firtsLastname = firtsLastname;
+    }
+
+    public String getSecondLastname() {
+        return secondLastname;
+    }
+
+    public void setSecondLastname(String secondLastname) {
+        this.secondLastname = secondLastname;
     }
 
     public String getEmail() {
@@ -69,5 +89,41 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public PlayList getManagerPlayList() {
+        return managerPlayList;
+    }
+
+    public void setManagerPlayList(PlayList managerPlayList) {
+        this.managerPlayList = managerPlayList;
+    }
+    
+    public void addSongToPlayList(String playListTitle, Song song){
+        managerPlayList.addSongToPlayList(idUser, song);
+    }
+    
+    public void createPlayList(String tittlePlayList){
+        PlayList newList = new PlayList(tittlePlayList);
+    }
+    
+    public void removeSongToPlayList(UUID idPlayList, UUID idSong){
+        managerPlayList.removeSongToPlayList(idPlayList, idSong);
+    }
+    
+    public void removePlayList(UUID List){
+        managerPlayList.removePlayList(List);
+    }
+    
+    public void commentOfUser(Users user,String content){
+        comment.addComment(user.nickname, content);
     }
 }
