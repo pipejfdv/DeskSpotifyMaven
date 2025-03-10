@@ -8,7 +8,7 @@ public class Album {
     private UUID idAlbum;
     private String nameAlbum;
     private Date creationAlbum;
-    private boolean likeAlbum; 
+    private boolean likeAlbum = false; 
     private Gender genderAlbum;
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Song> songs = new ArrayList<>();
