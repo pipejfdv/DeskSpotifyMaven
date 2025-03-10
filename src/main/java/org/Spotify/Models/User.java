@@ -124,7 +124,7 @@ public class User {
         managerPlayList.removePlayList(List);
     }
     
-    public void commentOfUser(Users user,String content){
+    public void commentOfUser(User user,String content){
         comment.addComment(user.nickname, content);
     }
 }

@@ -81,5 +81,29 @@ public class Album {
         this.songs = songs;
     }
     
+    public void playAlbum(){
+        
+    }
+    
+    public void likeDislikeAlbum(){
+        
+    }
+    
+    public void createAlbum(){
+        
+    }
+    
+    public void addSongAlbum(){
+        
+    }
+    
+    public void removeSongAlbum(){
+        
+    }
+    
+    public void showListSongs(){
+        
+    }
+    
 }
 
