@@ -125,6 +125,6 @@ public class User {
     }
     
     public void commentOfUser(User user,String content){
-        comment.addComment(user.nickname, content);
+        comment.addComment(user, content);
     }
 }

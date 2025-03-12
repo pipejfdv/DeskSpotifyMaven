@@ -10,14 +10,14 @@ public class Song {
     private boolean likeSong = false;
     private String durationSong;
     private ArrayList<User> artistSong = new ArrayList();
-    private Gender genderSong;
+    private GenderOfMusic genderSong;
     private Album albumSong;
     
     public Song (){
         
     }
 
-    public Song(UUID idSong, String nameSong, Date creationSong, boolean likeSong, String durationSong, Gender genderSong, Album albumSong) {
+    public Song(UUID idSong, String nameSong, Date creationSong, boolean likeSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
         this.idSong = idSong;
         this.nameSong = nameSong;
         this.creationSong = creationSong;
@@ -75,11 +75,11 @@ public class Song {
         this.artistSong = artistSong;
     }
 
-    public Gender getGenderSong() {
+    public GenderOfMusic getGenderSong() {
         return genderSong;
     }
 
-    public void setGenderSong(Gender genderSong) {
+    public void setGenderSong(GenderOfMusic genderSong) {
         this.genderSong = genderSong;
     }
 

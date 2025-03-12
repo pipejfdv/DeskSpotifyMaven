@@ -1,14 +1,8 @@
 
 package org.Spotify.Services;
 
-import java.util.UUID;
-import org.Spotify.DB.DataBase;
-import org.Spotify.Models.Album;
-import org.Spotify.Models.Song;
-
-
 public class SongService {
-    public DataBase db;
+    /*public DataBase db;
     public SongService(){
         db = new DataBase ();
     }
@@ -46,5 +40,5 @@ public class SongService {
         }
         return true;
     }
-    
+    */
 }

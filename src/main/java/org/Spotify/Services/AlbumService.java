@@ -7,7 +7,7 @@ import org.Spotify.Models.Album;
 
 public class AlbumService {
     
-    public DataBase db;
+    /*public DataBase db;
     
     public AlbumService (){
         db = new DataBase();
@@ -24,11 +24,11 @@ public class AlbumService {
             System.out.println(album.getLastNames());
             System.out.println(album.getIdAlbum());
         }*/
-        for(Album album : db.listAlbum) {
+        /*for(Album album : db.listAlbum) {
             System.out.println("Album: " + album.getNameAlbum());
             System.out.println("- ID: " + album.getIdAlbum());
-            System.out.println("- Date creation: " + album.getCreationDate());
-            System.out.println("- User: " + album.getIdUser());
+            //System.out.println("- Date creation: " + album.getCreationDate());
+            //System.out.println("- User: " + album.getIdUser());
 
         }
     }
@@ -49,8 +49,8 @@ public class AlbumService {
                 db.listAlbum.remove(album);
             }
         }*/
-        db.listAlbum.removeIf(album -> album.getIdAlbum().equals(idAlbum));
+        /*db.listAlbum.removeIf(album -> album.getIdAlbum().equals(idAlbum));
         return true;
     }
-    
+    */
 }
