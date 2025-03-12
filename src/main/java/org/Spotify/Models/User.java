@@ -16,8 +16,7 @@ public class User {
     private PlayList managerPlayList; 
     private Comment comment;
 
-    public User(UUID idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
-        this.idUser = idUser;
+    public User(String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password) {
         this.firtsName = firtsName;
         this.secondName = secondName;
         this.firtsLastname = firtsLastname;
@@ -25,7 +24,6 @@ public class User {
         this.email = email;
         this.nickname = nickname;
         this.password = password;
-        this.rol = rol;
     }
 
     public UUID getIdUser() {

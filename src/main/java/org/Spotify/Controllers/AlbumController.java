@@ -6,7 +6,7 @@ import org.Spotify.Models.Album;
 import org.Spotify.Services.AlbumService;
 
 public class AlbumController {
-    private AlbumService albumService;
+    /*private AlbumService albumService;
     //methods from service
     public AlbumController(AlbumService albumService) {
         this.albumService = albumService;
@@ -22,5 +22,5 @@ public class AlbumController {
     }
     public boolean updateAlbum(UUID idAlbum,Album album) {
         return albumService.updateAlbum(idAlbum,album.nameAlbum);
-    }
+    }*/
 }

@@ -18,12 +18,13 @@ public final class DataBase {
 
     private static final String URL = "jdbc:mysql://localhost:3306/SpotifyDB";
     private static final String USER = "root";
-    private static final String PASSWORD = "FunnyMind";
+    private static final String PASSWORD = "";
     
     private Connection connection = null;
-    public Connection conection (){
+    public Connection getConnection (){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //connection = DriverManager.getConnection(URL,USER,PASSWORD);
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         }catch(ClassNotFoundException e){
             System.out.println("El driver no funcionar" + e.getMessage());
@@ -34,4 +35,11 @@ public final class DataBase {
         return connection;
     }
     
+    public void closeConnectio(){
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("No se puede cerrar la conexión:--------" + e.getMessage());
+        }
+    }
 }
