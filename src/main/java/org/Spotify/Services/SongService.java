@@ -3,6 +3,7 @@ package org.Spotify.Services;
 
 import java.util.UUID;
 import org.Spotify.DB.DataBase;
+import org.Spotify.Models.Album;
 import org.Spotify.Models.Song;
 
 
@@ -17,19 +18,20 @@ public class SongService {
     }
     public void readSong(){
         for(Song song : db.listSong) {
-            System.out.println("Song: "+song.getSong());
-            System.out.println(song.getGender());
+            System.out.println("Song: "+song.getNameSong());
+            System.out.println(song.getGenderSong());
            // System.out.println(song.album()); album
         }
     }
     
-    public boolean updateSong(UUID idSong, String name, UUID idAlbum,String gender) {
+    public boolean updateSong(UUID idSong, String name, Album album,String gender, Album albumSong) {
+        //se agrego parametro "Album albumSong" para poder acceder al método de "setAlbumSong(albumSong);"
         for (Song song : db.listSong) {
            if (song.getIdSong().equals(idSong)) {
-               song.setSong(name);
-               song.setGender(gender);
-               song.setIdAlbum(idAlbum);
-               song.setIdSong(idSong);
+               song.setNameSong(name);
+               song.setGenderSong(gender);
+               song.setAlbumSong(albumSong);
+               //song.setIdSong(idSong); No es necesario actualizar el id de la canción
                return true;
            }
         }

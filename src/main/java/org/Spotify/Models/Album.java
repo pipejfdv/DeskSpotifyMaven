@@ -9,7 +9,7 @@ public class Album {
     private String nameAlbum;
     private Date creationAlbum;
     private boolean likeAlbum = false; 
-    private Gender genderAlbum;
+    private GenderOfMusic genderAlbum;
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Song> songs = new ArrayList<>();
     
@@ -17,7 +17,7 @@ public class Album {
         
     };
 
-    public Album(UUID idAlbum, String nameAlbum, Date creationAlbum, boolean likeAlbum, Gender genderAlbum) {
+    public Album(UUID idAlbum, String nameAlbum, Date creationAlbum, boolean likeAlbum, GenderOfMusic genderAlbum) {
         this.idAlbum = idAlbum;
         this.nameAlbum = nameAlbum;
         this.creationAlbum = creationAlbum;
@@ -57,11 +57,11 @@ public class Album {
         this.likeAlbum = likeAlbum;
     }
 
-    public Gender getGenderAlbum() {
+    public GenderOfMusic getGenderAlbum() {
         return genderAlbum;
     }
 
-    public void setGenderAlbum(Gender genderAlbum) {
+    public void setGenderAlbum(GenderOfMusic genderAlbum) {
         this.genderAlbum = genderAlbum;
     }
 
