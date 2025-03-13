@@ -1,23 +1,22 @@
 package org.Spotify.Models;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.UUID;
 
 public class Song {
-    private UUID idSong;
+    private String idSong;
     private String nameSong;
     private Date creationSong;
     private boolean likeSong = false;
     private String durationSong;
     private ArrayList<User> artistSong = new ArrayList();
-    private Gender genderSong;
+    private GenderOfMusic genderSong;
     private Album albumSong;
     
     public Song (){
         
     }
 
-    public Song(UUID idSong, String nameSong, Date creationSong, boolean likeSong, String durationSong, Gender genderSong, Album albumSong) {
+    public Song(String idSong, String nameSong, Date creationSong, boolean likeSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
         this.idSong = idSong;
         this.nameSong = nameSong;
         this.creationSong = creationSong;
@@ -27,11 +26,18 @@ public class Song {
         this.albumSong = albumSong;
     }
 
-    public UUID getIdSong() {
+    public Song(String idSong, String nameSong) {
+        this.idSong = idSong;
+        this.nameSong = nameSong;
+    }
+    
+    
+
+    public String getIdSong() {
         return idSong;
     }
 
-    public void setIdSong(UUID idSong) {
+    public void setIdSong(String idSong) {
         this.idSong = idSong;
     }
 
@@ -75,11 +81,11 @@ public class Song {
         this.artistSong = artistSong;
     }
 
-    public Gender getGenderSong() {
+    public GenderOfMusic getGenderOfMusicSong() {
         return genderSong;
     }
 
-    public void setGenderSong(Gender genderSong) {
+    public void setGenderOfMusicSong(GenderOfMusic genderSong) {
         this.genderSong = genderSong;
     }
 

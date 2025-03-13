@@ -7,17 +7,43 @@ import org.Spotify.Services.UserService;
 import javax.swing.*;
 import java.util.Scanner;
 import java.util.UUID;
+import org.Spotify.Models.Rol;
+import org.Spotify.Models.Song;
+import org.Spotify.Services.RolService;
+import org.Spotify.Services.SongService;
 import org.Spotify.Views.Index;
 
 public class App
 {
     public static void main( String[] args )
     {
-        Index index = new Index();
+        //RolService rolServ = new RolService();
+        //Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
+        //Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
+        //Rol eliminarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+        
+        //rolServ.addRol(insertarRol);
+        //rolServ.updateRol(actualizarRol);
+        //rolServ.deleteRol(eliminarRol);
+        //rolServ.readRol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+        
+        SongService songServ = new SongService();
+        Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger");
+        //Song actualizarSong = new Song("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
+        //Song eliminarSong = new Song("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+        
+        songServ.addSong(insertarSong);
+        //songServ.updateSong(actualizarSong);
+        //songServ.deleteSong(eliminarSong);
+        //songServ.readSong("");
+        
+        
+        
+        /*Index index = new Index();
         index.setVisible(true);
         index.setLocationRelativeTo(null);
         /*Interface for user*/
-        UserController userController = new UserController(new UserService());
+        /*UserController userController = new UserController(new UserService());
         boolean active=true;
         while (active){
             Scanner scanner = new Scanner(System.in);
@@ -42,7 +68,7 @@ public class App
                     String idUpdate = scanner.nextLine();
                     try {
                         /*for(User user : listUser){}*/
-                        UUID id = UUID.fromString(idUpdate);
+                        /*UUID id = UUID.fromString(idUpdate);
                         System.out.println("Nuevos nombres");
                         String names = scanner.nextLine();
                         System.out.println("Nuevos apellidos");
@@ -79,6 +105,6 @@ public class App
                     active=false;
                     break;
             }
-        }
+        }*/
     }
 }
