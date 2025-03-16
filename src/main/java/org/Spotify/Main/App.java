@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.util.Scanner;
 import java.util.UUID;
 import jdk.jfr.internal.Repository;
+import org.Spotify.Controllers.RolController;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Song;
 import org.Spotify.Repositories.RepositoryRol;
@@ -31,6 +32,8 @@ public class App
         UserController userController = new UserController();
         userController.insertUser(newUser);
         
+        RolController rolController = new RolController();
+        System.out.println(rolController.searchRol("USER_ROLE").getNameRol());
         
         
         Song song = new Song("src/main/java/org/Spotify/Music/La tipica.mp3");

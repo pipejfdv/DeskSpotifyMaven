@@ -3,7 +3,6 @@ package org.Spotify.Controllers;
 import org.Spotify.Models.User;
 import org.Spotify.Services.UserService;
 
-import java.util.UUID;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Repositories.RepositoryUser;
 import org.Spotify.Repositories.RepositoryUserDAO;
