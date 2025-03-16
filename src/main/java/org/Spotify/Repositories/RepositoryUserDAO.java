@@ -10,30 +10,33 @@ import org.Spotify.Models.Rol;
 import org.Spotify.Models.User;
 
 
-public class UserRepositoryDAO implements RepositoryUser{
+public class RepositoryUserDAO implements RepositoryUser{
     private DataBase db;
+    private RepositoryRol repositoryRol;
     
-    public UserRepositoryDAO(DataBase db) {
+    public RepositoryUserDAO(DataBase db) {
         this.db = db;
     }
     
     @Override
     public void insertUser(User user) {
         String sqlQuery = "INSERT INTO Users (idUser, firstName, middleName, lastName, secondLastName, email, nickname, passwordUser, idRole)VALUES(?,?,?,?,?,?,?,?,?)";
-        try (Connection conex = db.getConnection(); PreparedStatement preparedStatement = conex.prepareStatement(sqlQuery)){
-            preparedStatement.setString(1, UUID.randomUUID().toString());
-            preparedStatement.setString(2,user.getFirtsName());
-            preparedStatement.setString(3,user.getSecondName());
-            preparedStatement.setString(4,user.getFirtsLastname());
-            preparedStatement.setString(5,user.getSecondLastname());
-            preparedStatement.setString(6,user.getEmail());
-            preparedStatement.setString(7,user.getNickname());
-            preparedStatement.setString(8,user.getPassword());
-            preparedStatement.setString(9,Rol.USER_ROLE.toString());
-            preparedStatement.execute();
+        try (Connection conex = db.getConnection(); PreparedStatement pre = conex.prepareStatement(sqlQuery)){
+            pre.setString(1, UUID.randomUUID().toString());
+            pre.setString(2,user.getFirtsName());
+            pre.setString(3,user.getSecondName());
+            pre.setString(4,user.getFirtsLastname());
+            pre.setString(5,user.getSecondLastname());
+            pre.setString(6,user.getEmail());
+            pre.setString(7,user.getNickname());
+            pre.setString(8,user.getPassword());
+            pre.setString(9,"22222222-2222-2222-2222-222222222222");
+            pre.execute();
             System.out.println("----ingresado----");
         } catch (SQLException e) {
             System.out.println("---No ingresado----\n: " + e.getMessage());
+        }finally{
+            db.closeConnectio();
         }
     }
 
