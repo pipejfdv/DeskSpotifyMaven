@@ -25,11 +25,15 @@ public class App
         index.setVisible(true);
         index.setLocationRelativeTo(null);*/
         /*Interface for user*/
+        
+        
         User newUser = new User("Juan", "Felipe", "Delgadillo", "Vanegas", "pipejfdv@gmail.com", "pipejfdv", "1234");
         UserController userController = new UserController();
         userController.insertUser(newUser);
-               
-        Song song = new Song("/src/main/java/org/Spotify/Music/La tipica.mp3");
+        
+        
+        
+        Song song = new Song("src/main/java/org/Spotify/Music/La tipica.mp3");
         System.out.println(song.getNameSong());
         System.out.println(song.getArtistSong());
         System.out.println(song.getAlbumSong());
