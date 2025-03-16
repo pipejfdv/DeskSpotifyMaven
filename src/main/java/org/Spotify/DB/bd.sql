@@ -41,6 +41,7 @@ CREATE TABLE Songs (
     idGender VARCHAR(200),
     idAlbum VARCHAR(200),
     idArtist VARCHAR(200),
+    route varchar(500),
     FOREIGN KEY (idGender) REFERENCES Genders(idGender) ON DELETE SET NULL,
     FOREIGN KEY (idAlbum) REFERENCES Albums(idAlbum) ON DELETE CASCADE,
     FOREIGN KEY (idArtist) REFERENCES Users(idUser) ON DELETE CASCADE

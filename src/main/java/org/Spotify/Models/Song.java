@@ -1,114 +1,81 @@
 package org.Spotify.Models;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
 
 public class Song {
     private UUID idSong;
     private String nameSong;
     private Date creationSong;
-    private boolean likeSong = false;
-    private String durationSong;
-    private ArrayList<User> artistSong = new ArrayList();
+    private boolean likeSong = false; 
+   private String artistSong;
     private GenderOfMusic genderSong;
     private Album albumSong;
+    private String route;
     
-    public Song (){
+    public Song( String route) {
+        this.idSong = idSong.randomUUID();
+        this.route = route;
+        try{
+            //create objet jauditagger for read mp3
+            AudioFile audioFile = AudioFileIO.read(new File(route));
+            
+            Tag tag = audioFile.getTag();
+            if(tag != null){
+               nameSong = tag.getFirst(FieldKey.TITLE);
+               artistSong = tag.getFirst(FieldKey.ARTIST);
+            }
+            else{
+                nameSong = "Desconocido";
+                artistSong = "Desconocido";
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error -> ");
+            e.printStackTrace();
+        }
         
-    }
-
-    public Song(UUID idSong, String nameSong, Date creationSong, boolean likeSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
-        this.idSong = idSong;
-        this.nameSong = nameSong;
-        this.creationSong = creationSong;
-        this.likeSong = likeSong;
-        this.durationSong = durationSong;
-        this.genderSong = genderSong;
-        this.albumSong = albumSong;
+        
+        
     }
 
     public UUID getIdSong() {
         return idSong;
     }
 
-    public void setIdSong(UUID idSong) {
-        this.idSong = idSong;
-    }
-
     public String getNameSong() {
         return nameSong;
-    }
-
-    public void setNameSong(String nameSong) {
-        this.nameSong = nameSong;
     }
 
     public Date getCreationSong() {
         return creationSong;
     }
 
-    public void setCreationSong(Date creationSong) {
-        this.creationSong = creationSong;
-    }
-
     public boolean isLikeSong() {
         return likeSong;
     }
 
-    public void setLikeSong(boolean likeSong) {
-        this.likeSong = likeSong;
-    }
-
-    public String getDurationSong() {
-        return durationSong;
-    }
-
-    public void setDurationSong(String durationSong) {
-        this.durationSong = durationSong;
-    }
-
-    public ArrayList<User> getArtistSong() {
+    public String getArtistSong() {
         return artistSong;
-    }
-
-    public void setArtistSong(ArrayList<User> artistSong) {
-        this.artistSong = artistSong;
     }
 
     public GenderOfMusic getGenderSong() {
         return genderSong;
     }
 
-    public void setGenderSong(GenderOfMusic genderSong) {
-        this.genderSong = genderSong;
-    }
-
     public Album getAlbumSong() {
         return albumSong;
     }
 
-    public void setAlbumSong(Album albumSong) {
-        this.albumSong = albumSong;
+    public String getRoute() {
+        return route;
     }
-    
-    public void playSong(){
-        
-    }
-    
-    public void nextSong(){
-        
-    }
-    
-    public void previousSong(){
-        
-    }
-    
-    public void stopSong(){
-        
-    }
-    
-    public void likeDislikeSong(){
-        
-    }
-    
+
+  
+   
 }

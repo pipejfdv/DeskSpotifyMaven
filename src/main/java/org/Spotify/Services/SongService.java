@@ -1,7 +1,10 @@
 
 package org.Spotify.Services;
 
+
 public class SongService {
+    //create song objtec
+        
     /*public DataBase db;
     public SongService(){
         db = new DataBase ();
@@ -41,4 +44,8 @@ public class SongService {
         return true;
     }
     */
+
+    public void printSongMetadata(String orgSpotifyMusicWho_love_the_sunmp3) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
