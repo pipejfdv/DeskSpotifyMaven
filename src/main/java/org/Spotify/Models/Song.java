@@ -1,10 +1,10 @@
 package org.Spotify.Models;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 import org.Spotify.Controllers.GenderOfMusicController;
-import org.Spotify.Services.GenderOfMusicServices;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
@@ -15,11 +15,11 @@ public class Song {
     
     private UUID idSong;
     private String nameSong;
-    private Date creationSong;
+    private String creationSong;
     private boolean likeSong = false; 
     private String artistSong;
     private GenderOfMusic genderSong;
-    private Album albumSong;
+    private String albumSong;
     private String route;
     
     public Song( String route, GenderOfMusicController genderOfMusicController) {
@@ -33,6 +33,8 @@ public class Song {
             if(tag != null){
                nameSong = tag.getFirst(FieldKey.TITLE);
                artistSong = tag.getFirst(FieldKey.ARTIST);
+               creationSong = tag.getFirst(FieldKey.YEAR);
+               albumSong = tag.getFirst(FieldKey.ALBUM);
                
                String gender = tag.getFirst(FieldKey.GENRE);
                GenderOfMusic lookingGender = genderOfMusicController.searchingGener(gender);
@@ -66,7 +68,7 @@ public class Song {
         return nameSong;
     }
 
-    public Date getCreationSong() {
+    public String getCreationSong() {
         return creationSong;
     }
 
@@ -82,7 +84,7 @@ public class Song {
         return genderSong;
     }
 
-    public Album getAlbumSong() {
+    public String getAlbumSong() {
         return albumSong;
     }
 

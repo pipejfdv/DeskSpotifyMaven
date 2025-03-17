@@ -36,12 +36,15 @@ public class App
         /*RolController rolController = new RolController();
         System.out.println(rolController.searchRol("USER_ROLE").getNameRol());*/
         
+        /*
         GenderOfMusicController genderControler = new GenderOfMusicController();
         Song song = new Song("src/main/java/org/Spotify/Music/Zombie.mp3", genderControler);
         System.out.println(song.getNameSong());
         System.out.println(song.getArtistSong());
         System.out.println(song.getAlbumSong());
+        System.out.println(song.getCreationSong());
         System.out.println(song.getGenderSong().getGenderOfMusic());
+        */
         
     }    
 }

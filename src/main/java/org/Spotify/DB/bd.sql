@@ -25,25 +25,14 @@ CREATE TABLE Genders (
     nameGender VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Albums (
-    idAlbum VARCHAR(37) PRIMARY KEY,
-    nameAlbum VARCHAR(100) NOT NULL,
-    creationAlbum DATE NOT NULL,
-    idArtist VARCHAR(200),
-    idGender VARCHAR(200),
-    FOREIGN KEY (idArtist) REFERENCES Users(idUser) ON DELETE CASCADE,
-    FOREIGN KEY (idGender) REFERENCES Genders(idGender) ON DELETE SET NULL
-);
-
 CREATE TABLE Songs (
     idSong VARCHAR(37) PRIMARY KEY,
     nameSong VARCHAR(100) NOT NULL,
+    creationSong VARCHAR(4),
     idGender VARCHAR(200),
-    idAlbum VARCHAR(200),
     idArtist VARCHAR(200),
     route varchar(500),
     FOREIGN KEY (idGender) REFERENCES Genders(idGender) ON DELETE SET NULL,
-    FOREIGN KEY (idAlbum) REFERENCES Albums(idAlbum) ON DELETE CASCADE,
     FOREIGN KEY (idArtist) REFERENCES Users(idUser) ON DELETE CASCADE
 );
 
