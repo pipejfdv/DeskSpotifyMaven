@@ -16,19 +16,17 @@ public class Song {
         
     }
 
-    public Song(String idSong, String nameSong, Date creationSong, boolean likeSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
+    public Song(String idSong, String nameSong, Date creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
         this.idSong = idSong;
         this.nameSong = nameSong;
         this.creationSong = creationSong;
-        this.likeSong = likeSong;
         this.durationSong = durationSong;
         this.genderSong = genderSong;
         this.albumSong = albumSong;
     }
 
-    public Song(String idSong, String nameSong) {
+    public Song(String idSong) {
         this.idSong = idSong;
-        this.nameSong = nameSong;
     }
     
     

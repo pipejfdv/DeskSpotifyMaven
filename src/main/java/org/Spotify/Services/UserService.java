@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.User;
-
-import java.util.ArrayList;
 import org.Spotify.Models.Rol;
 
 public class UserService {
@@ -16,7 +14,7 @@ public class UserService {
     public UserService (){
 
     }
-    //Create -
+   
     public void addUser(User user) {
         Connection conex = DataBase.Conectar();
         String sqlRol = "SELECT * FROM Roles WHERE idRole = ?";

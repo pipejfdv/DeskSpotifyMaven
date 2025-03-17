@@ -81,7 +81,7 @@ public class Album {
         this.songs = songs;
     }
     
-    public void playAlbum(){
+    /*public void playAlbum(){
         
     }
     
@@ -103,7 +103,7 @@ public class Album {
     
     public void showListSongs(){
         
-    }
+    }*/
     
 }
 

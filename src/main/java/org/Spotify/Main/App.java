@@ -1,5 +1,8 @@
 package org.Spotify.Main;
 
+
+
+import java.sql.Date;
 import org.Spotify.Controllers.UserController;
 import org.Spotify.Models.User;
 import org.Spotify.Services.UserService;
@@ -7,9 +10,11 @@ import org.Spotify.Services.UserService;
 import javax.swing.*;
 import java.util.Scanner;
 import java.util.UUID;
+import org.Spotify.Models.Comment;
 import org.Spotify.Models.GenderOfMusic;
 import org.Spotify.Models.Rol;
 import org.Spotify.Models.Song;
+import org.Spotify.Services.CommentService;
 import org.Spotify.Services.GenderMusicService;
 import org.Spotify.Services.RolService;
 //import org.Spotify.Services.SongService;
@@ -19,7 +24,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        //UserService usuarioServ = new UserService();
+        UserService usuarioServ = new UserService();
         
         //RolService rolServ = new RolService();
         
@@ -53,6 +58,20 @@ public class App
         //genderServ.updateGender(actualizarGender);
         //genderServ.deleteGender(eliminarGender);
         //genderServ.readGender("be790292-b866-4387-9686-ce3486f264bb");
+        
+        CommentService commentServ = new CommentService();
+       
+        Date today = new Date(System.currentTimeMillis());
+        
+        //User commentUser = usuarioServ.readUser("1d4333da-840b-40b1-a109-620f3cb75fb6");
+        //Comment insertarComment = new Comment(UUID.randomUUID().toString(), today, "Comentario prueba", commentUser);
+        //Comment actualizarComment = new Comment("86aafe94-38bc-4b2d-ae75-9512ccd637df", today, "Comentario prueba 2", commentUser);
+        //Comment eliminarComment = new Comment("86aafe94-38bc-4b2d-ae75-9512ccd637df");
+        
+        //commentServ.addComment(insertarComment);
+        //commentServ.updateComment(actualizarComment);
+        //commentServ.deleteComment(eliminarComment);
+        //commentServ.readComment("7e086c53-e503-4abe-86e0-aa754fd58e45");
         
         
         /*Index index = new Index();

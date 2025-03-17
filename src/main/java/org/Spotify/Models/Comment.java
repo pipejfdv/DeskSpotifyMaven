@@ -1,35 +1,43 @@
 
 package org.Spotify.Models;
 
-import java.time.LocalDate;
-import java.util.UUID;
+import java.sql.Date;
+
+
 
 public class Comment {
-    private UUID idComment;
-    private LocalDate dateComment;
+    private String idComment;
+    private Date dateComment;
     private String contentComment;
     private User userComment;
 
-    public Comment(UUID idComment, LocalDate dateComment, String contentComment, User userComment) {
+    public Comment() {
+    }
+
+    public Comment(String idComment) {
+        this.idComment = idComment;
+    }
+    
+    public Comment(String idComment, Date dateComment, String contentComment, User userComment) {
         this.idComment = idComment;
         this.dateComment = dateComment;
         this.contentComment = contentComment;
         this.userComment = userComment;
     }
 
-    public UUID getIdComment() {
+    public String getIdComment() {
         return idComment;
     }
 
-    public void setIdComment(UUID idComment) {
+    public void setIdComment(String idComment) {
         this.idComment = idComment;
     }
 
-    public LocalDate getDateComment() {
+    public Date getDateComment() {
         return dateComment;
     }
 
-    public void setDateComment(LocalDate dateComment) {
+    public void setDateComment(Date dateComment) {
         this.dateComment = dateComment;
     }
 
@@ -49,7 +57,7 @@ public class Comment {
         this.userComment = userComment;
     }
     
-    public void addComment(User userNickname, String content){
-        Comment newCommentUser = new Comment(UUID.randomUUID(), LocalDate.now(), content,userNickname);
-    }
+    /*public void addComment(User userNickname, String content){
+        Comment newCommentUser = new Comment(String.randomString(), Date.now(), content,userNickname);
+    }*/
 }

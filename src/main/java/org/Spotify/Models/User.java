@@ -35,6 +35,13 @@ public class User {
         this.rol = rol;
     }
 
+    public User(String idUser, String nickname) {
+        this.idUser = idUser;
+        this.nickname = nickname;
+    }
+    
+    
+
     public String getIdUser() {
         return idUser;
     }
