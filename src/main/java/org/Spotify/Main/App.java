@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.util.Scanner;
 import java.util.UUID;
 import jdk.jfr.internal.Repository;
+import org.Spotify.Controllers.GenderOfMusicController;
 import org.Spotify.Controllers.RolController;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Song;
@@ -28,18 +29,19 @@ public class App
         /*Interface for user*/
         
         
-        User newUser = new User("Juan", "Felipe", "Delgadillo", "Vanegas", "pipejfdv@gmail.com", "pipejfdv", "1234");
+        /*User newUser = new User("Juan", "Felipe", "Delgadillo", "Vanegas", "pipejfdv@gmail.com", "pipejfdv", "1234");
         UserController userController = new UserController();
-        userController.insertUser(newUser);
+        userController.insertUser(newUser);*/
         
-        RolController rolController = new RolController();
-        System.out.println(rolController.searchRol("USER_ROLE").getNameRol());
+        /*RolController rolController = new RolController();
+        System.out.println(rolController.searchRol("USER_ROLE").getNameRol());*/
         
-        
-        Song song = new Song("src/main/java/org/Spotify/Music/La tipica.mp3");
+        GenderOfMusicController genderControler = new GenderOfMusicController();
+        Song song = new Song("src/main/java/org/Spotify/Music/Zombie.mp3", genderControler);
         System.out.println(song.getNameSong());
         System.out.println(song.getArtistSong());
         System.out.println(song.getAlbumSong());
+        System.out.println(song.getGenderSong().getGenderOfMusic());
         
     }    
 }

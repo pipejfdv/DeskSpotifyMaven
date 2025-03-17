@@ -3,12 +3,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+import org.Spotify.Controllers.GenderOfMusicController;
+import org.Spotify.Services.GenderOfMusicServices;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 
 public class Song {
+    
+    
     private UUID idSong;
     private String nameSong;
     private Date creationSong;
@@ -18,7 +22,7 @@ public class Song {
     private Album albumSong;
     private String route;
     
-    public Song( String route) {
+    public Song( String route, GenderOfMusicController genderOfMusicController) {
         this.idSong = idSong.randomUUID();
         this.route = route;
         try{
@@ -29,6 +33,16 @@ public class Song {
             if(tag != null){
                nameSong = tag.getFirst(FieldKey.TITLE);
                artistSong = tag.getFirst(FieldKey.ARTIST);
+               
+               String gender = tag.getFirst(FieldKey.GENRE);
+               GenderOfMusic lookingGender = genderOfMusicController.searchingGener(gender);
+               if(lookingGender != null){
+                   this.genderSong = lookingGender;
+               }
+               else{
+                   this.genderSong = new GenderOfMusic(UUID.randomUUID(), "Desconocido");
+               }
+               
             }
             else{
                 nameSong = "Desconocido";
