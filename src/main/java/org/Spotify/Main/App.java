@@ -1,110 +1,88 @@
 package org.Spotify.Main;
 
+import org.Spotify.Models.Users;
+import org.Spotify.Controllers.GenderController;
 import org.Spotify.Controllers.UserController;
-import org.Spotify.Models.User;
 import org.Spotify.Services.UserService;
 
-import javax.swing.*;
-import java.util.Scanner;
-import java.util.UUID;
-import org.Spotify.Models.Rol;
-import org.Spotify.Models.Song;
-import org.Spotify.Services.RolService;
-import org.Spotify.Services.SongService;
-import org.Spotify.Views.Index;
-
-public class App
-{
-    public static void main( String[] args )
-    {
-        //RolService rolServ = new RolService();
-        //Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
-        //Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
-        //Rol eliminarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+public class App {
+    public static void main(String[] args) {
+        //CRUD Género
+        /*GenderService genderService = new GenderService(); 
+        GenderController genderController = new GenderController(genderService);
         
-        //rolServ.addRol(insertarRol);
-        //rolServ.updateRol(actualizarRol);
-        //rolServ.deleteRol(eliminarRol);
-        //rolServ.readRol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+        GenderOfMusic newGender = new GenderOfMusic();
+        newGender.setNameGender("Rock");
+        genderController.insertGender(newGender);
+        System.out.println("Genero insertado correctamente");
         
-        SongService songServ = new SongService();
-        Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger");
-        //Song actualizarSong = new Song("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
-        //Song eliminarSong = new Song("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+        int idGenderToFind = 2;
         
-        songServ.addSong(insertarSong);
-        //songServ.updateSong(actualizarSong);
-        //songServ.deleteSong(eliminarSong);
-        //songServ.readSong("");
+        GenderOfMusic foundGender = genderController.getGender(idGenderToFind);
+        if (foundGender != null){
+            System.out.println("Genero encontrado: ");
+            System.out.println("Id: " + foundGender.getIdGender());
+            System.out.println("Nombre: " + foundGender.getNameGender());
+        } else {
+            System.out.println("No se encontro genero con Id: " + idGenderToFind);
+        }
         
+        if(foundGender != null){
+            foundGender.setNameGender("Heavy Metal");
+            genderController.updateGender(foundGender);
+            System.out.println("Genero actualizado correctamente");
+        } else {
+            System.out.println("No se encontro genero con Id: " + idGenderToFind);
+        }
         
-        
-        /*Index index = new Index();
-        index.setVisible(true);
-        index.setLocationRelativeTo(null);
-        /*Interface for user*/
-        /*UserController userController = new UserController(new UserService());
-        boolean active=true;
-        while (active){
-            Scanner scanner = new Scanner(System.in);
-            int op = Integer.parseInt(JOptionPane.showInputDialog("Metodos de usuario: \n1.Agregar usuario\n2.Actualizar usuarios \n3.Mostrar usuarios \n4.Eliminar usuario \n5.salir"));
-            switch (op){
-                case 1:
-                    System.out.println("nombres");
-                    String dataNames = scanner.nextLine();
-                    System.out.println("apellidos");
-                    String dataLastNames = scanner.nextLine();
-                    System.out.println("correo");
-                    String dataEmail = scanner.nextLine();
-                    System.out.println("usuario");
-                    String dataNickname = scanner.nextLine();
-                    System.out.println("contraseña");
-                    String dataPassword = scanner.nextLine();
-                    User newRegistration = new User(dataNames,dataLastNames, UUID.randomUUID(),dataEmail, dataNickname, dataPassword);
-                    userController.insertUser(newRegistration);
-                    break;
-                case 2:
-                    System.out.println("Ingresar id del usuario");
-                    String idUpdate = scanner.nextLine();
-                    try {
-                        /*for(User user : listUser){}*/
-                        /*UUID id = UUID.fromString(idUpdate);
-                        System.out.println("Nuevos nombres");
-                        String names = scanner.nextLine();
-                        System.out.println("Nuevos apellidos");
-                        String lastNames = scanner.nextLine();
-                        System.out.println("Nuevo correo");
-                        String email = scanner.nextLine();
-                        System.out.println("Nuevo usuario");
-                        String nickname = scanner.nextLine();
-                        System.out.println("Nueva contrasena");
-                        String password = scanner.nextLine();
-                        User updateUser = new User(names,lastNames,id,email,nickname,password);
-                        boolean rt = userController.updateUser(id,updateUser);
-                        if (rt){
-                            System.out.println("Se ha actualizado el usuario");
-                        }
-                        else {
-                            System.out.println("No se ha actualizado el usuario");
-                        }
-                    }
-                    catch (Exception e){
-                        System.out.println(e.getMessage() +"Error id");
-                    }
-                    break;
-                case 3:
-                    userController.showUser();
-                    break;
-                case 4:
-                    System.out.println("Ingresar id del usuario");
-                    String idDelete = scanner.nextLine();
-                    UUID idDeleteUser = UUID.fromString(idDelete);
-                    userController.deleteUser(idDeleteUser);
-                    break;
-                case 5:
-                    active=false;
-                    break;
-            }
+        if(foundGender != null){
+            genderController.deleteGender(idGenderToFind);
+            System.out.println("Genero eliminado.");
+        } else {
+            System.out.println("No se encontro genero con Id: " + idGenderToFind);
         }*/
+        
+        //CRUD User
+        UserService userService = new UserService();
+        UserController userController = new UserController(userService);
+        
+        /*Users newUser = new Users();
+        newUser.setNames("Pepito");
+        newUser.setLastNames("Pérez");
+        newUser.setEmail("pepito@gmail.com");
+        newUser.setNickName("p-perez");
+        newUser.setPassword("12345");
+        newUser.setRole(1);
+        
+        userController.insertUser(newUser);
+        System.out.println("Usuario ingresado correctamente.");*/
+        
+        int idUserToFind = 1;
+        
+        Users foundUser = userController.getUser(idUserToFind);
+        /*if (foundUser != null){
+            System.out.println("Genero encontrado: ");
+            System.out.println("Id: " + foundUser.getIdUser());
+            System.out.println("Nombre: " + foundUser.getNames());
+            System.out.println("Apellidos: " + foundUser.getLastNames());
+        } else {
+            System.out.println("No se encontro usuario con Id: " + idUserToFind);
+        }*/
+        
+        if(foundUser != null){
+            foundUser.setNames("Juan ");
+            foundUser.setPassword("P1234");
+            userController.updateUser(foundUser);
+            System.out.println("Usuario actualizado correctamente");
+        } else {
+            System.out.println("No se encontro usuario con Id: " + idUserToFind);
+        }
+        
+        if(foundUser != null){
+            userController.deleteUser(idUserToFind);
+            System.out.println("Usuario eliminado.");
+        } else {
+            System.out.println("No se encontro genero con Id: " + foundUser);
+        }
     }
 }

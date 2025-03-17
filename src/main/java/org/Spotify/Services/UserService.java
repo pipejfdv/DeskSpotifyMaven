@@ -1,84 +1,99 @@
 package org.Spotify.Services;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import org.Spotify.DB.DataBase;
-import org.Spotify.Models.User;
-
-import java.util.ArrayList;
-import java.util.UUID;
+import org.Spotify.Models.Users;
+import java.sql.*;
 
 public class UserService {
-
-   
+    public DataBase db;
     public UserService (){
-
+        db = new DataBase();
     }
-    //Create -
-    public void addUser(User user) {
-        Connection conex = DataBase.Conectar();
-        String sql = "INSERT INTO Roles(idRole, roleName)" + "values (?, ?)";
+    
+    public void addUser(Users user){
+        Connection conex = DataBase.conectar();
+        String sql = "INSERT INTO users (name, lastName, email, nickName, password, idRole)"
+                + "VALUES (?, ?, ?, ?, ?, ?)";
         
-         if (conex == null) {
-            System.out.println("Error: No se pudo establecer conexión con la base de datos.");
-            return;
-        }
-        
-        try(PreparedStatement stmt = conex.prepareStatement(sql)){
-            stmt.setString(1, rol.getIdRol());
-            stmt.setString(2, rol.getNameRol());
-            stmt.executeUpdate();
-            System.out.println();
-        }catch(SQLException ex){
-            System.out.println("Error al ingresar rol" + ex.getMessage());
-        }finally {
-            try {
-                if (conex != null) {
-                    conex.close();
-                    System.out.println("Conexión cerrada correctamente.");
-                } // Cierra la conexión
+        try(PreparedStatement smt = conex.prepareStatement(sql)) {
+            smt.setString(1, user.getNames());
+            smt.setString(2, user.getLastNames());
+            smt.setString(3, user.getEmail());
+            smt.setString(4, user.getNickName());
+            smt.setString(5, user.getPassword());
+            smt.setInt(6, user.getRole());
+            smt.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (conex != null) try {
+                conex.close();
             } catch (SQLException ex) {
-                System.out.println("Error al cerrar la conexión: " + ex.getMessage());
+                ex.printStackTrace();
             }
         }
     }
-    //Read
-    public void readUser() {
-        /*for (int i = 0; i < db.listUser.size(); i++) {
-            Users user = db.listUser.get(i);
-            System.out.println("User: "+ user.getNames());
-            System.out.println(user.getLastNames());
-            System.out.println(user.getIdUser());
-        }*/
-        for(User user : db.listUser) {
-            System.out.println("User: "+user.getNames());
-            System.out.println(user.getLastNames());
-            System.out.println(user.getIdUser());
-        }
-    }
-    //Update
-    public boolean updateUser(UUID idUser, String names, String lastNames, String email, String nickname, String password) {
-        for (User user : db.listUser) {
-           if (user.getIdUser().equals(idUser)) {
-               user.setNames(names);
-               user.setLastNames(lastNames);
-               user.setEmail(email);
-               user.setNickname(nickname);
-               user.setPassword(password);
-               return true;
-           }
-        }
-        return false;
-    }
-    //Delete
-    public boolean deleteUser(UUID idUser) {
-        /*for (Users user : db.listUser) {
-            if (user.getIdUser() == idUser) {
-                db.listUser.remove(user);
+    
+    public Users getUser(int idUserToFind){
+        Connection conex = DataBase.conectar();
+        String sql = "SELECT * FROM users WHERE idUser = ?";
+        Users user = null;
+        
+        try(PreparedStatement smt = conex.prepareStatement(sql)){
+            smt.setInt(1, idUserToFind);
+            ResultSet rs = smt.executeQuery();
+            
+            if (rs.next()){
+                user = new Users();
+                user.setIdUser(rs.getInt("idUser"));
+                user.setNames(rs.getString("name"));
+                user.setLastNames(rs.getString("lastName"));
             }
-        }*/
-        db.listUser.removeIf(user -> user.getIdUser().equals(idUser));
-        return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try{
+                if (conex != null) conex.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return user;
+    }
+    public void updateUser(Users user){
+        Connection conex = DataBase.conectar();
+        String sql = "UPDATE users set name = ?, password = ? WHERE idUser = ?";
+        
+        try (PreparedStatement smt = conex.prepareStatement(sql)){
+            smt.setString(1, user.getNames());
+            smt.setString(2, user.getPassword());
+            smt.setInt(3, user.getIdUser());
+            smt.executeUpdate();
+        } catch(SQLException e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if (conex != null) conex.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public void deleteUser(int idUser){
+        Connection conex = DataBase.conectar();
+        String sql = "DELETE FROM users WHERE idUser = ?";
+        
+        try(PreparedStatement smt = conex.prepareStatement(sql)){
+            smt.setInt(1, idUser);
+            smt.executeUpdate();
+        } catch(SQLException e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if (conex != null) conex.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
     }
 }

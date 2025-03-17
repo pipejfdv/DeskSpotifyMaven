@@ -1,9 +1,6 @@
 package org.Spotify.Controllers;
-
-import org.Spotify.Models.User;
+import org.Spotify.Models.Users;
 import org.Spotify.Services.UserService;
-
-import java.util.UUID;
 
 public class UserController {
     private UserService userService;
@@ -11,16 +8,16 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    public void insertUser(User user) {
+    public void insertUser(Users user) {
         userService.addUser(user);
     }
-    public void showUser() {
-        userService.readUser();
+    public Users getUser(int idUserToFind) {
+        return userService.getUser(idUserToFind);
     }
-    public void deleteUser(UUID user) {
-        userService.deleteUser(user);
+    public void updateUser(Users user) {
+        userService.updateUser(user);
     }
-    public boolean updateUser(UUID idUser,User user) {
-        return userService.updateUser(idUser,user.names,user.lastNames,user.email,user.nickname,user.getPassword());
+    public void deleteUser(int idUser) {
+        userService.deleteUser(idUser);
     }
 }
