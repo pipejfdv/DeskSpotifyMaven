@@ -2,14 +2,27 @@
 package org.Spotify.Services;
 
 import java.util.UUID;
+import jdk.jfr.internal.Repository;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Album;
+import org.Spotify.Models.PlayList;
+import org.Spotify.Repositories.RepositoryPlayList;
 
-public class AlbumService {
+public class PlayListService {
+    
+    private RepositoryPlayList repositoryPlayList;
+    
+    public PlayListService(RepositoryPlayList repositoryPlayList){
+        this.repositoryPlayList = repositoryPlayList;
+    }
+    
+    public void createPlayList (PlayList playList){
+        repositoryPlayList.insertPlayList(playList);
+    }
     
     /*public DataBase db;
     
-    public AlbumService (){
+    public PlayListService (){
         db = new DataBase();
     }
     //Create -

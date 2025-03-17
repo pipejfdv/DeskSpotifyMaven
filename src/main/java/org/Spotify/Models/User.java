@@ -106,22 +106,6 @@ public class User {
         this.managerPlayList = managerPlayList;
     }
     
-    public void addSongToPlayList(String playListTitle, Song song){
-        managerPlayList.addSongToPlayList(idUser, song);
-    }
-    
-    public void createPlayList(String tittlePlayList){
-        PlayList newList = new PlayList(tittlePlayList);
-    }
-    
-    public void removeSongToPlayList(UUID idPlayList, UUID idSong){
-        managerPlayList.removeSongToPlayList(idPlayList, idSong);
-    }
-    
-    public void removePlayList(UUID List){
-        managerPlayList.removePlayList(List);
-    }
-    
     public void commentOfUser(User user,String content){
         comment.addComment(user, content);
     }

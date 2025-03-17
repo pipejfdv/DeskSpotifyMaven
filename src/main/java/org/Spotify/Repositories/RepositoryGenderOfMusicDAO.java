@@ -39,5 +39,24 @@ public class RepositoryGenderOfMusicDAO implements RepositoryGenderOfMusic{
         }
         return null;
     }
+
+    @Override
+    public GenderOfMusic searchGenderOfMusicById(String idGender) {
+        String sqlQuery = "SELECT * FROM Genders WHERE idGender = ?";
+        try(Connection conex = db.getConnection(); PreparedStatement pre = conex.prepareStatement(sqlQuery)){
+            pre.setString(1, idGender);
+            try(ResultSet rs = pre.executeQuery()){
+                if(rs.next()){
+                    UUID idGen = UUID.fromString(rs.getString("idGender"));
+                    String name = rs.getString("nameGender");
+                    return new GenderOfMusic(idGen, name);
+                }
+            }
+        }
+        catch(SQLException ex){
+            System.out.println("---Error de busqueda de GeneroById----"+ex.getMessage());
+        }
+        return null;
+    }
     
 }

@@ -6,71 +6,68 @@ import java.util.UUID;
 
 
 public class PlayList {
-    private UUID idPlayList;
+    private UUID idPlayList; 
     private String namePlayList;
-    private ArrayList<Song> songsOfPlayList;
-    private static ArrayList<PlayList> GlobalplayLists = new ArrayList<>();
+    private ArrayList<Song> songsOfPlayList; 
+    private String type;
+    private UUID userId;
 
-    public PlayList(String namePlayList) {
-        this.idPlayList = UUID.randomUUID();
+    
+    public PlayList(UUID idPlayList, String namePlayList, String type, UUID userId) {
+        this.idPlayList = idPlayList;
         this.namePlayList = namePlayList;
+        this.type = type;
+        this.userId = userId;
         this.songsOfPlayList = new ArrayList<>();
+    }
+    
+   public void addSongPlayList(Song song) {
+        songsOfPlayList.add(song);
+    }
+
+    public void removeSongPlayList(Song song) {
+        songsOfPlayList.remove(song);
     }
 
     public UUID getIdPlayList() {
         return idPlayList;
     }
 
+    public void setIdPlayList(UUID idPlayList) {
+        this.idPlayList = idPlayList;
+    }
+
     public String getNamePlayList() {
         return namePlayList;
+    }
+
+    public void setNamePlayList(String namePlayList) {
+        this.namePlayList = namePlayList;
     }
 
     public ArrayList<Song> getSongsOfPlayList() {
         return songsOfPlayList;
     }
-    
-     public static ArrayList<PlayList> getGlobalplayLists() {
-        return GlobalplayLists;
+
+    public void setSongsOfPlayList(ArrayList<Song> songsOfPlayList) {
+        this.songsOfPlayList = songsOfPlayList;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
     
-    //find 
-    public void addSongToPlayList(UUID idplayList, Song song){
-        for(PlayList pl:GlobalplayLists){
-            if(pl.getIdPlayList().equals(idPlayList)){
-                songsOfPlayList.add(song);
-            }
-        }
-        
-    }
     
-    public void removeSongToPlayList(UUID idplayList, UUID idSong){
-        for(PlayList pl:GlobalplayLists){
-            if(pl.getIdPlayList().equals(idPlayList)){
-                Iterator<Song> iterador= pl.getSongsOfPlayList().iterator();
-                while(iterador.hasNext()){
-                    Song song = iterador.next();
-                    if(song.getIdSong().equals(idSong)){
-                        iterador.remove();
-                        return;
-                    }
-                }
-                return; 
-            }
-        }
-    }
-    
-    public void removePlayList(UUID idPlayList){
-        //library "Iterator" is used for to remove the playlist while journey of arraylist
-        Iterator<PlayList> iterador= GlobalplayLists.iterator();
-        while(iterador.hasNext()){
-            //it is necessary from iterador pass to PlayList because of data type
-            PlayList playList = iterador.next();
-            if(playList.getIdPlayList().equals(idPlayList)){
-                iterador.remove();
-                return;
-            }
-        }
-    }
-    
-   
 }

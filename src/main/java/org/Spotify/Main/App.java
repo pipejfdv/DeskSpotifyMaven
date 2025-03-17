@@ -9,9 +9,11 @@ import java.util.Scanner;
 import java.util.UUID;
 import jdk.jfr.internal.Repository;
 import org.Spotify.Controllers.GenderOfMusicController;
+import org.Spotify.Controllers.PlayListController;
 import org.Spotify.Controllers.RolController;
 import org.Spotify.Controllers.SongController;
 import org.Spotify.DB.DataBase;
+import org.Spotify.Models.PlayList;
 import org.Spotify.Models.Song;
 import org.Spotify.Repositories.RepositoryRol;
 import org.Spotify.Repositories.RepositoryRolDAO;
@@ -30,12 +32,13 @@ public class App
         /*Interface for user*/
         
         
-        /*User newUser = new User("Juan", "Felipe", "Delgadillo", "Vanegas", "pipejfdv@gmail.com", "pipejfdv", "1234");
+        User newUser = new User("Juan", "Felipe", "Delgadillo", "Vanegas", "pipejfdv@gmail.com", "pipejfdv", "1234");
         UserController userController = new UserController();
-        userController.insertUser(newUser);*/
+        userController.insertUser(newUser);
         
         /*RolController rolController = new RolController();
         System.out.println(rolController.searchRol("USER_ROLE").getNameRol());*/
+        
         
         SongController songController = new SongController();
         GenderOfMusicController genderControler = new GenderOfMusicController();
@@ -47,6 +50,10 @@ public class App
         System.out.println(song.getGenderSong().getGenderOfMusic());
         songController.addSong(song);
         
+        
+        PlayListController playListController = new PlayListController();
+        PlayList playList = new PlayList(UUID.randomUUID(),"prueba Lista","mix",UUID.fromString("15f03baf-4010-4b1c-af4b-d49094280e04"));
+        playListController.insertPlayListDB(playList);
         
     }    
 }

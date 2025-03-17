@@ -20,6 +20,10 @@ public class SongController {
     public void addSong(Song song){
         songService.addSong(song);
     }
+    
+    public Song searchSongById(UUID idSong){
+        return songService.searchSongId(idSong);
+    }
     /*private SongService songService;
     //methods from service
     public SongController(SongService songService) {

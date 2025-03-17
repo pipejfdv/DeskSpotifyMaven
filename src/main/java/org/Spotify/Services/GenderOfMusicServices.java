@@ -15,4 +15,8 @@ public class GenderOfMusicServices {
     public GenderOfMusic searchGender (String genderOfMusic){
         return repositoryGenderOfMusic.searchGenderOfMusic(genderOfMusic);
     }
+    
+    public GenderOfMusic searchGenderById (String idGender){
+        return repositoryGenderOfMusic.searchGenderOfMusicById(idGender);
+    }
 }

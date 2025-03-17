@@ -1,6 +1,7 @@
 
 package org.Spotify.Services;
 
+import java.util.UUID;
 import org.Spotify.Models.Song;
 import org.Spotify.Repositories.RepositorySong;
 
@@ -16,7 +17,10 @@ public class SongService {
     public void addSong(Song song){
         repositorySong.addSongDB(song);
     }
-   
+    
+    public Song searchSongId(UUID idSong){
+        return repositorySong.searchSongById(idSong);
+    }
         
     /*public DataBase db;
     public SongService(){

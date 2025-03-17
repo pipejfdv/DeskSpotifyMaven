@@ -21,6 +21,18 @@ public class Song {
     private GenderOfMusic genderSong;
     private String albumSong;
     private String route;
+
+    public Song(UUID idSong, String nameSong, String creationSong, String artistSong, GenderOfMusic genderSong, String albumSong, String route) {
+        this.idSong = idSong;
+        this.nameSong = nameSong;
+        this.creationSong = creationSong;
+        this.artistSong = artistSong;
+        this.genderSong = genderSong;
+        this.albumSong = albumSong;
+        this.route = route;
+    }
+
+    
     
     public Song( String route, GenderOfMusicController genderOfMusicController) {
         this.idSong = idSong.randomUUID();
@@ -55,9 +67,6 @@ public class Song {
             System.out.println("Error -> ");
             e.printStackTrace();
         }
-        
-        
-        
     }
 
     public UUID getIdSong() {

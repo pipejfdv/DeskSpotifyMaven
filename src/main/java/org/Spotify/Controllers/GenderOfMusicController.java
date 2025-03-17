@@ -19,4 +19,8 @@ public class GenderOfMusicController {
     public GenderOfMusic searchingGener (String genderOfMusic){
         return genderOfMusicServices.searchGender(genderOfMusic);
     }
+    
+    public GenderOfMusic searchGenderById(String idGender){
+        return genderOfMusicServices.searchGenderById(idGender);
+    }
 }
