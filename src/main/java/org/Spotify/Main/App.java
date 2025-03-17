@@ -3,6 +3,7 @@ package org.Spotify.Main;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 import org.Spotify.Controllers.UserController;
 import org.Spotify.Models.User;
 import org.Spotify.Services.UserService;
@@ -10,13 +11,17 @@ import org.Spotify.Services.UserService;
 import javax.swing.*;
 import java.util.Scanner;
 import java.util.UUID;
+import org.Spotify.Models.Album;
 import org.Spotify.Models.Comment;
 import org.Spotify.Models.GenderOfMusic;
 import org.Spotify.Models.Rol;
 import org.Spotify.Models.Song;
+import org.Spotify.Models.SongArtist;
+import org.Spotify.Services.AlbumService;
 import org.Spotify.Services.CommentService;
 import org.Spotify.Services.GenderMusicService;
 import org.Spotify.Services.RolService;
+import org.Spotify.Services.SongService;
 //import org.Spotify.Services.SongService;
 import org.Spotify.Views.Index;
 
@@ -24,7 +29,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        UserService usuarioServ = new UserService();
+        //UserService usuarioServ = new UserService();
         
         //RolService rolServ = new RolService();
         
@@ -59,9 +64,9 @@ public class App
         //genderServ.deleteGender(eliminarGender);
         //genderServ.readGender("be790292-b866-4387-9686-ce3486f264bb");
         
-        CommentService commentServ = new CommentService();
+        // commentServ = new CommentService();
        
-        Date today = new Date(System.currentTimeMillis());
+        //Date today = new Date(System.currentTimeMillis());
         
         //User commentUser = usuarioServ.readUser("1d4333da-840b-40b1-a109-620f3cb75fb6");
         //Comment insertarComment = new Comment(UUID.randomUUID().toString(), today, "Comentario prueba", commentUser);
@@ -72,6 +77,39 @@ public class App
         //commentServ.updateComment(actualizarComment);
         //commentServ.deleteComment(eliminarComment);
         //commentServ.readComment("7e086c53-e503-4abe-86e0-aa754fd58e45");
+        
+        /*SongService songService = new SongService();
+        UserService userService = new UserService();
+        GenderMusicService genderService = new GenderMusicService();
+        AlbumService albumService = new AlbumService();
+
+        // Obtener el género de la canción
+        GenderOfMusic genero = genderService.readGender("12345abc-de67-89fg-hijk-123456789xyz");
+
+        // Obtener el álbum
+        Album album = albumService.readAlbum("");
+
+        // Obtener los artistas
+        User artista1 = userService.readUser("1d4333da-840b-40b1-a109-620f3cb75fb6");
+
+        // Crear la lista de artistas
+        ArrayList<SongArtist> artistas = new ArrayList<>();
+        artistas.add(new SongArtist(artista1));
+        artistas.add(new SongArtist(artista2));
+
+        // Crear la canción
+        Song nuevaCancion = new Song(
+            UUID.randomUUID().toString(),   // ID aleatorio
+            "Mi Nueva Canción",             // Nombre de la canción
+            Date.valueOf("2024-03-17"),     // Fecha de creación
+            "03:45",                        // Duración
+            genero,                         // Género
+            album,                          // Álbum
+            artistas                        // Lista de artistas
+        );
+
+        // Agregar la canción con los artistas
+        songService.addSong(nuevaCancion);
         
         
         /*Index index = new Index();
