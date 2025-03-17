@@ -31,10 +31,10 @@ public class App
         index.setLocationRelativeTo(null);*/
         /*Interface for user*/
         
-        
+        /*
         User newUser = new User("Juan", "Felipe", "Delgadillo", "Vanegas", "pipejfdv@gmail.com", "pipejfdv", "1234");
         UserController userController = new UserController();
-        userController.insertUser(newUser);
+        userController.insertUser(newUser);*/
         
         /*RolController rolController = new RolController();
         System.out.println(rolController.searchRol("USER_ROLE").getNameRol());*/
@@ -52,8 +52,9 @@ public class App
         
         
         PlayListController playListController = new PlayListController();
-        PlayList playList = new PlayList(UUID.randomUUID(),"prueba Lista","mix",UUID.fromString("15f03baf-4010-4b1c-af4b-d49094280e04"));
+        PlayList playList = new PlayList(UUID.randomUUID(),"Juan","mix",UUID.fromString("f9b00f00-15da-47d6-8087-471627bd10a2"));
         playListController.insertPlayListDB(playList);
-        
+        playList.addSongPlayList(song);
+                
     }    
 }

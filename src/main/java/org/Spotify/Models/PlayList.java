@@ -28,6 +28,10 @@ public class PlayList {
     public void removeSongPlayList(Song song) {
         songsOfPlayList.remove(song);
     }
+    
+    public ArrayList<Song> showSongs(){
+        return songsOfPlayList;
+    }
 
     public UUID getIdPlayList() {
         return idPlayList;
