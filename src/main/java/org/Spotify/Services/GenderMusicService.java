@@ -1,31 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package org.Spotify.Services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import org.Spotify.DB.DataBase;
-import org.Spotify.Models.Rol;
 import java.sql.SQLException;
+import org.Spotify.DB.DataBase;
+import org.Spotify.Models.GenderOfMusic;
 
-/**
- *
- * @author Yo
- */
-public class RolService {
-    
-  
 
-    public RolService() {
-       
-    }
+public class GenderMusicService {
     
-    public void addRol(Rol rol){
+    public void addGender(GenderOfMusic genderMusic){
         Connection conex = DataBase.Conectar();
-        String sql = "INSERT INTO Roles(idRole, roleName)" + "values (?, ?)";
+        String sql = "INSERT INTO Genders(idGender, nameGender)" + "values (?, ?)";
         
          if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -33,27 +21,27 @@ public class RolService {
         }
         
         try(PreparedStatement stmt = conex.prepareStatement(sql)){
-            stmt.setString(1, rol.getIdRol());
-            stmt.setString(2, rol.getNameRol());
+            stmt.setString(1, genderMusic.getIdGenderOfMusic());
+            stmt.setString(2, genderMusic.getGenderOfMusic());
             stmt.executeUpdate();
             System.out.println();
         }catch(SQLException ex){
-            System.out.println("Error al ingresar rol" + ex.getMessage());
+            System.out.println("Error al ingresar gender" + ex.getMessage());
         }finally {
             try {
                 if (conex != null) {
                     conex.close();
                     System.out.println("Conexión cerrada correctamente.");
-                } // Cierra la conexión
+                } 
             } catch (SQLException ex) {
                 System.out.println("Error al cerrar la conexión: " + ex.getMessage());
             }
         }
     }
     
-    public void updateRol(Rol rol){
+    public void updateGender(GenderOfMusic genderMusic){
         Connection conex = DataBase.Conectar();
-        String sql = "UPDATE Roles SET roleName = ? WHERE idRole = ?";
+        String sql = "UPDATE Genders SET nameGender = ? WHERE idGender = ?";
         
          if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -61,17 +49,17 @@ public class RolService {
         }
         
         try(PreparedStatement stmt = conex.prepareStatement(sql)){
-            stmt.setString(1, rol.getNameRol());
-            stmt.setString(2, rol.getIdRol());
+            stmt.setString(1, genderMusic.getGenderOfMusic());
+            stmt.setString(2, genderMusic.getIdGenderOfMusic());
             int filasAfectadas = stmt.executeUpdate();
              
             if (filasAfectadas > 0) {
-                System.out.println("Rol actualizado correctamente.");
+                System.out.println("Gender actualizado correctamente.");
             } else {
-                System.out.println("No se encontró un rol con el ID especificado.");
+                System.out.println("No se encontró un gender con el ID especificado.");
             }
         }catch(SQLException ex){
-            System.out.println("Error al actualizar nombre del rol" + ex.getMessage());
+            System.out.println("Error al actualizar nombre del gender" + ex.getMessage());
         }finally{
             try {
                 if (conex != null) {
@@ -84,9 +72,9 @@ public class RolService {
         }
     }
     
-    public void deleteRol(Rol rol){
+    public void deleteGender(GenderOfMusic genderMusic){
         Connection conex = DataBase.Conectar();
-        String sql = "DELETE FROM Roles WHERE idRole = ?";
+        String sql = "DELETE FROM Genders WHERE idGender = ?";
         
          if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -94,32 +82,32 @@ public class RolService {
         }
         
         try(PreparedStatement stmt = conex.prepareStatement(sql)){
-            stmt.setString(1, rol.getIdRol());
+            stmt.setString(1, genderMusic.getIdGenderOfMusic());
              int filasAfectadas = stmt.executeUpdate();
              
              if (filasAfectadas > 0) {
-                System.out.println("Rol eliminado correctamente.");
+                System.out.println("Gender eliminado correctamente.");
             } else {
-                System.out.println("No se encontró un rol con el ID especificado.");
+                System.out.println("No se encontró un gender con el ID especificado.");
             }
         }catch(SQLException ex){
-            System.out.println("Error al eliminar rol" + ex.getMessage());
+            System.out.println("Error al eliminar gender" + ex.getMessage());
         }finally{
             try {
                 if (conex != null) {
                     conex.close();
                     System.out.println("Conexión cerrada correctamente.");
-                } // Cierra la conexión
+                } 
             } catch (SQLException ex) {
                 System.out.println("Error al cerrar la conexión: " + ex.getMessage());
             }
         }
     }
     
-    public Rol readRol(String idRole) {
+    public GenderOfMusic readGender(String idGender) {
         Connection conex = DataBase.Conectar();
-        String sql = "SELECT * FROM Roles WHERE idRole = ?";
-        Rol rol = null;
+        String sql = "SELECT * FROM Genders WHERE idGender = ?";
+        GenderOfMusic genderMusic = null;
 
         if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -127,19 +115,19 @@ public class RolService {
         }
 
         try (PreparedStatement stmt = conex.prepareStatement(sql)) {
-            stmt.setString(1, idRole);
-            ResultSet datosRol = stmt.executeQuery();
+            stmt.setString(1, idGender);
+            ResultSet datosGender = stmt.executeQuery();
 
-            if (datosRol.next()) {
-                rol = new Rol(datosRol.getString("idRole"), datosRol.getString("roleName"));
-                System.out.println("Id Rol: " + rol.getIdRol());
-                System.out.println("Nombre Rol: " + rol.getNameRol());
+            if (datosGender.next()) {
+                genderMusic = new GenderOfMusic(datosGender.getString("idGender"), datosGender.getString("nameGender"));
+                System.out.println("Id Gender: " + genderMusic.getIdGenderOfMusic());
+                System.out.println("Nombre Gender: " + genderMusic.getGenderOfMusic());
                 
             } else {
-                System.out.println("No se encontró un rol con el ID especificado.");
+                System.out.println("No se encontró un gender con el ID especificado.");
             }
         } catch (SQLException ex) {
-            System.out.println("Error al obtener rol: " + ex.getMessage());
+            System.out.println("Error al obtener gender: " + ex.getMessage());
             ex.printStackTrace();
         } finally {
             try {
@@ -151,31 +139,7 @@ public class RolService {
                 System.out.println("Error al cerrar la conexión: " + ex.getMessage());
             }
         }
-        return rol;
+        return genderMusic;
     }
-    
-    /*public Rol getRolByName(String rolName) {
-        String sql = "SELECT * FROM Roles WHERE roleName = ?";
-        Rol rol = null;
-
-        try (Connection conex = DataBase.Conectar();
-             PreparedStatement stmt = conex.prepareStatement(sql)) {
-             
-            stmt.setString(1, rolName);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                rol = new Rol(rs.getString("idRole"), rs.getString("roleName"));
-                System.out.println("Rol encontrado: " + rol.getNameRol());
-            } else {
-                System.out.println("No se encontró el rol con el nombre especificado.");
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener rol: " + ex.getMessage());
-        }
-
-        return rol;
-    }*/
-    
     
 }

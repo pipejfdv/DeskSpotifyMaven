@@ -1,5 +1,5 @@
 
-package org.Spotify.Services;
+/*package org.Spotify.Services;
 
 import java.util.UUID;
 import org.Spotify.DB.DataBase;
@@ -24,7 +24,7 @@ public class AlbumService {
             System.out.println(album.getLastNames());
             System.out.println(album.getIdAlbum());
         }*/
-        for(Album album : db.listAlbum) {
+       /* for(Album album : db.listAlbum) {
             System.out.println("Album: " + album.getNameAlbum());
             System.out.println("- ID: " + album.getIdAlbum());
             System.out.println("- Date creation: " + album.getCreationDate());
@@ -49,8 +49,8 @@ public class AlbumService {
                 db.listAlbum.remove(album);
             }
         }*/
-        db.listAlbum.removeIf(album -> album.getIdAlbum().equals(idAlbum));
+      /*  db.listAlbum.removeIf(album -> album.getIdAlbum().equals(idAlbum));
         return true;
     }
     
-}
+}*/

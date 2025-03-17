@@ -14,13 +14,13 @@ public class UserController {
     public void insertUser(User user) {
         userService.addUser(user);
     }
-    public void showUser() {
-        userService.readUser();
+    public void showUser(String idUser) {
+        userService.readUser(idUser);
     }
-    public void deleteUser(UUID user) {
+    public void deleteUser(User user) {
         userService.deleteUser(user);
     }
-    public boolean updateUser(UUID idUser,User user) {
-        return userService.updateUser(idUser,user.names,user.lastNames,user.email,user.nickname,user.getPassword());
+    public void updateUser(User user) {
+        userService.updateUser(user);
     }
 }

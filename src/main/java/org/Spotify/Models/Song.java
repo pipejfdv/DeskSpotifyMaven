@@ -97,7 +97,7 @@ public class Song {
         this.albumSong = albumSong;
     }
     
-    public void playSong(){
+    /*public void playSong(){
         
     }
     
@@ -115,6 +115,6 @@ public class Song {
     
     public void likeDislikeSong(){
         
-    }
+    }*/
     
 }

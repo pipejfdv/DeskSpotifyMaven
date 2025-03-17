@@ -1,4 +1,4 @@
-
+/*
 package org.Spotify.Controllers;
 
 import java.util.UUID;
@@ -23,4 +23,4 @@ public class AlbumController {
     public boolean updateAlbum(UUID idAlbum,Album album) {
         return albumService.updateAlbum(idAlbum,album.nameAlbum);
     }
-}
+}*/

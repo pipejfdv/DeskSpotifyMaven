@@ -1,22 +1,29 @@
 package org.Spotify.Models;
 
-import java.util.UUID;
+
 
 
 public class User {
-    private UUID idUser;
-    public String firtsName;
-    public String secondName;
-    public String firtsLastname;
-    public String secondLastname;
-    public String email;
-    public String nickname;
+    private String idUser;
+    private String firtsName;
+    private String secondName;
+    private String firtsLastname;
+    private String secondLastname;
+    private String email;
+    private String nickname;
     private String password;
-    private Rol rol; //debate entre int o UUID
-    private PlayList managerPlayList; 
-    private Comment comment;
+    private Rol rol; //debate entre int o String
+    //private PlayList managerPlayList; 
+    //private Comment comment;
 
-    public User(UUID idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
+    public User() {
+    }
+
+    public User(String idUser) {
+        this.idUser = idUser;
+    }
+    
+    public User(String idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
         this.idUser = idUser;
         this.firtsName = firtsName;
         this.secondName = secondName;
@@ -28,11 +35,11 @@ public class User {
         this.rol = rol;
     }
 
-    public UUID getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(UUID idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 
@@ -100,7 +107,7 @@ public class User {
         this.rol = rol;
     }
 
-    public PlayList getManagerPlayList() {
+   /* public PlayList getManagerPlayList() {
         return managerPlayList;
     }
 
@@ -116,15 +123,15 @@ public class User {
         PlayList newList = new PlayList(tittlePlayList);
     }
     
-    public void removeSongToPlayList(UUID idPlayList, UUID idSong){
+    public void removeSongToPlayList(String idPlayList, String idSong){
         managerPlayList.removeSongToPlayList(idPlayList, idSong);
     }
     
-    public void removePlayList(UUID List){
+    public void removePlayList(String List){
         managerPlayList.removePlayList(List);
     }
     
     public void commentOfUser(User user,String content){
         comment.addComment(user.nickname, content);
-    }
+    }*/
 }

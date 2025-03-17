@@ -2,10 +2,10 @@ package org.Spotify.Models;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.UUID;
+
 
 public class Album {
-    private UUID idAlbum;
+    private String idAlbum;
     private String nameAlbum;
     private Date creationAlbum;
     private boolean likeAlbum = false; 
@@ -17,7 +17,7 @@ public class Album {
         
     };
 
-    public Album(UUID idAlbum, String nameAlbum, Date creationAlbum, boolean likeAlbum, GenderOfMusic genderAlbum) {
+    public Album(String idAlbum, String nameAlbum, Date creationAlbum, boolean likeAlbum, GenderOfMusic genderAlbum) {
         this.idAlbum = idAlbum;
         this.nameAlbum = nameAlbum;
         this.creationAlbum = creationAlbum;
@@ -25,11 +25,11 @@ public class Album {
         this.genderAlbum = genderAlbum;
     }
 
-    public UUID getIdAlbum() {
+    public String getIdAlbum() {
         return idAlbum;
     }
 
-    public void setIdAlbum(UUID idAlbum) {
+    public void setIdAlbum(String idAlbum) {
         this.idAlbum = idAlbum;
     }
 

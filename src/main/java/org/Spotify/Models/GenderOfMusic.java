@@ -1,21 +1,26 @@
 package org.Spotify.Models;
 
-import java.util.UUID;
-
 public class GenderOfMusic {
-    private UUID idGenderOfMusic;
+    private String idGenderOfMusic;
     private String genderOfMusic;
 
-    public GenderOfMusic(UUID idGenderOfMusic, String genderOfMusic) {
+    public GenderOfMusic() {
+    }
+
+    public GenderOfMusic(String idGenderOfMusic) {
+        this.idGenderOfMusic = idGenderOfMusic;
+    }
+    
+    public GenderOfMusic(String idGenderOfMusic, String genderOfMusic) {
         this.idGenderOfMusic = idGenderOfMusic;
         this.genderOfMusic = genderOfMusic;
     }
 
-    public UUID getIdGenderOfMusic() {
+    public String getIdGenderOfMusic() {
         return idGenderOfMusic;
     }
 
-    public void setIdGenderOfMusic(UUID idGenderOfMusic) {
+    public void setIdGenderOfMusic(String idGenderOfMusic) {
         this.idGenderOfMusic = idGenderOfMusic;
     }
 

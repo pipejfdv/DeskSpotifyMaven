@@ -7,18 +7,34 @@ import org.Spotify.Services.UserService;
 import javax.swing.*;
 import java.util.Scanner;
 import java.util.UUID;
+import org.Spotify.Models.GenderOfMusic;
 import org.Spotify.Models.Rol;
 import org.Spotify.Models.Song;
+import org.Spotify.Services.GenderMusicService;
 import org.Spotify.Services.RolService;
-import org.Spotify.Services.SongService;
+//import org.Spotify.Services.SongService;
 import org.Spotify.Views.Index;
 
 public class App
 {
     public static void main( String[] args )
     {
+        //UserService usuarioServ = new UserService();
+        
         //RolService rolServ = new RolService();
-        //Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
+        
+        //Rol rolUsuario = rolServ.readRol("b48a77dd-a97e-42f6-a57a-b5ff3eec4d98");
+        //User insertarUsuario = new User(UUID.randomUUID().toString(), "Angel", "Santiago", "Leon", "Cadena", "santiago@gmail.com", "Santigo.L", "contrasena", rolUsuario);
+        //User actualizarUser = new User("2d148323-8645-495e-9a01-e501e22a38fb", "Maria", "Alejandra", "Cortez", "Cortez", "maria@gmail.com", "Maria.C", "contrasena", rolUsuario);
+        //User eliminarUser = new User("2d148323-8645-495e-9a01-e501e22a38fb");
+        
+        //usuarioServ.addUser(insertarUsuario);
+        //usuarioServ.updateUser(actualizarUser);
+        //usuarioServ.deleteUser(eliminarUser);
+        //usuarioServ.readUser("1d4333da-840b-40b1-a109-620f3cb75fb6");
+        
+        
+        //Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Usuario");
         //Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
         //Rol eliminarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
         
@@ -27,16 +43,16 @@ public class App
         //rolServ.deleteRol(eliminarRol);
         //rolServ.readRol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
         
-        SongService songServ = new SongService();
-        Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger");
-        //Song actualizarSong = new Song("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
-        //Song eliminarSong = new Song("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+        //GenderMusicService genderServ = new GenderMusicService();
         
-        songServ.addSong(insertarSong);
-        //songServ.updateSong(actualizarSong);
-        //songServ.deleteSong(eliminarSong);
-        //songServ.readSong("");
+        //GenderOfMusic insertarGender = new GenderOfMusic(UUID.randomUUID().toString(), "Rap");
+        //GenderOfMusic actualizarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351", "Pop");
+        //GenderOfMusic eliminarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351");
         
+        //genderServ.addGender(insertarGender);
+        //genderServ.updateGender(actualizarGender);
+        //genderServ.deleteGender(eliminarGender);
+        //genderServ.readGender("be790292-b866-4387-9686-ce3486f264bb");
         
         
         /*Index index = new Index();
