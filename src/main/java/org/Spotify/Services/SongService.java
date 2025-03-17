@@ -1,9 +1,22 @@
 
 package org.Spotify.Services;
 
+import org.Spotify.Models.Song;
+import org.Spotify.Repositories.RepositorySong;
+
 
 public class SongService {
-    //create song objtec
+    //import repository
+    private RepositorySong repositorySong;
+    
+    public SongService(RepositorySong repositorySong){
+        this.repositorySong = repositorySong;
+    }
+    
+    public void addSong(Song song){
+        repositorySong.addSongDB(song);
+    }
+   
         
     /*public DataBase db;
     public SongService(){

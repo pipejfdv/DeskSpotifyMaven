@@ -30,10 +30,8 @@ CREATE TABLE Songs (
     nameSong VARCHAR(100) NOT NULL,
     creationSong VARCHAR(4),
     idGender VARCHAR(200),
-    idArtist VARCHAR(200),
     route varchar(500),
-    FOREIGN KEY (idGender) REFERENCES Genders(idGender) ON DELETE SET NULL,
-    FOREIGN KEY (idArtist) REFERENCES Users(idUser) ON DELETE CASCADE
+    FOREIGN KEY (idGender) REFERENCES Genders(idGender) ON DELETE SET NULL
 );
 
 CREATE TABLE Playlists (

@@ -10,6 +10,7 @@ import java.util.UUID;
 import jdk.jfr.internal.Repository;
 import org.Spotify.Controllers.GenderOfMusicController;
 import org.Spotify.Controllers.RolController;
+import org.Spotify.Controllers.SongController;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Song;
 import org.Spotify.Repositories.RepositoryRol;
@@ -36,7 +37,7 @@ public class App
         /*RolController rolController = new RolController();
         System.out.println(rolController.searchRol("USER_ROLE").getNameRol());*/
         
-        /*
+        SongController songController = new SongController();
         GenderOfMusicController genderControler = new GenderOfMusicController();
         Song song = new Song("src/main/java/org/Spotify/Music/Zombie.mp3", genderControler);
         System.out.println(song.getNameSong());
@@ -44,7 +45,8 @@ public class App
         System.out.println(song.getAlbumSong());
         System.out.println(song.getCreationSong());
         System.out.println(song.getGenderSong().getGenderOfMusic());
-        */
+        songController.addSong(song);
+        
         
     }    
 }
