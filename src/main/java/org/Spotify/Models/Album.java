@@ -1,8 +1,6 @@
 package org.Spotify.Models;
 
-import java.util.ArrayList;
 import java.util.Date;
-
 
 public class Album {
     private String idAlbum;
@@ -10,8 +8,6 @@ public class Album {
     private Date creationAlbum;
     private boolean likeAlbum = false; 
     private GenderOfMusic genderAlbum;
-    private ArrayList<User> users = new ArrayList<>();
-    private ArrayList<Song> songs = new ArrayList<>();
     
     public Album(){
         
@@ -63,22 +59,6 @@ public class Album {
 
     public void setGenderAlbum(GenderOfMusic genderAlbum) {
         this.genderAlbum = genderAlbum;
-    }
-
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
-
-    public ArrayList<Song> getSongs() {
-        return songs;
-    }
-
-    public void setSongs(ArrayList<Song> songs) {
-        this.songs = songs;
     }
     
     /*public void playAlbum(){

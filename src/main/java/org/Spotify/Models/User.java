@@ -1,46 +1,31 @@
 package org.Spotify.Models;
 
-
-
-
 public class User {
     private String idUser;
-    private String firtsName;
-    private String secondName;
-    private String firtsLastname;
-    private String secondLastname;
-    private String email;
     private String nickname;
     private String password;
-    private Rol rol; //debate entre int o String
-    //private PlayList managerPlayList; 
-    //private Comment comment;
-
+    private Rol rol; 
+    private Person person;
+    
     public User() {
     }
 
     public User(String idUser) {
         this.idUser = idUser;
     }
-    
-    public User(String idUser, String firtsName, String secondName, String firtsLastname, String secondLastname, String email, String nickname, String password, Rol rol) {
-        this.idUser = idUser;
-        this.firtsName = firtsName;
-        this.secondName = secondName;
-        this.firtsLastname = firtsLastname;
-        this.secondLastname = secondLastname;
-        this.email = email;
-        this.nickname = nickname;
-        this.password = password;
-        this.rol = rol;
-    }
 
     public User(String idUser, String nickname) {
         this.idUser = idUser;
         this.nickname = nickname;
     }
-    
-    
+
+    public User(String idUser, String nickname, String password, Rol rol, Person person) {
+        this.idUser = idUser;
+        this.nickname = nickname;
+        this.password = password;
+        this.rol = rol;
+        this.person = person;
+    }
 
     public String getIdUser() {
         return idUser;
@@ -48,46 +33,6 @@ public class User {
 
     public void setIdUser(String idUser) {
         this.idUser = idUser;
-    }
-
-    public String getFirtsName() {
-        return firtsName;
-    }
-
-    public void setFirtsName(String firtsName) {
-        this.firtsName = firtsName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public String getFirtsLastname() {
-        return firtsLastname;
-    }
-
-    public void setFirtsLastname(String firtsLastname) {
-        this.firtsLastname = firtsLastname;
-    }
-
-    public String getSecondLastname() {
-        return secondLastname;
-    }
-
-    public void setSecondLastname(String secondLastname) {
-        this.secondLastname = secondLastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getNickname() {
@@ -114,7 +59,15 @@ public class User {
         this.rol = rol;
     }
 
-   /* public PlayList getManagerPlayList() {
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+    
+    /* public PlayList getManagerPlayList() {
         return managerPlayList;
     }
 

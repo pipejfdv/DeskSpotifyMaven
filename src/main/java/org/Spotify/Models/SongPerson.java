@@ -4,13 +4,16 @@
  */
 package org.Spotify.Models;
 
-public class SongArtist {
+public class SongPerson {
     private Song song;
-    private User artist;
+    private Person person;
 
-    public SongArtist(Song song, User artist) {
+    public SongPerson() {
+    }
+
+    public SongPerson(Song song, Person person) {
         this.song = song;
-        this.artist = artist;
+        this.person = person;
     }
 
     public Song getSong() {
@@ -21,13 +24,15 @@ public class SongArtist {
         this.song = song;
     }
 
-    public User getArtist() {
-        return artist;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setArtist(User artist) {
-        this.artist = artist;
+    public void setPerson(Person person) {
+        this.person = person;
     }
+
+    
     
     
 }

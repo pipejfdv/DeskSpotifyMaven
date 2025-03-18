@@ -11,10 +11,15 @@ public class Song {
     private String durationSong;
     private GenderOfMusic genderSong;
     private Album albumSong;
-    private ArrayList<SongArtist> artistSong = new ArrayList();
+    private ArrayList<SongUser> artistSong = new ArrayList();
+    private ArrayList<SongPerson> personSong = new ArrayList();
     
     public Song (){
         
+    }
+
+    public Song(String idSong) {
+        this.idSong = idSong;
     }
 
     public Song(String idSong, String nameSong, Date creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
@@ -24,10 +29,6 @@ public class Song {
         this.durationSong = durationSong;
         this.genderSong = genderSong;
         this.albumSong = albumSong;
-    }
-
-    public Song(String idSong) {
-        this.idSong = idSong;
     }
 
     public String getIdSong() {
@@ -86,12 +87,20 @@ public class Song {
         this.albumSong = albumSong;
     }
 
-    public ArrayList<SongArtist> getArtistSong() {
+    public ArrayList<SongUser> getArtistSong() {
         return artistSong;
     }
 
-    public void setArtistSong(ArrayList<SongArtist> artistSong) {
+    public void setArtistSong(ArrayList<SongUser> artistSong) {
         this.artistSong = artistSong;
+    }
+
+    public ArrayList<SongPerson> getPersonSong() {
+        return personSong;
+    }
+
+    public void setPersonSong(ArrayList<SongPerson> personSong) {
+        this.personSong = personSong;
     }
     
     /*public void playSong(){
