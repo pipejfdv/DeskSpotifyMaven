@@ -6,7 +6,7 @@ import org.Spotify.Services.RolService;
 
 public class RolController {
     private RolService rolService;
-    //methods from service
+
     public RolController(RolService rolService) {
         this.rolService = rolService;
     }

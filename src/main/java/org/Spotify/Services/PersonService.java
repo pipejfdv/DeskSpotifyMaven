@@ -7,23 +7,18 @@ package org.Spotify.Services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import org.Spotify.DB.DataBase;
-import org.Spotify.Models.Rol;
 import java.sql.SQLException;
+import org.Spotify.DB.DataBase;
+import org.Spotify.Models.Person;
 
-/**
- *
- * @author Yo
- */
-public class RolService {
-    
-    public RolService() {
-       
+public class PersonService {
+
+    public PersonService() {
     }
     
-    public void addRol(Rol rol){
+    public void addPerson(Person person){
         Connection conex = DataBase.Conectar();
-        String sql = "INSERT INTO Roles(idRol, nameRol)" + "values (?, ?)";
+        String sql = "INSERT INTO Persons(idPerson, firstName, middleName, lastName, secondLastName, email)" + "values (?, ?, ?, ?, ?, ?)";
         
          if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -31,12 +26,16 @@ public class RolService {
         }
         
         try(PreparedStatement stmt = conex.prepareStatement(sql)){
-            stmt.setString(1, rol.getIdRol());
-            stmt.setString(2, rol.getNameRol());
+            stmt.setString(1, person.getIdPerson());
+            stmt.setString(2, person.getFirstName());
+            stmt.setString(3, person.getSecondName());
+            stmt.setString(4, person.getFirstLastname());
+            stmt.setString(5, person.getSecondLastname());
+            stmt.setString(6, person.getEmail());
             stmt.executeUpdate();
             System.out.println();
         }catch(SQLException ex){
-            System.out.println("Error al ingresar rol" + ex.getMessage());
+            System.out.println("Error al ingresar person" + ex.getMessage());
         }finally {
             try {
                 if (conex != null) {
@@ -49,9 +48,9 @@ public class RolService {
         }
     }
     
-    public void updateRol(Rol rol){
+    public void updatePerson(Person person){
         Connection conex = DataBase.Conectar();
-        String sql = "UPDATE Roles SET nameRol = ? WHERE idRol = ?";
+        String sql = "UPDATE Persons SET firstName = ?, middleName = ?, lastName = ?, secondLastName = ?, email = ? WHERE idPerson = ?";
         
          if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -59,32 +58,36 @@ public class RolService {
         }
         
         try(PreparedStatement stmt = conex.prepareStatement(sql)){
-            stmt.setString(1, rol.getNameRol());
-            stmt.setString(2, rol.getIdRol());
+            stmt.setString(1, person.getFirstName());
+            stmt.setString(2, person.getSecondName());
+            stmt.setString(3, person.getFirstLastname());
+            stmt.setString(4, person.getSecondLastname());
+            stmt.setString(5, person.getEmail());
+            stmt.setString(6, person.getIdPerson());
             int filasAfectadas = stmt.executeUpdate();
              
             if (filasAfectadas > 0) {
-                System.out.println("Rol actualizado correctamente.");
+                System.out.println("Person actualizado correctamente.");
             } else {
-                System.out.println("No se encontró un rol con el ID especificado.");
+                System.out.println("No se encontró un person con el ID especificado.");
             }
         }catch(SQLException ex){
-            System.out.println("Error al actualizar nombre del rol" + ex.getMessage());
+            System.out.println("Error al actualizar datos del person" + ex.getMessage());
         }finally{
             try {
                 if (conex != null) {
                     conex.close();
                     System.out.println("Conexión cerrada correctamente.");
-                } // Cierra la conexión
+                }
             } catch (SQLException ex) {
                 System.out.println("Error al cerrar la conexión: " + ex.getMessage());
             }
         }
     }
     
-    public void deleteRol(Rol rol){
+    public void deletePerson(Person person){
         Connection conex = DataBase.Conectar();
-        String sql = "DELETE FROM Roles WHERE idRol = ?";
+        String sql = "DELETE FROM Persons WHERE idPerson = ?";
         
          if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -92,32 +95,32 @@ public class RolService {
         }
         
         try(PreparedStatement stmt = conex.prepareStatement(sql)){
-            stmt.setString(1, rol.getIdRol());
+            stmt.setString(1, person.getIdPerson());
              int filasAfectadas = stmt.executeUpdate();
              
              if (filasAfectadas > 0) {
-                System.out.println("Rol eliminado correctamente.");
+                System.out.println("Person eliminado correctamente.");
             } else {
-                System.out.println("No se encontró un rol con el ID especificado.");
+                System.out.println("No se encontró un person con el ID especificado.");
             }
         }catch(SQLException ex){
-            System.out.println("Error al eliminar rol" + ex.getMessage());
+            System.out.println("Error al eliminar person" + ex.getMessage());
         }finally{
             try {
                 if (conex != null) {
                     conex.close();
                     System.out.println("Conexión cerrada correctamente.");
-                } // Cierra la conexión
+                } 
             } catch (SQLException ex) {
                 System.out.println("Error al cerrar la conexión: " + ex.getMessage());
             }
         }
     }
     
-    public Rol readRol(String idRol) {
+    public Person readPerson(String idPerson) {
         Connection conex = DataBase.Conectar();
-        String sql = "SELECT * FROM Roles WHERE idRol = ?";
-        Rol rol = null;
+        String sql = "SELECT * FROM Persons WHERE idPerson = ?";
+        Person person = null;
 
         if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -125,19 +128,19 @@ public class RolService {
         }
 
         try (PreparedStatement stmt = conex.prepareStatement(sql)) {
-            stmt.setString(1, idRol);
-            ResultSet datosRol = stmt.executeQuery();
+            stmt.setString(1, idPerson);
+            ResultSet datosPerson = stmt.executeQuery();
 
-            if (datosRol.next()) {
-                rol = new Rol(datosRol.getString("idRol"), datosRol.getString("nameRol"));
-                System.out.println("Id Rol: " + rol.getIdRol());
-                System.out.println("Nombre Rol: " + rol.getNameRol());
-                
+            if (datosPerson.next()) {
+                person = new Person(datosPerson.getString("idPerson"), datosPerson.getString("firstName"), datosPerson.getString("middleName"), datosPerson.getString("lastName"), datosPerson.getString("secondLastName"), datosPerson.getString("email"));
+                System.out.println("Id Perosn: " + person.getIdPerson());
+                System.out.println("Nombre Person: " + person.getFirstName() + " " + person.getSecondName() + " " + person.getFirstLastname() + " " + person.getSecondLastname());
+                System.out.println("Email: " + person.getEmail());
             } else {
                 System.out.println("No se encontró un rol con el ID especificado.");
             }
         } catch (SQLException ex) {
-            System.out.println("Error al obtener rol: " + ex.getMessage());
+            System.out.println("Error al obtener person: " + ex.getMessage());
             ex.printStackTrace();
         } finally {
             try {
@@ -149,31 +152,6 @@ public class RolService {
                 System.out.println("Error al cerrar la conexión: " + ex.getMessage());
             }
         }
-        return rol;
+        return person;
     }
-    
-    /*public Rol getRolByName(String rolName) {
-        String sql = "SELECT * FROM Roles WHERE nameRol = ?";
-        Rol rol = null;
-
-        try (Connection conex = DataBase.Conectar();
-             PreparedStatement stmt = conex.prepareStatement(sql)) {
-             
-            stmt.setString(1, rolName);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                rol = new Rol(rs.getString("idRol"), rs.getString("nameRol"));
-                System.out.println("Rol encontrado: " + rol.getNameRol());
-            } else {
-                System.out.println("No se encontró el rol con el nombre especificado.");
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener rol: " + ex.getMessage());
-        }
-
-        return rol;
-    }*/
-    
-    
 }

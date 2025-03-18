@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.Spotify.DB.DataBase;
+import org.Spotify.Models.Person;
 import org.Spotify.Models.User;
 import org.Spotify.Models.Rol;
 
@@ -17,7 +18,7 @@ public class UserService {
    
     public void addUser(User user) {
         Connection conex = DataBase.Conectar();
-        String sqlRol = "SELECT * FROM Roles WHERE idRole = ?";
+        String sqlRol = "SELECT * FROM Roles WHERE idRol = ?";
         
         try (PreparedStatement stmtRol = conex.prepareStatement(sqlRol)) {
             stmtRol.setString(1, user.getRol().getIdRol());
@@ -31,8 +32,23 @@ public class UserService {
             System.out.println("Error al verificar rol: " + ex.getMessage());
             return;
         }
+        
+        String sqlPerson = "SELECT * FROM Persons WHERE idPerson = ?";
+        
+        try (PreparedStatement stmtPerson = conex.prepareStatement(sqlPerson)) {
+            stmtPerson.setString(1, user.getPerson().getIdPerson());
+            ResultSet rs = stmtPerson.executeQuery();
 
-        String sql = "INSERT INTO Users(idUser, firstName, middleName, lastName, secondLastName, email, nickname, passwordUser, idRole)" + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            if (!rs.next()) {
+                System.out.println("Error: El person no existe.");
+                return;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al verificar person: " + ex.getMessage());
+            return;
+        }
+
+        String sql = "INSERT INTO Users(idUser, nickname, passwordUser, idRolUser, idPersonUser)" + "values (?, ?, ?, ?, ?)";
         
          if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -41,14 +57,10 @@ public class UserService {
          
         try(PreparedStatement stmt = conex.prepareStatement(sql)){
             stmt.setString(1, user.getIdUser());
-            stmt.setString(2, user.getFirtsName());
-            stmt.setString(3, user.getSecondName());
-            stmt.setString(4, user.getFirtsLastname());
-            stmt.setString(5, user.getSecondLastname());
-            stmt.setString(6, user.getEmail());
-            stmt.setString(7, user.getNickname());
-            stmt.setString(8, user.getPassword());
-            stmt.setString(9, user.getRol().getIdRol());
+            stmt.setString(2, user.getNickname());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getRol().getIdRol());
+            stmt.setString(5, user.getPerson().getIdPerson());
             stmt.executeUpdate();
             System.out.println();
         }catch(SQLException ex){
@@ -67,7 +79,7 @@ public class UserService {
     
     public void updateUser(User user){
         Connection conex = DataBase.Conectar();
-        String sqlRol = "SELECT * FROM Roles WHERE idRole = ?";
+        String sqlRol = "SELECT * FROM Roles WHERE idRol = ?";
         
         try (PreparedStatement stmtRol = conex.prepareStatement(sqlRol)) {
             stmtRol.setString(1, user.getRol().getIdRol());
@@ -82,7 +94,22 @@ public class UserService {
             return;
         }
         
-        String sql = "UPDATE Users SET firstName = ?, middleName = ?, lastName = ?, secondLastName = ?, email = ?, nickname = ?, passwordUser = ?, idRole = ? WHERE idUser = ?";
+        String sqlPerson = "SELECT * FROM Persons WHERE idPerson = ?";
+        
+        try (PreparedStatement stmtPerson = conex.prepareStatement(sqlPerson)) {
+            stmtPerson.setString(1, user.getPerson().getIdPerson());
+            ResultSet rs = stmtPerson.executeQuery();
+
+            if (!rs.next()) {
+                System.out.println("Error: El person no existe.");
+                return;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al verificar person: " + ex.getMessage());
+            return;
+        }
+        
+        String sql = "UPDATE Users SET nickname = ?, passwordUser = ?, idRolUser = ?, idPersonUser = idPersonUser WHERE idUser = ?";
         
          if (conex == null) {
             System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -90,15 +117,10 @@ public class UserService {
         }
         
         try(PreparedStatement stmt = conex.prepareStatement(sql)){
-            stmt.setString(1, user.getFirtsName());
-            stmt.setString(2, user.getSecondName());
-            stmt.setString(3, user.getFirtsLastname());
-            stmt.setString(4, user.getSecondLastname());
-            stmt.setString(5, user.getEmail());
-            stmt.setString(6, user.getNickname());
-            stmt.setString(7, user.getPassword());
-            stmt.setString(8, user.getRol().getIdRol());
-            stmt.setString(9, user.getIdUser());
+            stmt.setString(1, user.getNickname());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getRol().getIdRol());
+            stmt.setString(4, user.getIdUser());
             
             int filasAfectadas = 0;
             
@@ -170,21 +192,18 @@ public class UserService {
             ResultSet datosUser = stmt.executeQuery();
 
             if (datosUser.next()) {
-                //String idRol = datosUser.getString("idRol");
-                //RolService rolServ = new RolService();
-                //rolServ.getRolByName("Usuario");
-                
-                String idRol = datosUser.getString("idRole");
-                
+                String idRol = datosUser.getString("idRolUser");
                 Rol rol = obtenerRolPorId(idRol);
                 
-                user = new User(datosUser.getString("idUser"), datosUser.getString("firstName"), datosUser.getString("middleName"), datosUser.getString("lastName"), datosUser.getString("secondLastName"), datosUser.getString("email"), datosUser.getString("nickname"), datosUser.getString("passwordUser"), rol);
+                String idPerson = datosUser.getString("idPersonUser");
+                Person person = obtenerPersonPorId(idPerson);
+                
+                user = new User(datosUser.getString("idUser"), datosUser.getString("nickname"), datosUser.getString("passwordUser"), rol, person);
                 System.out.println("Id User: " + user.getIdUser());
-                System.out.println("Nombre User: " + user.getFirtsName() + " " + user.getSecondName() + " " + user.getFirtsLastname() + " " + user.getSecondLastname());
-                System.out.println("Email: " + user.getEmail());
                 System.out.println("Nickname: " + user.getNickname());
                 System.out.println("Password: " + user.getPassword());
                 System.out.println("Rol: " + rol.getNameRol());
+                System.out.println("Person: " + person.getFirstName() + " " + person.getSecondName() + " " + person.getFirstLastname() + " " + person.getSecondLastname());
             } else {
                 System.out.println("No se encontró un user con el ID especificado.");
             }
@@ -206,7 +225,7 @@ public class UserService {
     
     public Rol obtenerRolPorId(String idRol) {
         Connection conex = DataBase.Conectar();
-        String sql = "SELECT * FROM Roles WHERE idRole = ?";
+        String sql = "SELECT * FROM Roles WHERE idRol = ?";
         Rol rol = null;
 
         if (conex == null) {
@@ -220,8 +239,8 @@ public class UserService {
 
             if (datosRol.next()) {
                 rol = new Rol(
-                    datosRol.getString("idRole"),
-                    datosRol.getString("roleName")
+                    datosRol.getString("idRol"),
+                    datosRol.getString("nameRol")
                 );
             }
         } catch (SQLException ex) {
@@ -236,6 +255,44 @@ public class UserService {
         }
 
         return rol;
+    }
+    
+    public Person obtenerPersonPorId(String idPerson) {
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT * FROM Persons WHERE idPerson = ?";
+        Person person = null;
+
+        if (conex == null) {
+            System.out.println("Error: No se pudo conectar a la base de datos.");
+            return null;
+        }
+
+        try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+            stmt.setString(1, idPerson);
+            ResultSet datosPerson = stmt.executeQuery();
+
+            if (datosPerson.next()) {
+                person = new Person(
+                    datosPerson.getString("idPerson"),
+                    datosPerson.getString("firstName"),
+                    datosPerson.getString("middleName"),
+                    datosPerson.getString("lastName"),
+                    datosPerson.getString("secondLastName"),
+                    datosPerson.getString("email")
+                );
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener el person: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (conex != null) conex.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+
+        return person;
     }
    
 }
