@@ -18,8 +18,8 @@ public class SongController {
         return songService.readSong(idSong);
     }*/
 
-    public void deleteSong(String idSong) {
-        songService.deleteSong(idSong);
+    public void deleteSong(Song song) {
+        songService.deleteSong(song);
     }
 
     public void updateSong(Song song) {

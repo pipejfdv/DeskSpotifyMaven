@@ -133,7 +133,7 @@ public class PersonService {
 
             if (datosPerson.next()) {
                 person = new Person(datosPerson.getString("idPerson"), datosPerson.getString("firstName"), datosPerson.getString("middleName"), datosPerson.getString("lastName"), datosPerson.getString("secondLastName"), datosPerson.getString("email"));
-                System.out.println("Id Perosn: " + person.getIdPerson());
+                System.out.println("Id Person: " + person.getIdPerson());
                 System.out.println("Nombre Person: " + person.getFirstName() + " " + person.getSecondName() + " " + person.getFirstLastname() + " " + person.getSecondLastname());
                 System.out.println("Email: " + person.getEmail());
             } else {

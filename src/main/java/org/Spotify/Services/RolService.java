@@ -151,29 +151,4 @@ public class RolService {
         }
         return rol;
     }
-    
-    /*public Rol getRolByName(String rolName) {
-        String sql = "SELECT * FROM Roles WHERE nameRol = ?";
-        Rol rol = null;
-
-        try (Connection conex = DataBase.Conectar();
-             PreparedStatement stmt = conex.prepareStatement(sql)) {
-             
-            stmt.setString(1, rolName);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                rol = new Rol(rs.getString("idRol"), rs.getString("nameRol"));
-                System.out.println("Rol encontrado: " + rol.getNameRol());
-            } else {
-                System.out.println("No se encontró el rol con el nombre especificado.");
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener rol: " + ex.getMessage());
-        }
-
-        return rol;
-    }*/
-    
-    
 }

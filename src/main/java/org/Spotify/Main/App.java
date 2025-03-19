@@ -14,107 +14,121 @@ import java.util.UUID;
 import org.Spotify.Models.Album;
 import org.Spotify.Models.Comment;
 import org.Spotify.Models.GenderOfMusic;
+import org.Spotify.Models.Person;
 import org.Spotify.Models.Rol;
 import org.Spotify.Models.Song;
-import org.Spotify.Models.SongArtist;
+//import org.Spotify.Models.SongArtist;
 import org.Spotify.Services.AlbumService;
 import org.Spotify.Services.CommentService;
 import org.Spotify.Services.GenderMusicService;
+import org.Spotify.Services.PersonService;
 import org.Spotify.Services.RolService;
 import org.Spotify.Services.SongService;
-//import org.Spotify.Services.SongService;
-import org.Spotify.Views.Index;
+import org.Spotify.Services.SongService;
+//import org.Spotify.Views.Index;
 
 public class App
 {
     public static void main( String[] args )
     {
-        //UserService usuarioServ = new UserService();
+        /*RolService rolServ = new RolService();
         
-        //RolService rolServ = new RolService();
+        Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
+        Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
+        Rol eliminarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
         
-        //Rol rolUsuario = rolServ.readRol("b48a77dd-a97e-42f6-a57a-b5ff3eec4d98");
-        //User insertarUsuario = new User(UUID.randomUUID().toString(), "Angel", "Santiago", "Leon", "Cadena", "santiago@gmail.com", "Santigo.L", "contrasena", rolUsuario);
-        //User actualizarUser = new User("2d148323-8645-495e-9a01-e501e22a38fb", "Maria", "Alejandra", "Cortez", "Cortez", "maria@gmail.com", "Maria.C", "contrasena", rolUsuario);
-        //User eliminarUser = new User("2d148323-8645-495e-9a01-e501e22a38fb");
+        rolServ.addRol(insertarRol);
+        rolServ.updateRol(actualizarRol);
+        rolServ.deleteRol(eliminarRol);
+        rolServ.readRol("b0eec8d7-d891-4671-a82a-24a23ae91d41");*/
         
-        //usuarioServ.addUser(insertarUsuario);
-        //usuarioServ.updateUser(actualizarUser);
-        //usuarioServ.deleteUser(eliminarUser);
-        //usuarioServ.readUser("1d4333da-840b-40b1-a109-620f3cb75fb6");
+        PersonService personServ = new PersonService();
         
+        /*Person insertarPerson = new Person(UUID.randomUUID().toString(), "Angel", "Santiago", "Leon", "Cadena", "santiago@mail.com");
+        Person actualizarPerson = new Person("e714e623-5cfc-4b10-8359-9bbb1fe658ff", "Maria", "Paula", "Contreras", "Ramirez", "maria@mail.com");
+        Person eliminarPerson = new Person("e714e623-5cfc-4b10-8359-9bbb1fe658ff");
         
-        //Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Usuario");
-        //Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
-        //Rol eliminarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+        personServ.addPerson(insertarPerson);
+        personServ.updatePerson(actualizarPerson);
+        personServ.deletePerson(eliminarPerson);
+        personServ.readPerson("4864fb7f-f132-4c3d-af90-aa20ccd0e28b");*/
         
-        //rolServ.addRol(insertarRol);
-        //rolServ.updateRol(actualizarRol);
-        //rolServ.deleteRol(eliminarRol);
-        //rolServ.readRol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
+        UserService userServ = new UserService();
         
-        //GenderMusicService genderServ = new GenderMusicService();
+        /*Rol rolUsuario = rolServ.readRol("1cad27e1-f1ba-42d2-a523-2625df333fa9");
+        Person personUsuario = personServ.readPerson("4864fb7f-f132-4c3d-af90-aa20ccd0e28b");
+        User insertarUsuario = new User(UUID.randomUUID().toString(), "Santiago.L", "contrasena", rolUsuario, personUsuario);
+        User actualizarUser = new User("98668239-0366-4830-878e-2ca1684c5563", "Maria.R", "password", rolUsuario, personUsuario);
+        User eliminarUser = new User("98668239-0366-4830-878e-2ca1684c5563");
         
-        //GenderOfMusic insertarGender = new GenderOfMusic(UUID.randomUUID().toString(), "Rap");
-        //GenderOfMusic actualizarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351", "Pop");
-        //GenderOfMusic eliminarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351");
+        userServ.addUser(insertarUsuario);
+        userServ.updateUser(actualizarUser);
+        userServ.deleteUser(eliminarUser);
+        userServ.readUser("d4db56d4-3c81-4585-96ae-40a0b0303311");*/
         
-        //genderServ.addGender(insertarGender);
-        //genderServ.updateGender(actualizarGender);
-        //genderServ.deleteGender(eliminarGender);
-        //genderServ.readGender("be790292-b866-4387-9686-ce3486f264bb");
+        GenderMusicService genderServ = new GenderMusicService();
         
-        // commentServ = new CommentService();
+        /*GenderOfMusic insertarGender = new GenderOfMusic(UUID.randomUUID().toString(), "Rap");
+        GenderOfMusic actualizarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351", "Pop");
+        GenderOfMusic eliminarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351");
+        
+        genderServ.addGender(insertarGender);
+        genderServ.updateGender(actualizarGender);
+        genderServ.deleteGender(eliminarGender);
+        genderServ.readGender("be790292-b866-4387-9686-ce3486f264bb");*/
+        
+        AlbumService albumServ = new AlbumService();
+        
+        SongService songServ = new SongService();
+        
+        GenderOfMusic genderSong = genderServ.readGender("6eb615c2-e5dc-4209-a452-dfa85e973ea8");
+        Album albumSong = albumServ.readAlbum(null);
+        
+        //User userSong = userServ.readUser("d4db56d4-3c81-4585-96ae-40a0b0303311");
+        User userSong2 = userServ.readUser("38a96242-3d72-4e9d-b529-33ba9a67f787");
+        
+        ArrayList<User> usersSong = new ArrayList<>();
+        //usersSong.add(userSong);
+        usersSong.add(userSong2);
+        
+        Person personSong = personServ.readPerson("4864fb7f-f132-4c3d-af90-aa20ccd0e28b");
+        //Person personSong2 = personServ.readPerson("41a9452f-c488-4f20-93ac-7386c4b455c0");
+        
+        ArrayList<Person> personsSong = new ArrayList<>();
+        personsSong.add(personSong);
+        //personsSong.add(personSong2);
+        
+        //Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger", new Date(System.currentTimeMillis()), "03:45", genderSong, albumSong);
+        //Song actualizarSong = new Song("fb8a32a6-98b5-4f97-a19f-6eaf583f7700", "Runaway", new Date(System.currentTimeMillis()), true, "10:00", genderSong, albumSong);
+        //Song eliminarSong = new Song("fb8a32a6-98b5-4f97-a19f-6eaf583f7700");
+        
+        //insertarSong.setArtistSong(usersSong);
+        //insertarSong.setPersonSong(personsSong);
+        //actualizarSong.setArtistSong(usersSong);
+        //actualizarSong.setPersonSong(personsSong);
+     
+        //songServ.addSong(insertarSong);
+        //songServ.updateSong(actualizarSong);
+        //songServ.deleteSong(eliminarSong);
+        
+        /*CommentService commentServ = new CommentService();
        
-        //Date today = new Date(System.currentTimeMillis());
+        Date today = new Date(System.currentTimeMillis());
         
-        //User commentUser = usuarioServ.readUser("1d4333da-840b-40b1-a109-620f3cb75fb6");
-        //Comment insertarComment = new Comment(UUID.randomUUID().toString(), today, "Comentario prueba", commentUser);
-        //Comment actualizarComment = new Comment("86aafe94-38bc-4b2d-ae75-9512ccd637df", today, "Comentario prueba 2", commentUser);
-        //Comment eliminarComment = new Comment("86aafe94-38bc-4b2d-ae75-9512ccd637df");
+        User commentUser = userServ.readUser("1d4333da-840b-40b1-a109-620f3cb75fb6");
+        Comment insertarComment = new Comment(UUID.randomUUID().toString(), today, "Comentario prueba", commentUser);
+        Comment actualizarComment = new Comment("86aafe94-38bc-4b2d-ae75-9512ccd637df", today, "Comentario prueba 2", commentUser);
+        Comment eliminarComment = new Comment("86aafe94-38bc-4b2d-ae75-9512ccd637df");
         
-        //commentServ.addComment(insertarComment);
-        //commentServ.updateComment(actualizarComment);
-        //commentServ.deleteComment(eliminarComment);
-        //commentServ.readComment("7e086c53-e503-4abe-86e0-aa754fd58e45");
+        commentServ.addComment(insertarComment);
+        commentServ.updateComment(actualizarComment);
+        commentServ.deleteComment(eliminarComment);
+        commentServ.readComment("7e086c53-e503-4abe-86e0-aa754fd58e45");*/
         
-        /*SongService songService = new SongService();
-        UserService userService = new UserService();
-        GenderMusicService genderService = new GenderMusicService();
-        AlbumService albumService = new AlbumService();
-
-        // Obtener el género de la canción
-        GenderOfMusic genero = genderService.readGender("12345abc-de67-89fg-hijk-123456789xyz");
-
-        // Obtener el álbum
-        Album album = albumService.readAlbum("");
-
-        // Obtener los artistas
-        User artista1 = userService.readUser("1d4333da-840b-40b1-a109-620f3cb75fb6");
-
-        // Crear la lista de artistas
-        ArrayList<SongArtist> artistas = new ArrayList<>();
-        artistas.add(new SongArtist(artista1));
-        artistas.add(new SongArtist(artista2));
-
-        // Crear la canción
-        Song nuevaCancion = new Song(
-            UUID.randomUUID().toString(),   // ID aleatorio
-            "Mi Nueva Canción",             // Nombre de la canción
-            Date.valueOf("2024-03-17"),     // Fecha de creación
-            "03:45",                        // Duración
-            genero,                         // Género
-            album,                          // Álbum
-            artistas                        // Lista de artistas
-        );
-
-        // Agregar la canción con los artistas
-        songService.addSong(nuevaCancion);
         
-        */
-        Index index = new Index();
+        /*Index index = new Index();
         index.setVisible(true);
-        index.setLocationRelativeTo(null);
+        index.setLocationRelativeTo(null);*/
         /*Interface for user*/
         /*UserController userController = new UserController(new UserService());
         boolean active=true;
