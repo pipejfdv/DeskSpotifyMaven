@@ -111,8 +111,8 @@ public class App
         // Agregar la canción con los artistas
         songService.addSong(nuevaCancion);
         
-        
-        /*Index index = new Index();
+        */
+        Index index = new Index();
         index.setVisible(true);
         index.setLocationRelativeTo(null);
         /*Interface for user*/
