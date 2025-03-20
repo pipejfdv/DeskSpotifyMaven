@@ -31,8 +31,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        /*RolService rolServ = new RolService();
-        
+        RolService rolServ = new RolService();
+        /*
         Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
         Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
         Rol eliminarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
@@ -43,20 +43,20 @@ public class App
         rolServ.readRol("b0eec8d7-d891-4671-a82a-24a23ae91d41");*/
         
         PersonService personServ = new PersonService();
-        
-        /*Person insertarPerson = new Person(UUID.randomUUID().toString(), "Angel", "Santiago", "Leon", "Cadena", "santiago@mail.com");
+        /*
+        Person insertarPerson = new Person(UUID.randomUUID().toString(), "Angel", "Santiago", "Leon", "Cadena", "santiago@mail.com");
         Person actualizarPerson = new Person("e714e623-5cfc-4b10-8359-9bbb1fe658ff", "Maria", "Paula", "Contreras", "Ramirez", "maria@mail.com");
         Person eliminarPerson = new Person("e714e623-5cfc-4b10-8359-9bbb1fe658ff");
         
         personServ.addPerson(insertarPerson);
         personServ.updatePerson(actualizarPerson);
         personServ.deletePerson(eliminarPerson);
-        personServ.readPerson("4864fb7f-f132-4c3d-af90-aa20ccd0e28b");*/
-        
+        personServ.readPerson("4864fb7f-f132-4c3d-af90-aa20ccd0e28b");
+        */
         UserService userServ = new UserService();
-        
-        /*Rol rolUsuario = rolServ.readRol("1cad27e1-f1ba-42d2-a523-2625df333fa9");
-        Person personUsuario = personServ.readPerson("4864fb7f-f132-4c3d-af90-aa20ccd0e28b");
+        /*
+        Rol rolUsuario = rolServ.readRol("23ebb636-d54d-4377-995d-b7247e36c8cd");
+        Person personUsuario = personServ.readPerson("0e7c9813-07ce-4d06-a5dc-b905be1c439d");
         User insertarUsuario = new User(UUID.randomUUID().toString(), "Santiago.L", "contrasena", rolUsuario, personUsuario);
         User actualizarUser = new User("98668239-0366-4830-878e-2ca1684c5563", "Maria.R", "password", rolUsuario, personUsuario);
         User eliminarUser = new User("98668239-0366-4830-878e-2ca1684c5563");
@@ -64,23 +64,36 @@ public class App
         userServ.addUser(insertarUsuario);
         userServ.updateUser(actualizarUser);
         userServ.deleteUser(eliminarUser);
-        userServ.readUser("d4db56d4-3c81-4585-96ae-40a0b0303311");*/
-        
+        userServ.readUser("d4db56d4-3c81-4585-96ae-40a0b0303311");
+        */
         GenderMusicService genderServ = new GenderMusicService();
-        
-        /*GenderOfMusic insertarGender = new GenderOfMusic(UUID.randomUUID().toString(), "Rap");
+        /*
+        GenderOfMusic insertarGender = new GenderOfMusic(UUID.randomUUID().toString(), "Rap");
         GenderOfMusic actualizarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351", "Pop");
         GenderOfMusic eliminarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351");
         
         genderServ.addGender(insertarGender);
         genderServ.updateGender(actualizarGender);
         genderServ.deleteGender(eliminarGender);
-        genderServ.readGender("be790292-b866-4387-9686-ce3486f264bb");*/
-        
+        genderServ.readGender("be790292-b866-4387-9686-ce3486f264bb");
+        */
         AlbumService albumServ = new AlbumService();
+        /*
+        java.sql.Date creationDate = new java.sql.Date(2015-12-16);
+        java.sql.Date creationDate2 = new java.sql.Date(2016-11-21);
+        GenderOfMusic genderAlbum = genderServ.readGender("46776d5e-9b3b-4919-a181-6e8bdc32c939");
+        Album insertarAlbum = new Album(UUID.randomUUID().toString(), "xD", creationDate,true,genderAlbum);
+        Album actualizarAlbum = new Album("98668239-0366-4830-878e-2ca1684c5563", "Maria.R", creationDate2, true, genderAlbum);
+        Album eliminarAlbum = new Album("98668239-0366-4830-878e-2ca1684c5563");
+        
+        albumServ.addAlbum(insertarAlbum);
+        albumServ.updateAlbum(actualizarAlbum);
+        albumServ.deleteAlbum(eliminarAlbum);
+        //albumServ.readAlbum("d4db56d4-3c81-4585-96ae-40a0b0303311");
+        
         
         SongService songServ = new SongService();
-        
+        /*
         GenderOfMusic genderSong = genderServ.readGender("6eb615c2-e5dc-4209-a452-dfa85e973ea8");
         Album albumSong = albumServ.readAlbum(null);
         
