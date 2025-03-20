@@ -20,7 +20,11 @@ public class Album {
         this.likeAlbum = likeAlbum;
         this.genderAlbum = genderAlbum;
     }
-
+    
+    public Album(String idAlbum) {
+        this.idAlbum = idAlbum;
+    }
+    
     public String getIdAlbum() {
         return idAlbum;
     }
