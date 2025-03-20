@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.Spotify.DB.DataBase;
+import org.Spotify.Models.Album;
+import org.Spotify.Models.GenderOfMusic;
 import org.Spotify.Models.Person;
 import org.Spotify.Models.Song;
 //import org.Spotify.Models.SongUser;
@@ -158,8 +160,114 @@ public class SongService {
     }
 
 
-    /*public Song readSong(String idSong) {
+    public Song readSong(String idSong) {
+        Connection conex = DataBase.Conectar();
+        Song song = null;
+        String sqlReadSong = "SELECT * FROM Song WHERE idSong = ?";
         
+        if(conex == null){
+            System.out.println("Error: No se pudo establecer conexión con la base de datos.");
+            return null;
+        }
+        
+        try(PreparedStatement stmtReadSong = conex.prepareStatement(sqlReadSong)){
+            stmtReadSong.setString(1, idSong);
+            ResultSet datosSong = stmtReadSong.executeQuery();
+            
+            if (datosSong.next()) {
+                String idGender = datosSong.getString("idGender");
+                GenderOfMusic gender = obtenerGenderPorId(idGender);
+                
+                String idAlbum = datosSong.getString("idAlbum");
+                Album album = obtenerAlbumPorId(idAlbum);
+                
+                song = new Song(datosSong.getString("idSong"), 
+                        datosSong.getString("nameSong"), 
+                     datosSong.getDate("creationSong"), 
+                        datosSong.getBoolean("likeSong"), 
+                     datosSong.getString("durationSong"),
+                       gender, 
+                        album);
+                System.out.println("Id Song: " + song.getIdSong());
+                System.out.println("Name Song: " + song.getNameSong());
+                System.out.println("Date Song: " + song.getCreationSong());
+                System.out.println("Like Song: " + song.isLikeSong());
+                System.out.println("Rol: " + rol.getNameRol());
+                System.out.println("Person: " + person.getFirstName() + " " + person.getSecondName() + " " + person.getFirstLastname() + " " + person.getSecondLastname());
+            } else {
+                System.out.println("No se encontró un user con el ID especificado.");
+            }
+        }catch(){
+            
+        } finally{
+            
+        }
+        return song;
+    }
+    
+    public GenderOfMusic obtenerGenderPorId(String idGender) {
+        Connection conex = DataBase.Conectar();
+        String sqlGender = "SELECT * FROM Genders WHERE idGender = ?";
+        GenderOfMusic gender = null;
 
-    }*/
+        if (conex == null) {
+            System.out.println("Error: No se pudo conectar a la BD.");
+            return null;
+        }
+
+        try (PreparedStatement stmtGender = conex.prepareStatement(sqlGender)) {
+            stmtGender.setString(1, idGender);
+            ResultSet datosGender = stmtGender.executeQuery();
+
+            if (datosGender.next()) {
+                gender = new GenderOfMusic(
+                    datosGender.getString("idGender"),
+                    datosGender.getString("nameGender")
+                );
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener el gender: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (conex != null) conex.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+        return gender;
+    }
+    
+    public Album obtenerAlbumPorId(String idAlbum) {
+        Connection conex = DataBase.Conectar();
+        String sqlAlbum = "SELECT * FROM Albums WHERE idAlbum = ?";
+        Album album = null;
+
+        if (conex == null) {
+            System.out.println("Error: No se pudo conectar a la BD.");
+            return null;
+        }
+
+        try (PreparedStatement stmtAlbum = conex.prepareStatement(sqlAlbum)) {
+            stmtAlbum.setString(1, idAlbum);
+            ResultSet datosAlbum = stmtAlbum.executeQuery();
+
+            if (datosAlbum.next()) {
+                album = new Album(
+                    datosAlbum.getString("idAlbum"),
+                    datosAlbum.getString("nameAlbum")
+                );
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener el album: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (conex != null) conex.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+        return album;
+    }
 }

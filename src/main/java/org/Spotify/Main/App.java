@@ -17,7 +17,6 @@ import org.Spotify.Models.GenderOfMusic;
 import org.Spotify.Models.Person;
 import org.Spotify.Models.Rol;
 import org.Spotify.Models.Song;
-//import org.Spotify.Models.SongArtist;
 import org.Spotify.Services.AlbumService;
 import org.Spotify.Services.CommentService;
 import org.Spotify.Services.GenderMusicService;
@@ -25,15 +24,16 @@ import org.Spotify.Services.PersonService;
 import org.Spotify.Services.RolService;
 import org.Spotify.Services.SongService;
 import org.Spotify.Services.SongService;
+import org.Spotify.View.Index;
 //import org.Spotify.Views.Index;
 
 public class App
 {
     public static void main( String[] args )
     {
-        /*RolService rolServ = new RolService();
+        RolService rolServ = new RolService();
         
-        Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
+        /*Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
         Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
         Rol eliminarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
         
@@ -81,33 +81,33 @@ public class App
         
         SongService songServ = new SongService();
         
-        GenderOfMusic genderSong = genderServ.readGender("6eb615c2-e5dc-4209-a452-dfa85e973ea8");
+        GenderOfMusic genderSong = genderServ.readGender("5cb166a7-433d-4537-83c3-f6bc6ace4f43");
         Album albumSong = albumServ.readAlbum(null);
         
-        //User userSong = userServ.readUser("d4db56d4-3c81-4585-96ae-40a0b0303311");
-        User userSong2 = userServ.readUser("38a96242-3d72-4e9d-b529-33ba9a67f787");
+        User userSong = userServ.readUser("fdb87c0b-fb75-40d7-912b-4d2f8f7ba2b2");
+        //User userSong2 = userServ.readUser("6dd5a0e3-24da-4d22-b5f5-5b50c8f0c65c");
         
         ArrayList<User> usersSong = new ArrayList<>();
-        //usersSong.add(userSong);
-        usersSong.add(userSong2);
+        usersSong.add(userSong);
+        //usersSong.add(userSong2);
         
-        Person personSong = personServ.readPerson("4864fb7f-f132-4c3d-af90-aa20ccd0e28b");
-        //Person personSong2 = personServ.readPerson("41a9452f-c488-4f20-93ac-7386c4b455c0");
+        //Person personSong = personServ.readPerson("7f39045a-283d-4805-9c05-ee3f89607084");
+        Person personSong2 = personServ.readPerson("812ea59d-ed19-49bd-976f-d5520f7028e3");
         
         ArrayList<Person> personsSong = new ArrayList<>();
-        personsSong.add(personSong);
-        //personsSong.add(personSong2);
+        //personsSong.add(personSong);
+        personsSong.add(personSong2);
         
-        //Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger", new Date(System.currentTimeMillis()), "03:45", genderSong, albumSong);
+        Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger", new Date(System.currentTimeMillis()), "03:45", genderSong, albumSong);
         //Song actualizarSong = new Song("fb8a32a6-98b5-4f97-a19f-6eaf583f7700", "Runaway", new Date(System.currentTimeMillis()), true, "10:00", genderSong, albumSong);
         //Song eliminarSong = new Song("fb8a32a6-98b5-4f97-a19f-6eaf583f7700");
         
-        //insertarSong.setArtistSong(usersSong);
-        //insertarSong.setPersonSong(personsSong);
+        insertarSong.setArtistSong(usersSong);
+        insertarSong.setPersonSong(personsSong);
         //actualizarSong.setArtistSong(usersSong);
         //actualizarSong.setPersonSong(personsSong);
      
-        //songServ.addSong(insertarSong);
+        songServ.addSong(insertarSong);
         //songServ.updateSong(actualizarSong);
         //songServ.deleteSong(eliminarSong);
         
@@ -129,69 +129,6 @@ public class App
         /*Index index = new Index();
         index.setVisible(true);
         index.setLocationRelativeTo(null);*/
-        /*Interface for user*/
-        /*UserController userController = new UserController(new UserService());
-        boolean active=true;
-        while (active){
-            Scanner scanner = new Scanner(System.in);
-            int op = Integer.parseInt(JOptionPane.showInputDialog("Metodos de usuario: \n1.Agregar usuario\n2.Actualizar usuarios \n3.Mostrar usuarios \n4.Eliminar usuario \n5.salir"));
-            switch (op){
-                case 1:
-                    System.out.println("nombres");
-                    String dataNames = scanner.nextLine();
-                    System.out.println("apellidos");
-                    String dataLastNames = scanner.nextLine();
-                    System.out.println("correo");
-                    String dataEmail = scanner.nextLine();
-                    System.out.println("usuario");
-                    String dataNickname = scanner.nextLine();
-                    System.out.println("contraseña");
-                    String dataPassword = scanner.nextLine();
-                    User newRegistration = new User(dataNames,dataLastNames, UUID.randomUUID(),dataEmail, dataNickname, dataPassword);
-                    userController.insertUser(newRegistration);
-                    break;
-                case 2:
-                    System.out.println("Ingresar id del usuario");
-                    String idUpdate = scanner.nextLine();
-                    try {
-                        /*for(User user : listUser){}*/
-                        /*UUID id = UUID.fromString(idUpdate);
-                        System.out.println("Nuevos nombres");
-                        String names = scanner.nextLine();
-                        System.out.println("Nuevos apellidos");
-                        String lastNames = scanner.nextLine();
-                        System.out.println("Nuevo correo");
-                        String email = scanner.nextLine();
-                        System.out.println("Nuevo usuario");
-                        String nickname = scanner.nextLine();
-                        System.out.println("Nueva contrasena");
-                        String password = scanner.nextLine();
-                        User updateUser = new User(names,lastNames,id,email,nickname,password);
-                        boolean rt = userController.updateUser(id,updateUser);
-                        if (rt){
-                            System.out.println("Se ha actualizado el usuario");
-                        }
-                        else {
-                            System.out.println("No se ha actualizado el usuario");
-                        }
-                    }
-                    catch (Exception e){
-                        System.out.println(e.getMessage() +"Error id");
-                    }
-                    break;
-                case 3:
-                    userController.showUser();
-                    break;
-                case 4:
-                    System.out.println("Ingresar id del usuario");
-                    String idDelete = scanner.nextLine();
-                    UUID idDeleteUser = UUID.fromString(idDelete);
-                    userController.deleteUser(idDeleteUser);
-                    break;
-                case 5:
-                    active=false;
-                    break;
-            }
-        }*/
+       
     }
 }
