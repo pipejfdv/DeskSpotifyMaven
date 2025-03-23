@@ -192,13 +192,13 @@ public class SongService {
                 System.out.println("Name Song: " + song.getNameSong());
                 System.out.println("Date Song: " + song.getCreationSong());
                 System.out.println("Like Song: " + song.isLikeSong());
-                System.out.println("Rol: " + rol.getNameRol());
-                System.out.println("Person: " + person.getFirstName() + " " + person.getSecondName() + " " + person.getFirstLastname() + " " + person.getSecondLastname());
+                //System.out.println("Rol: " + rol.getNameRol());
+                //System.out.println("Person: " + person.getFirstName() + " " + person.getSecondName() + " " + person.getFirstLastname() + " " + person.getSecondLastname());
             } else {
                 System.out.println("No se encontró un user con el ID especificado.");
             }
-        }catch(){
-            
+        }catch(SQLException e){
+            e.getMessage();
         } finally{
             
         }
@@ -252,12 +252,12 @@ public class SongService {
             stmtAlbum.setString(1, idAlbum);
             ResultSet datosAlbum = stmtAlbum.executeQuery();
 
-            if (datosAlbum.next()) {
+            /*if (datosAlbum.next()) {
                 album = new Album(
                     datosAlbum.getString("idAlbum"),
                     datosAlbum.getString("nameAlbum")
                 );
-            }
+            }AQUIIIIIIIII*/
         } catch (SQLException ex) {
             System.out.println("Error al obtener el album: " + ex.getMessage());
             ex.printStackTrace();
