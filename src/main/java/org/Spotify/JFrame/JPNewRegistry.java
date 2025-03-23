@@ -1,6 +1,7 @@
 package org.Spotify.JFrame;
 
 import java.util.UUID;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import org.Spotify.Models.Person;
 import org.Spotify.Models.Rol;
@@ -31,12 +32,46 @@ public class JPNewRegistry extends javax.swing.JPanel {
         RolService rolService = new RolService();
         PersonService personService = new PersonService();
         String id = UUID.randomUUID().toString();
-        Person newPerson = new Person(id,jTextFirstName.getText(), jTextSecondName.getText(), jTextFirtsLastName.getText(), jTextSecondLastName.getText(), jTextEmail.getText());
+        //validation Second name and Second lastname
+        
+        String secondName = jTextSecondName.getText().equals("Second name") || jTextSecondName.getText().isEmpty() ? null : jTextSecondName.getText();
+        String secondLastName = jTextSecondLastName.getText().equals("Second lastname") || jTextSecondLastName.getText().isEmpty() ? null : jTextSecondLastName.getText();
+        
+        Person newPerson = new Person(id,jTextFirstName.getText(), secondName, jTextFirtsLastName.getText(), secondLastName, jTextEmail.getText());
         personService.addPerson(newPerson);
         User newuser = new User(id, jTextNickname.getText(), jPasswordUser.getText(), rolService.readRol("User"), newPerson);
         userService.addUser(newuser);
     }
-
+    
+    private boolean confirmData(){
+        if(jTextFirstName.getText().equals("First name") || jTextFirstName.getText().length()==0
+                && jTextFirtsLastName.getText().length()==0 || jTextFirtsLastName.getText().equals("Firts lastname")
+                && jTextEmail.getText().length()==0 || jTextEmail.getText().equals("user@domain.com")
+                && jTextNickname.getText().length()==0 || jTextNickname.getText().equals("Nickname")){
+            JOptionPane.showMessageDialog(null, "Tienes campos vacios en el registro.");
+            return false;
+        }
+        else{
+            if(jPasswordConfirmPassword.getText().length()==0
+                    || jPasswordUser.getText().length()==0){
+                JOptionPane.showMessageDialog(null, "las contraseñas estan vacias.");
+                return false;
+            }
+            else if(!jPasswordConfirmPassword.getText().equals(jPasswordUser.getText())){
+                JOptionPane.showMessageDialog(null, "las contraseñas no coincide.");
+                return false;
+            }
+            else if(jPasswordConfirmPassword.getText().contains(" ")||
+                    jPasswordUser.getText().contains(" ")){
+                JOptionPane.showMessageDialog(null, "Las contraseñas no pueden contener espacios.");
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,8 +99,8 @@ public class JPNewRegistry extends javax.swing.JPanel {
         jTextEmail = new javax.swing.JTextField();
         jTextNickname = new javax.swing.JTextField();
         jButtonCreateUser = new javax.swing.JButton();
-        jPasswordConfirmPassword = new javax.swing.JPasswordField();
         jPasswordUser = new javax.swing.JPasswordField();
+        jPasswordConfirmPassword = new javax.swing.JPasswordField();
         jButtonReturnLogin = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(680, 479));
@@ -106,6 +141,11 @@ public class JPNewRegistry extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFirstNameFocusLost(evt);
+            }
+        });
+        jTextFirstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFirstNameActionPerformed(evt);
             }
         });
 
@@ -168,17 +208,6 @@ public class JPNewRegistry extends javax.swing.JPanel {
             }
         });
 
-        jPasswordConfirmPassword.setText("password");
-        jPasswordConfirmPassword.setEchoChar('\u0000');
-        jPasswordConfirmPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPasswordConfirmPasswordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPasswordConfirmPasswordFocusLost(evt);
-            }
-        });
-
         jPasswordUser.setText("password");
         jPasswordUser.setEchoChar('\u0000');
         jPasswordUser.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -187,6 +216,17 @@ public class JPNewRegistry extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jPasswordUserFocusLost(evt);
+            }
+        });
+
+        jPasswordConfirmPassword.setText("confirm password");
+        jPasswordConfirmPassword.setEchoChar('\u0000');
+        jPasswordConfirmPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordConfirmPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordConfirmPasswordFocusLost(evt);
             }
         });
 
@@ -301,7 +341,13 @@ public class JPNewRegistry extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateUserActionPerformed
-        newUserRegistry();
+        if(confirmData()){
+            newUserRegistry();
+            JOptionPane.showMessageDialog(null, "Registro Exitoso");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "no se hizo el registro");
+        }
     }//GEN-LAST:event_jButtonCreateUserActionPerformed
 
     private void jButtonReturnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnLoginActionPerformed
@@ -419,7 +465,7 @@ public class JPNewRegistry extends javax.swing.JPanel {
     }//GEN-LAST:event_jPasswordUserFocusLost
 
     private void jPasswordConfirmPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordConfirmPasswordFocusGained
-        if(jPasswordConfirmPassword.getText().equals("password")){
+        if(jPasswordConfirmPassword.getText().equals("confirm password")){
             jPasswordConfirmPassword.setText(null);
             jPasswordConfirmPassword.requestFocus();
             jPasswordConfirmPassword.setEchoChar('o');
@@ -429,11 +475,15 @@ public class JPNewRegistry extends javax.swing.JPanel {
 
     private void jPasswordConfirmPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordConfirmPasswordFocusLost
         if(jPasswordConfirmPassword.getText().length()==0){
-            jPasswordConfirmPassword.setText("password");
+            jPasswordConfirmPassword.setText("confirm password");
             jPasswordConfirmPassword.setEchoChar('\u0000');
             index.addPlaceHolderStyle(jPasswordConfirmPassword);
         }
     }//GEN-LAST:event_jPasswordConfirmPasswordFocusLost
+
+    private void jTextFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFirstNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFirstNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
