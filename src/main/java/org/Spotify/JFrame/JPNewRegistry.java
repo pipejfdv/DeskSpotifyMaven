@@ -45,9 +45,9 @@ public class JPNewRegistry extends javax.swing.JPanel {
         jTextSecondLastName = new javax.swing.JTextField();
         jTextEmail = new javax.swing.JTextField();
         jTextNickname = new javax.swing.JTextField();
-        jPasswordUser = new javax.swing.JPasswordField();
-        jPasswordConfirmPassword = new javax.swing.JPasswordField();
         jButtonCreateUser = new javax.swing.JButton();
+        jPasswordConfirmPassword = new javax.swing.JPasswordField();
+        jPasswordUser = new javax.swing.JPasswordField();
         jButtonReturnLogin = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(680, 479));
@@ -92,6 +92,14 @@ public class JPNewRegistry extends javax.swing.JPanel {
         });
 
         jTextFirtsLastName.setText("Firts lastname");
+        jTextFirtsLastName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFirtsLastNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFirtsLastNameFocusLost(evt);
+            }
+        });
 
         jTextSecondName.setText("Second name");
         jTextSecondName.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -104,14 +112,34 @@ public class JPNewRegistry extends javax.swing.JPanel {
         });
 
         jTextSecondLastName.setText("Second lastname");
+        jTextSecondLastName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextSecondLastNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextSecondLastNameFocusLost(evt);
+            }
+        });
 
         jTextEmail.setText("user@domain.com");
+        jTextEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextEmailFocusLost(evt);
+            }
+        });
 
-        jTextNickname.setText("jTextField1");
-
-        jPasswordUser.setText("jPasswordField1");
-
-        jPasswordConfirmPassword.setText("jPasswordField1");
+        jTextNickname.setText("Nickname");
+        jTextNickname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNicknameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextNicknameFocusLost(evt);
+            }
+        });
 
         jButtonCreateUser.setBackground(new java.awt.Color(0, 153, 0));
         jButtonCreateUser.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,6 +147,28 @@ public class JPNewRegistry extends javax.swing.JPanel {
         jButtonCreateUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCreateUserActionPerformed(evt);
+            }
+        });
+
+        jPasswordConfirmPassword.setText("password");
+        jPasswordConfirmPassword.setEchoChar('\u0000');
+        jPasswordConfirmPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordConfirmPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordConfirmPasswordFocusLost(evt);
+            }
+        });
+
+        jPasswordUser.setText("password");
+        jPasswordUser.setEchoChar('\u0000');
+        jPasswordUser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordUserFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordUserFocusLost(evt);
             }
         });
 
@@ -272,6 +322,100 @@ public class JPNewRegistry extends javax.swing.JPanel {
             index.addPlaceHolderStyle(jTextSecondName);
         }
     }//GEN-LAST:event_jTextSecondNameFocusLost
+
+    private void jTextFirtsLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFirtsLastNameFocusGained
+        if(jTextFirtsLastName.getText().equals("Firts lastname")){
+            jTextFirtsLastName.setText(null);
+            jTextFirtsLastName.requestFocus();
+            index.removePlaceHolderStyle(jTextFirtsLastName);
+        }
+    }//GEN-LAST:event_jTextFirtsLastNameFocusGained
+
+    private void jTextFirtsLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFirtsLastNameFocusLost
+        if(jTextFirtsLastName.getText().length()==0){
+            jTextFirtsLastName.setText("Firts lastname");
+            index.addPlaceHolderStyle(jTextFirtsLastName);
+        }
+    }//GEN-LAST:event_jTextFirtsLastNameFocusLost
+
+    private void jTextSecondLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextSecondLastNameFocusGained
+        if(jTextSecondLastName.getText().equals("Second lastname")){
+            jTextSecondLastName.setText(null);
+            jTextSecondLastName.requestFocus();
+            index.removePlaceHolderStyle(jTextSecondLastName);
+        }
+    }//GEN-LAST:event_jTextSecondLastNameFocusGained
+
+    private void jTextSecondLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextSecondLastNameFocusLost
+        if(jTextSecondLastName.getText().length()==0){
+            jTextSecondLastName.setText("Second lastname");
+            index.addPlaceHolderStyle(jTextSecondLastName);
+        }
+    }//GEN-LAST:event_jTextSecondLastNameFocusLost
+
+    private void jTextEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextEmailFocusGained
+        if(jTextEmail.getText().equals("user@domain.com")){
+            jTextEmail.setText(null);
+            jTextEmail.requestFocus();
+            index.removePlaceHolderStyle(jTextEmail);
+        }
+    }//GEN-LAST:event_jTextEmailFocusGained
+
+    private void jTextEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextEmailFocusLost
+        if(jTextEmail.getText().length()==0){
+            jTextEmail.setText("user@domain.com");
+            index.addPlaceHolderStyle(jTextEmail);
+        }
+    }//GEN-LAST:event_jTextEmailFocusLost
+
+    private void jTextNicknameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNicknameFocusGained
+        if(jTextNickname.getText().equals("Nickname")){
+            jTextNickname.setText(null);
+            jTextNickname.requestFocus();
+            index.removePlaceHolderStyle(jTextNickname);
+        }
+    }//GEN-LAST:event_jTextNicknameFocusGained
+
+    private void jTextNicknameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNicknameFocusLost
+        if(jTextNickname.getText().length()==0){
+            jTextNickname.setText("Nickname");
+            index.addPlaceHolderStyle(jTextNickname);
+        }
+    }//GEN-LAST:event_jTextNicknameFocusLost
+
+    private void jPasswordUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordUserFocusGained
+        if(jPasswordUser.getText().equals("password")){
+            jPasswordUser.setText(null);
+            jPasswordUser.requestFocus();
+            jPasswordUser.setEchoChar('o');
+            index.removePlaceHolderStyle(jPasswordUser);
+        }
+    }//GEN-LAST:event_jPasswordUserFocusGained
+
+    private void jPasswordUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordUserFocusLost
+        if(jPasswordUser.getText().length()==0){
+            jPasswordUser.setText("password");
+            jPasswordUser.setEchoChar('\u0000');
+            index.addPlaceHolderStyle(jPasswordUser);
+        }
+    }//GEN-LAST:event_jPasswordUserFocusLost
+
+    private void jPasswordConfirmPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordConfirmPasswordFocusGained
+        if(jPasswordConfirmPassword.getText().equals("password")){
+            jPasswordConfirmPassword.setText(null);
+            jPasswordConfirmPassword.requestFocus();
+            jPasswordConfirmPassword.setEchoChar('o');
+            index.removePlaceHolderStyle(jPasswordConfirmPassword);
+        }
+    }//GEN-LAST:event_jPasswordConfirmPasswordFocusGained
+
+    private void jPasswordConfirmPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordConfirmPasswordFocusLost
+        if(jPasswordConfirmPassword.getText().length()==0){
+            jPasswordConfirmPassword.setText("password");
+            jPasswordConfirmPassword.setEchoChar('\u0000');
+            index.addPlaceHolderStyle(jPasswordConfirmPassword);
+        }
+    }//GEN-LAST:event_jPasswordConfirmPasswordFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
