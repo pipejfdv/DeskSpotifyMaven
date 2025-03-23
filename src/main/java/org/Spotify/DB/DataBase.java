@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 
 public final class DataBase {
-    private static final String url = "jdbc:mysql://localhost:3307/SpotifyDB";
+    private static final String url = "jdbc:mysql://localhost:3306/SpotifyDB";
     private static final String usuario = "root";
     private static final String contrasena = "";
    

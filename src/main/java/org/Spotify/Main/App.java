@@ -31,7 +31,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        //RolService rolServ = new RolService();
+        RolService rolServ = new RolService();
+        Rol insertarRol = new Rol("f7922fcd-0935-4ad8-a738-3715ae02e595", "User");
+        rolServ.addRol(insertarRol);
+        rolServ.readRol("User");
         
         /*Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
         Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");

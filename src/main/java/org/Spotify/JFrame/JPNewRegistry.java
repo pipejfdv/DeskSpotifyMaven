@@ -1,6 +1,13 @@
 package org.Spotify.JFrame;
 
+import java.util.UUID;
 import javax.swing.SwingUtilities;
+import org.Spotify.Models.Person;
+import org.Spotify.Models.Rol;
+import org.Spotify.Models.User;
+import org.Spotify.Services.PersonService;
+import org.Spotify.Services.RolService;
+import org.Spotify.Services.UserService;
 
 public class JPNewRegistry extends javax.swing.JPanel {
 
@@ -17,6 +24,17 @@ public class JPNewRegistry extends javax.swing.JPanel {
         index.addPlaceHolderStyle(jTextNickname);
         index.addPlaceHolderStyle(jPasswordUser);
         index.addPlaceHolderStyle(jPasswordConfirmPassword);
+    }
+    
+    private void newUserRegistry(){
+        UserService userService = new UserService();
+        RolService rolService = new RolService();
+        PersonService personService = new PersonService();
+        String id = UUID.randomUUID().toString();
+        Person newPerson = new Person(id,jTextFirstName.getText(), jTextSecondName.getText(), jTextFirtsLastName.getText(), jTextSecondLastName.getText(), jTextEmail.getText());
+        personService.addPerson(newPerson);
+        User newuser = new User(id, jTextNickname.getText(), jPasswordUser.getText(), rolService.readRol("User"), newPerson);
+        userService.addUser(newuser);
     }
 
     /**
@@ -283,7 +301,7 @@ public class JPNewRegistry extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateUserActionPerformed
-        // TODO add your handling code here:
+        newUserRegistry();
     }//GEN-LAST:event_jButtonCreateUserActionPerformed
 
     private void jButtonReturnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnLoginActionPerformed

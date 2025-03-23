@@ -114,9 +114,9 @@ public class RolService {
         }
     }
     
-    public Rol readRol(String idRol) {
+    public Rol readRol(String nameRol) {
         Connection conex = DataBase.Conectar();
-        String sql = "SELECT * FROM Roles WHERE idRol = ?";
+        String sql = "SELECT * FROM Roles WHERE nameRol = ?";
         Rol rol = null;
 
         if (conex == null) {
@@ -125,7 +125,7 @@ public class RolService {
         }
 
         try (PreparedStatement stmt = conex.prepareStatement(sql)) {
-            stmt.setString(1, idRol);
+            stmt.setString(1, nameRol);
             ResultSet datosRol = stmt.executeQuery();
 
             if (datosRol.next()) {
