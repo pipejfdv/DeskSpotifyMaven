@@ -18,7 +18,15 @@ public class User {
         this.idUser = idUser;
         this.nickname = nickname;
     }
-
+    
+    //credentials user constructos static
+    public static User credentials(String nickname, String password){
+       User user = new User();
+       user.nickname = nickname;
+       user.password = password;
+       return user;
+    }
+        
     public User(String idUser, String nickname, String password, Rol rol, Person person) {
         this.idUser = idUser;
         this.nickname = nickname;

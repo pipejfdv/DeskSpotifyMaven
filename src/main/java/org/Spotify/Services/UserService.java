@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Person;
 import org.Spotify.Models.User;
@@ -293,6 +294,32 @@ public class UserService {
         }
 
         return person;
+    }
+    
+    public User singInDB(String nickname){
+        Connection conex = DataBase.Conectar();
+        String sqlQuery = "SELECT * FROM Users WHERE nickname = ?";
+        try (PreparedStatement pre = conex.prepareStatement(sqlQuery)){
+            pre.setString(1, nickname);
+            ResultSet rs = pre.executeQuery();
+            if(rs.next()){
+                String nicknameDB = rs.getString("nickname");
+                String passwordDB = rs.getString("passwordUser");
+                return User.credentials(nicknameDB, passwordDB);
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Credenciales no encontradas"
+                        + "\nPrueba registrarte 🙂‍↕️");
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la consulta: " + e);
+            return null;
+        }
+        finally{
+            DataBase.Desconection(conex);
+        }
     }
    
 }

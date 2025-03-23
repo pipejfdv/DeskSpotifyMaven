@@ -97,7 +97,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Noto Sans CJK SC" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nickname or email"/>
+            <Property name="text" type="java.lang.String" value="Nickname"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUserFocusGained"/>

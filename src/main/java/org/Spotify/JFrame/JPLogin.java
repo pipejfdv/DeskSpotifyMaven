@@ -4,7 +4,10 @@
  */
 package org.Spotify.JFrame;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import org.Spotify.Models.User;
+import org.Spotify.Services.UserService;
 
 /**
  *
@@ -20,7 +23,22 @@ public class JPLogin extends javax.swing.JPanel {
         index.addPlaceHolderStyle(txtUser);
         index.addPlaceHolderStyle(jPasswordUser);
     }
-
+    
+    private void singIn() {
+        UserService userService = new UserService();
+        User credentials = userService.singInDB(txtUser.getText());
+        if(credentials.getNickname().equals(txtUser.getText())
+                && credentials.getPassword().equals(jPasswordUser.getText())){
+            JFHome home = new JFHome();
+            home.setVisible(true);
+            home.setLocationRelativeTo(null);
+            home.setSize(800, 600);
+            index.setVisible(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "credenciales incorrectas");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +66,7 @@ public class JPLogin extends javax.swing.JPanel {
         jLabel2.setText("User");
 
         txtUser.setFont(new java.awt.Font("Noto Sans CJK SC", 1, 12)); // NOI18N
-        txtUser.setText("Nickname or email");
+        txtUser.setText("Nickname");
         txtUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtUserFocusGained(evt);
@@ -68,6 +86,7 @@ public class JPLogin extends javax.swing.JPanel {
 
         jPasswordUser.setFont(new java.awt.Font("Noto Sans CJK SC", 1, 12)); // NOI18N
         jPasswordUser.setText("password");
+        jPasswordUser.setEchoChar('\u0000');
         jPasswordUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordUserFocusGained(evt);
@@ -163,7 +182,7 @@ public class JPLogin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusGained
-        if(txtUser.getText().equals("Nickname or email")){
+        if(txtUser.getText().equals("Nickname")){
             txtUser.setText(null);
             txtUser.requestFocus();
             //remove placeholder
@@ -174,7 +193,7 @@ public class JPLogin extends javax.swing.JPanel {
     private void txtUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusLost
         if(txtUser.getText().length()==0){
             index.addPlaceHolderStyle(txtUser);
-            txtUser.setText("Nickname or email");
+            txtUser.setText("Nickname");
         }
     }//GEN-LAST:event_txtUserFocusLost
 
@@ -209,7 +228,13 @@ public class JPLogin extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonRegistryActionPerformed
 
     private void jButtonSingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSingInActionPerformed
-        
+        if(txtUser.getText().equals("Nickname")
+                || jPasswordUser.getText().equals("password")){
+            JOptionPane.showMessageDialog(null, "No has ingresado credenciales.");
+        }
+        else{
+            singIn();
+        }
     }//GEN-LAST:event_jButtonSingInActionPerformed
 
 
