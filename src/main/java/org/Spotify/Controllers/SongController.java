@@ -14,9 +14,9 @@ public class SongController {
         songService.addSong(song);
     }
 
-    /*public Song showSong(String idSong) {
+    public Song showSong(String idSong) {
         return songService.readSong(idSong);
-    }*/
+    }
 
     public void deleteSong(Song song) {
         songService.deleteSong(song);

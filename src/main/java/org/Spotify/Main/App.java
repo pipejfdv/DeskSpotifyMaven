@@ -31,10 +31,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        RolService rolServ = new RolService();
-        Rol insertarRol = new Rol("f7922fcd-0935-4ad8-a738-3715ae02e595", "User");
+        //RolService rolServ = new RolService();
+        
+        /*Rol insertarRol = new Rol("f7922fcd-0935-4ad8-a738-3715ae02e595", "User");
         rolServ.addRol(insertarRol);
-        rolServ.readRol("User");
+        rolServ.readRol("User");*/
         
         /*Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
         Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
@@ -82,37 +83,40 @@ public class App
         
         //AlbumService albumServ = new AlbumService();
         
+        
+        
         //SongService songServ = new SongService();
         
-        //GenderOfMusic genderSong = genderServ.readGender("5cb166a7-433d-4537-83c3-f6bc6ace4f43");
-        //Album albumSong = albumServ.readAlbum(null);
+        /*GenderOfMusic genderSong = genderServ.readGender("5cb166a7-433d-4537-83c3-f6bc6ace4f43");
+        Album albumSong = albumServ.readAlbum(null);
         
-        //User userSong = userServ.readUser("fdb87c0b-fb75-40d7-912b-4d2f8f7ba2b2");
-        //User userSong2 = userServ.readUser("6dd5a0e3-24da-4d22-b5f5-5b50c8f0c65c");
+        User userSong = userServ.readUser("fdb87c0b-fb75-40d7-912b-4d2f8f7ba2b2");
+        User userSong2 = userServ.readUser("6dd5a0e3-24da-4d22-b5f5-5b50c8f0c65c");
         
-        //ArrayList<User> usersSong = new ArrayList<>();
-        //usersSong.add(userSong);
-        //usersSong.add(userSong2);
+        ArrayList<User> usersSong = new ArrayList<>();
+        usersSong.add(userSong);
+        usersSong.add(userSong2);
         
-        //Person personSong = personServ.readPerson("7f39045a-283d-4805-9c05-ee3f89607084");
-        //Person personSong2 = personServ.readPerson("812ea59d-ed19-49bd-976f-d5520f7028e3");
+        Person personSong = personServ.readPerson("7f39045a-283d-4805-9c05-ee3f89607084");
+        Person personSong2 = personServ.readPerson("812ea59d-ed19-49bd-976f-d5520f7028e3");
         
-        //ArrayList<Person> personsSong = new ArrayList<>();
-        //personsSong.add(personSong);
-        //personsSong.add(personSong2);
+        ArrayList<Person> personsSong = new ArrayList<>();
+        personsSong.add(personSong);
+        personsSong.add(personSong2);
         
-        //Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger", new Date(System.currentTimeMillis()), "03:45", genderSong, albumSong);
-        //Song actualizarSong = new Song("fb8a32a6-98b5-4f97-a19f-6eaf583f7700", "Runaway", new Date(System.currentTimeMillis()), true, "10:00", genderSong, albumSong);
-        //Song eliminarSong = new Song("fb8a32a6-98b5-4f97-a19f-6eaf583f7700");
+        Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger", new Date(System.currentTimeMillis()), "03:45", genderSong, albumSong);
+        Song actualizarSong = new Song("fb8a32a6-98b5-4f97-a19f-6eaf583f7700", "Runaway", new Date(System.currentTimeMillis()), true, "10:00", genderSong, albumSong);
+        Song eliminarSong = new Song("fb8a32a6-98b5-4f97-a19f-6eaf583f7700");
         
-        //insertarSong.setArtistSong(usersSong);
-        //insertarSong.setPersonSong(personsSong);
-        //actualizarSong.setArtistSong(usersSong);
-        //actualizarSong.setPersonSong(personsSong);
+        insertarSong.setArtistSong(usersSong);
+        insertarSong.setPersonSong(personsSong);
+        actualizarSong.setArtistSong(usersSong);
+        actualizarSong.setPersonSong(personsSong);
      
-        //songServ.addSong(insertarSong);
-        //songServ.updateSong(actualizarSong);
-        //songServ.deleteSong(eliminarSong);
+        songServ.addSong(insertarSong);
+        songServ.updateSong(actualizarSong);
+        songServ.deleteSong(eliminarSong);
+        songServ.readSong("a135897a-d0d8-4060-8fa3-86f40950ce1a");*/
         
         /*CommentService commentServ = new CommentService();
        

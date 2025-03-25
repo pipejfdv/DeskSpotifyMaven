@@ -28,6 +28,14 @@ public class Person {
         this.email = email;
     }
 
+    public Person(String idPerson, String firstName, String firstLastname) {
+        this.idPerson = idPerson;
+        this.firstName = firstName;
+        this.firstLastname = firstLastname;
+    }
+    
+    
+
     public String getIdPerson() {
         return idPerson;
     }

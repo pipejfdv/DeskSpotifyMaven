@@ -13,6 +13,11 @@ public class Album {
         
     };
 
+    public Album(String idAlbum, String nameAlbum) {
+        this.idAlbum = idAlbum;
+        this.nameAlbum = nameAlbum;
+    }
+
     public Album(String idAlbum, String nameAlbum, Date creationAlbum, boolean likeAlbum, GenderOfMusic genderAlbum) {
         this.idAlbum = idAlbum;
         this.nameAlbum = nameAlbum;
