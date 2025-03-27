@@ -149,6 +149,11 @@ public class JPPerson extends javax.swing.JPanel {
                 jTextEmailFocusLost(evt);
             }
         });
+        jTextEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextEmailActionPerformed(evt);
+            }
+        });
 
         jButtonCreateUser.setBackground(new java.awt.Color(0, 153, 0));
         jButtonCreateUser.setForeground(new java.awt.Color(255, 255, 255));
@@ -329,6 +334,10 @@ public class JPPerson extends javax.swing.JPanel {
         Index changePanel = (Index) SwingUtilities.getWindowAncestor(this);
         changePanel.changeContentNewRegistry(loginPanel);
     }//GEN-LAST:event_jButtonReturnLoginActionPerformed
+
+    private void jTextEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextEmailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
