@@ -6,7 +6,10 @@ package org.Spotify.JFrame;
 
 import java.sql.Date;
 import java.util.UUID;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import org.Spotify.Controllers.SongController;
+import org.Spotify.Models.GenderOfMusic;
 import org.Spotify.Models.Song;
 import org.Spotify.Services.SongService;
 
@@ -20,6 +23,7 @@ public class JFSong extends javax.swing.JFrame {
     
     public JFSong() {
         initComponents();
+        cargarGenders();
     }
     
     public void newSong(){
@@ -28,9 +32,16 @@ public class JFSong extends javax.swing.JFrame {
         String nameSong = JTFNameSong.getText().isEmpty() ? null : JTFNameSong.getText();
         String durationSong = JTFDurationSong.getText().isEmpty() ? null : JTFDurationSong.getText();
         
-        Song insertarSong = new Song(UUID.randomUUID().toString(), "Stronger", new Date(System.currentTimeMillis()), "03:45", genderSong, albumSong);
+        
+        GenderOfMusic genderaSong = JCBGenders.getSelectedItem();
+        
+        Song insertarSong = new Song(UUID.randomUUID().toString(), nameSong, new Date(System.currentTimeMillis()), durationSong, genderSong, albumSong);
         
         songCon.insertSong();
+    }
+    
+    public void getAlbums(){
+        
     }
 
     /**
@@ -51,6 +62,7 @@ public class JFSong extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         JTFDurationSong = new javax.swing.JTextField();
         JTFNameSong = new javax.swing.JTextField();
+        JCBGenders = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,14 +93,16 @@ public class JFSong extends javax.swing.JFrame {
             }
         });
 
+        JCBGenders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCBGendersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(218, 218, 218))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -104,16 +118,18 @@ public class JFSong extends javax.swing.JFrame {
                 .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(JCBGenders, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(JTFNameSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JTFNameSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JTFDurationSong, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
                         .addGap(101, 101, 101))))
         );
         layout.setVerticalGroup(
@@ -132,16 +148,18 @@ public class JFSong extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JTFDurationSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel5)
-                        .addGap(48, 48, 48)
+                        .addGap(18, 18, 18)
+                        .addComponent(JCBGenders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
                         .addComponent(jLabel6)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(148, 148, 148))))
@@ -157,6 +175,10 @@ public class JFSong extends javax.swing.JFrame {
     private void JTFNameSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNameSongActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFNameSongActionPerformed
+
+    private void JCBGendersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBGendersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JCBGendersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +217,7 @@ public class JFSong extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> JCBGenders;
     private javax.swing.JTextField JTFDurationSong;
     private javax.swing.JTextField JTFNameSong;
     private javax.swing.JLabel jLabel1;
@@ -205,4 +228,11 @@ public class JFSong extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarGenders(JComboBox cb) {
+        DefaultComboBoxModel combo = new DefaultComboBoxModel();
+        cb.setModel(combo);
+        
+        
+    }
 }
