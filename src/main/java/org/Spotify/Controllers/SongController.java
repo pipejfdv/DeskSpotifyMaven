@@ -6,6 +6,9 @@ import org.Spotify.Services.SongService;
 public class SongController {
     private SongService songService;
 
+    public SongController() {
+    }
+    
     public SongController(SongService songService) {
         this.songService = songService;
     }
