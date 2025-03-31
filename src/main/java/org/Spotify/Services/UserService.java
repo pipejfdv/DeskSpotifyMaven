@@ -310,7 +310,7 @@ public class UserService {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Credenciales no encontradas"
-                        + "\nPrueba registrarte 🙂‍↕️");
+                        + "\n¡Prueba registrarte!️");
                 return null;
             }
         } catch (SQLException e) {

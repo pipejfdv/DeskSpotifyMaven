@@ -13,11 +13,11 @@ import org.Spotify.Services.UserService;
  *
  * @author pipejfdv
  */
-public class JPLogin extends javax.swing.JPanel {
+public class JPLoginOfIndex extends javax.swing.JPanel {
 
     private Index index;
             
-    public JPLogin(Index index) {
+    public JPLoginOfIndex(Index index) {
         initComponents();
         this.index = index;
         index.addPlaceHolderStyle(txtUser);
@@ -86,7 +86,6 @@ public class JPLogin extends javax.swing.JPanel {
 
         jPasswordUser.setFont(new java.awt.Font("Noto Sans CJK SC", 1, 12)); // NOI18N
         jPasswordUser.setText("password");
-        jPasswordUser.setEchoChar('\u0000');
         jPasswordUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordUserFocusGained(evt);
@@ -223,7 +222,7 @@ public class JPLogin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPasswordUserActionPerformed
 
     private void jButtonRegistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistryActionPerformed
-        JPNewRegistry newRegistry = new JPNewRegistry(this.index);
+        JPNewRegistryOfIndex newRegistry = new JPNewRegistryOfIndex(this.index);
         index.changeContentNewRegistry(newRegistry);
     }//GEN-LAST:event_jButtonRegistryActionPerformed
 

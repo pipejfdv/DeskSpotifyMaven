@@ -31,11 +31,17 @@ public class App
 {
     public static void main( String[] args )
     {
+        /*----SERVICES INVOCADOS-----*/
         RolService rolServ = new RolService();
+        PersonService personServ = new PersonService();
+        UserService userServ = new UserService();
+        GenderMusicService genderServ = new GenderMusicService();
         
         Rol insertarRol = new Rol("f7922fcd-0935-4ad8-a738-3715ae02e595", "User");
         rolServ.addRol(insertarRol);
         rolServ.readRol("User");
+        
+        /*
         
        // Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");
         Rol actualizarRol = new Rol("b0eec8d7-d891-4671-a82a-24a23ae91d41", "Admin");
@@ -46,7 +52,7 @@ public class App
         rolServ.deleteRol(eliminarRol);
         rolServ.readRol("b0eec8d7-d891-4671-a82a-24a23ae91d41");
         
-        PersonService personServ = new PersonService();
+        
         
         Person insertarPerson = new Person(UUID.randomUUID().toString(), "Angel", "Santiago", "Leon", "Cadena", "santiago@mail.com");
         Person actualizarPerson = new Person("e714e623-5cfc-4b10-8359-9bbb1fe658ff", "Maria", "Paula", "Contreras", "Ramirez", "maria@mail.com");
@@ -57,7 +63,7 @@ public class App
         personServ.deletePerson(eliminarPerson);
         personServ.readPerson("4864fb7f-f132-4c3d-af90-aa20ccd0e28b");
         
-        UserService userServ = new UserService();
+        
         
         Rol rolUsuario = rolServ.readRol("User");
         Person personUsuario = personServ.readPerson("78a5ba6c-4689-46ed-8953-8b473023d8ff");
@@ -70,7 +76,7 @@ public class App
         userServ.deleteUser(eliminarUser);
         userServ.readUser("d4db56d4-3c81-4585-96ae-40a0b0303311");
         ////
-        GenderMusicService genderServ = new GenderMusicService();
+        
         
         GenderOfMusic insertarGender = new GenderOfMusic(UUID.randomUUID().toString(), "Rap");
         GenderOfMusic actualizarGender = new GenderOfMusic("05aa5b86-8e90-4f2d-8190-e90260f87351", "Pop");
@@ -140,7 +146,9 @@ public class App
         commentServ.addComment(insertarComment);
         commentServ.updateComment(actualizarComment);
         commentServ.deleteComment(eliminarComment);
-        commentServ.readComment("7e086c53-e503-4abe-86e0-aa754fd58e45");*/
+        commentServ.readComment("7e086c53-e503-4abe-86e0-aa754fd58e45");
+        
+        */
         
         
         Index index = new Index();

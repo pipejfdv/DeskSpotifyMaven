@@ -330,7 +330,7 @@ public class JPPerson extends javax.swing.JPanel {
 
     private void jButtonReturnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnLoginActionPerformed
 
-        JPLogin loginPanel = new JPLogin(this.index);
+        JPLoginOfIndex loginPanel = new JPLoginOfIndex(this.index);
         Index changePanel = (Index) SwingUtilities.getWindowAncestor(this);
         changePanel.changeContentNewRegistry(loginPanel);
     }//GEN-LAST:event_jButtonReturnLoginActionPerformed

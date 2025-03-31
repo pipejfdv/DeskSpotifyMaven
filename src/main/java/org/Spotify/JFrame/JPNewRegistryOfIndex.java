@@ -10,11 +10,11 @@ import org.Spotify.Services.PersonService;
 import org.Spotify.Services.RolService;
 import org.Spotify.Services.UserService;
 
-public class JPNewRegistry extends javax.swing.JPanel {
+public class JPNewRegistryOfIndex extends javax.swing.JPanel {
 
     private Index index;
     
-    public JPNewRegistry(Index index) {
+    public JPNewRegistryOfIndex(Index index) {
         initComponents();
         this.index = index;
         index.addPlaceHolderStyle(jTextFirstName);
@@ -209,7 +209,6 @@ public class JPNewRegistry extends javax.swing.JPanel {
         });
 
         jPasswordUser.setText("password");
-        jPasswordUser.setEchoChar('\u0000');
         jPasswordUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordUserFocusGained(evt);
@@ -220,7 +219,6 @@ public class JPNewRegistry extends javax.swing.JPanel {
         });
 
         jPasswordConfirmPassword.setText("confirm password");
-        jPasswordConfirmPassword.setEchoChar('\u0000');
         jPasswordConfirmPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordConfirmPasswordFocusGained(evt);
@@ -352,7 +350,7 @@ public class JPNewRegistry extends javax.swing.JPanel {
 
     private void jButtonReturnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnLoginActionPerformed
         
-        JPLogin loginPanel = new JPLogin(this.index);
+        JPLoginOfIndex loginPanel = new JPLoginOfIndex(this.index);
         Index changePanel = (Index) SwingUtilities.getWindowAncestor(this);
         changePanel.changeContentNewRegistry(loginPanel);
     }//GEN-LAST:event_jButtonReturnLoginActionPerformed
