@@ -34,7 +34,11 @@ public class SongService {
             stmtSong.setBoolean(4, song.isLikeSong());
             stmtSong.setString(5, song.getDurationSong());
             stmtSong.setString(6, song.getGenderSong().getIdGenderOfMusic());
-            stmtSong.setString(7, song.getAlbumSong().getIdAlbum());
+            if (song.getAlbumSong() != null) {
+                stmtSong.setString(7, song.getAlbumSong().getIdAlbum());
+            } else {
+                stmtSong.setNull(7, java.sql.Types.VARCHAR);
+            }
             stmtSong.executeUpdate();
 
             // Insertar en la tabla SongUser
@@ -327,4 +331,118 @@ public class SongService {
         }
         return album;
     }
+    
+    public String getIdPersona(String persona){
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT idPerson FROM Persons WHERE firstName = ?";
+        String idPerson = null;
+
+        if (conex == null) {
+            System.out.println("Error: No se pudo conectar a la base de datos.");
+            return null;
+        }
+
+        try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+            stmt.setString(1, persona);
+            ResultSet datosPerson = stmt.executeQuery();
+
+            if (datosPerson.next()) {
+                idPerson = datosPerson.getString("idPerson");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener el person: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (conex != null) conex.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+        return idPerson;
+    }
+    
+    public String getIdUser(String nickname){
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT idUser FROM Users WHERE nickname = ?";
+        String idUser = null;
+
+        if (conex == null) {
+            System.out.println("Error: No se pudo conectar a la base de datos.");
+            return null;
+        }
+
+        try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+            stmt.setString(1, nickname);
+            ResultSet datosUser = stmt.executeQuery();
+
+            if (datosUser.next()) {
+                idUser = datosUser.getString("idUser");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener el usuario: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (conex != null) conex.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+        return idUser;
+    }
+    
+    public boolean checkIfExistsInDB(String tableName, String columnName, String value) {
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT COUNT(*) FROM " + tableName + " WHERE " + columnName + " = ?";
+
+        try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+            stmt.setString(1, value);
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs.next() && rs.getInt(1) > 0){
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (conex != null) conex.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+        return false;
+    }
+    
+    public String getIdGenderByName(String genderName){
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT idGender FROM Genders WHERE nameGender = ?";
+        String idGender = null;
+        
+        try(PreparedStatement stmt = conex.prepareStatement(sql)){
+            stmt.setString(1, genderName);
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                idGender = rs.getString("idGender");
+            }
+        }catch(SQLException ex){
+            System.out.println("Error al obtener ID del género: " + ex.getMessage());
+            ex.printStackTrace();
+        }finally{
+            try {
+                if (conex != null) conex.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }   
+        }
+        return idGender;
+    }
+    
+    /*public boolean checkIfNameSong(String songName){
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT nameSong FROM Songs WHERE nameSong = ?";
+        
+    }*/
 }

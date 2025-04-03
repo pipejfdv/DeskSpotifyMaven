@@ -40,7 +40,19 @@ public class Song {
         this.genderSong = genderSong;
         this.albumSong = albumSong;
     }
-
+    
+    public Song(String idSong, String nameSong, Date creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong, ArrayList<User> artistSong, ArrayList<Person> personSong) {
+        this.idSong = idSong;
+        this.nameSong = nameSong;
+        this.creationSong = creationSong;
+        this.likeSong = likeSong;
+        this.durationSong = durationSong;
+        this.genderSong = genderSong;
+        this.albumSong = albumSong;
+        this.artistSong = artistSong;
+        this.personSong = personSong;
+    }
+    
     public String getIdSong() {
         return idSong;
     }

@@ -7,6 +7,7 @@ public class SongController {
     private SongService songService;
 
     public SongController() {
+        this.songService = new SongService();
     }
     
     public SongController(SongService songService) {
@@ -27,5 +28,22 @@ public class SongController {
 
     public void updateSong(Song song) {
         songService.updateSong(song);
+    }
+    
+    public boolean checkDB(String tableName, String columnName, String value){
+        return songService.checkIfExistsInDB(tableName, columnName, value);
+        
+    }
+    
+    public String getPerson(String person){
+        return songService.getIdPersona(person);
+    }
+    
+    public String getUser(String user){
+        return songService.getIdUser(user);
+    }
+    
+    public String getIdGender(String genderName){
+        return songService.getIdGenderByName(genderName);
     }
 }
