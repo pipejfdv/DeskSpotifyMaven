@@ -41,6 +41,7 @@ public class JFHome extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jBSongsCrud = new javax.swing.JButton();
         jPanelContenedorInfo = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -55,9 +56,7 @@ public class JFHome extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(650, 450));
         setMinimumSize(new java.awt.Dimension(650, 450));
-        setPreferredSize(new java.awt.Dimension(650, 450));
 
         jPanelContainer.setMaximumSize(new java.awt.Dimension(650, 450));
         jPanelContainer.setMinimumSize(new java.awt.Dimension(650, 450));
@@ -65,8 +64,6 @@ public class JFHome extends javax.swing.JFrame {
 
         jPanelMenu.setBackground(new java.awt.Color(0, 153, 51));
         jPanelMenu.setEnabled(false);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/pipejfdv/Desktop/programs/DeskSpotifyMaven/src/main/java/org/Spotify/Views/Img/user.png")); // NOI18N
 
         jButton1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
         jButton1.setText("Play list");
@@ -103,6 +100,14 @@ public class JFHome extends javax.swing.JFrame {
             }
         });
 
+        jBSongsCrud.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
+        jBSongsCrud.setText("Songs");
+        jBSongsCrud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSongsCrudActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelMenuLayout = new javax.swing.GroupLayout(jPanelMenu);
         jPanelMenu.setLayout(jPanelMenuLayout);
         jPanelMenuLayout.setHorizontalGroup(
@@ -118,7 +123,8 @@ public class JFHome extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(jBSongsCrud, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelMenuLayout.setVerticalGroup(
@@ -133,8 +139,10 @@ public class JFHome extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBSongsCrud, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -195,6 +203,10 @@ public class JFHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jBSongsCrudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSongsCrudActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBSongsCrudActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,6 +243,7 @@ public class JFHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBSongsCrud;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

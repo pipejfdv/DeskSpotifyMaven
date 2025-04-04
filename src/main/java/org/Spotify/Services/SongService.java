@@ -440,9 +440,28 @@ public class SongService {
         return idGender;
     }
     
-    /*public boolean checkIfNameSong(String songName){
+    public String getIdSongByName(String songName){
         Connection conex = DataBase.Conectar();
-        String sql = "SELECT nameSong FROM Songs WHERE nameSong = ?";
+        String sql = "SELECT idSong FROM Songs WHERE nameSong = ?";
+        String idSong = null;
         
-    }*/
+        try(PreparedStatement stmt = conex.prepareStatement(sql)){
+            stmt.setString(1, songName);
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                idSong = rs.getString("idSong");
+            }
+        }catch(SQLException ex){
+            System.out.println("Error: Al obtener ID de song: " + ex.getMessage());
+            ex.printStackTrace();
+        }finally{
+            try{
+                if (conex != null) conex.close();
+            } catch(SQLException ex){
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+        return idSong;
+    }
 }

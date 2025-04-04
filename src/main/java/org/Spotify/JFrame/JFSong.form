@@ -26,63 +26,86 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="jLTitle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTFArtistSong" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="JTFNameSong" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="jTFNameSong" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="166" pref="166" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="JTFDurationSong" min="-2" pref="121" max="-2" attributes="0"/>
+                                  <Component id="jTFDurationSong" min="-2" pref="121" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTFPersonSong" min="-2" pref="127" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="JCBGenders" min="-2" pref="128" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jCBGenders" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="JTFPersonSong" min="-2" pref="127" max="-2" attributes="0"/>
-                                  <Component id="JTFAlbumSong" min="-2" pref="121" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTFAlbumSong" min="-2" pref="121" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="JTFArtistSong" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
-              <Component id="JBAddSong" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Component id="JBAddArtist" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="JBDeleteArtist" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-              <Component id="JBAddPerson" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="JBDeletePerson" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="89" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jBBack" max="32767" attributes="0"/>
+                          <Component id="jBSongAddUpd" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Component id="jBAddArtist" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jBDeleteArtist" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="93" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jBAddPerson" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jBDeletePerson" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="94" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,62 +113,73 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jLTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="JTFNameSong" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTFNameSong" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="JTFDurationSong" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTFDurationSong" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JCBGenders" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JTFAlbumSong" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCBGenders" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFAlbumSong" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JTFArtistSong" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JTFPersonSong" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFArtistSong" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFPersonSong" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane2" pref="74" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jBAddArtist" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBDeleteArtist" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="74" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jBAddPerson" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jBDeletePerson" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="101" pref="101" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jScrollPane2" min="-2" pref="74" max="-2" attributes="0"/>
+                  </Group>
               </Group>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <Component id="jBSongAddUpd" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JBAddArtist" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBDeleteArtist" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBAddPerson" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBDeletePerson" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jBBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-              <Component id="JBAddSong" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLTitle">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="36" style="1"/>
@@ -183,24 +217,24 @@
         <Property name="text" type="java.lang.String" value="Person"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFDurationSong">
+    <Component class="javax.swing.JTextField" name="jTFDurationSong">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFDurationSongActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFDurationSongActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFNameSong">
+    <Component class="javax.swing.JTextField" name="jTFNameSong">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFNameSongActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFNameSongActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="JCBGenders">
+    <Component class="javax.swing.JComboBox" name="jCBGenders">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JCBGendersActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBGendersActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -213,7 +247,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="JLArtistSong">
+        <Component class="javax.swing.JList" name="jLArtistSong">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
@@ -225,30 +259,30 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="JBAddArtist">
+    <Component class="javax.swing.JButton" name="jBAddArtist">
       <Properties>
-        <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
+        <Property name="text" type="java.lang.String" value="Add A."/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBAddArtistActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAddArtistActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="JBDeleteArtist">
+    <Component class="javax.swing.JButton" name="jBDeleteArtist">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Eliminar"/>
+        <Property name="text" type="java.lang.String" value="Delete A."/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBDeleteArtistActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBDeleteArtistActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="JBAddSong">
+    <Component class="javax.swing.JButton" name="jBSongAddUpd">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Agregar Song"/>
+        <Property name="text" type="java.lang.String" value="Add Song"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFArtistSong">
+    <Component class="javax.swing.JTextField" name="jTFArtistSong">
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFPersonSong">
+    <Component class="javax.swing.JTextField" name="jTFPersonSong">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
@@ -257,7 +291,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="JLPersonSong">
+        <Component class="javax.swing.JList" name="jLPersonSong">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
@@ -269,23 +303,31 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="JBAddPerson">
+    <Component class="javax.swing.JButton" name="jBAddPerson">
       <Properties>
-        <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
+        <Property name="text" type="java.lang.String" value="Add P."/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBAddPersonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAddPersonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="JBDeletePerson">
+    <Component class="javax.swing.JButton" name="jBDeletePerson">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Eliminar"/>
+        <Property name="text" type="java.lang.String" value="Delete P."/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBDeletePersonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBDeletePersonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFAlbumSong">
+    <Component class="javax.swing.JTextField" name="jTFAlbumSong">
+    </Component>
+    <Component class="javax.swing.JButton" name="jBBack">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Back"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBackActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

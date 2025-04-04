@@ -31,8 +31,7 @@ public class SongController {
     }
     
     public boolean checkDB(String tableName, String columnName, String value){
-        return songService.checkIfExistsInDB(tableName, columnName, value);
-        
+        return songService.checkIfExistsInDB(tableName, columnName, value);   
     }
     
     public String getPerson(String person){
@@ -45,5 +44,9 @@ public class SongController {
     
     public String getIdGender(String genderName){
         return songService.getIdGenderByName(genderName);
+    }
+    
+    public String getIdSong(String songName){
+        return songService.getIdSongByName(songName);
     }
 }
