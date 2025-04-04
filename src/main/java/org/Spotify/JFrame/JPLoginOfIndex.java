@@ -14,7 +14,7 @@ import org.Spotify.Services.UserService;
  * @author pipejfdv
  */
 public class JPLoginOfIndex extends javax.swing.JPanel {
-
+    private static String idUserLogin;
     private Index index;
             
     public JPLoginOfIndex(Index index) {
@@ -29,6 +29,7 @@ public class JPLoginOfIndex extends javax.swing.JPanel {
         User credentials = userService.singInDB(txtUser.getText());
         if(credentials.getNickname().equals(txtUser.getText())
                 && credentials.getPassword().equals(jPasswordUser.getText())){
+            idUserLogin = credentials.getIdUser();
             JFHome home = new JFHome();
             home.setVisible(true);
             home.setLocationRelativeTo(null);
@@ -39,6 +40,15 @@ public class JPLoginOfIndex extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "credenciales incorrectas");
         }
     }
+
+    public static String getIdUserLogin() {
+        return idUserLogin;
+    }
+
+    public static void setIdUserLogin(String idUserLogin) {
+        JPLoginOfIndex.idUserLogin = idUserLogin;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

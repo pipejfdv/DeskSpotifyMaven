@@ -468,4 +468,30 @@ public class SongService {
         }
         return idSong;
     }
+    
+    public boolean checkIfUserPartcipatedInSong(String idSong, String idUser){
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT IdArtist FROM SongUsers WHERE idSong = ? AND idArtist = ?";
+        
+        try(PreparedStatement stmt = conex.prepareStatement(sql)){
+            stmt.setString(1, idSong);
+            stmt.setString(2, idUser);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                return true;
+            }
+        }catch(SQLException ex){
+            System.out.println("Error: Al buscar artist en song: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally{
+            try{
+                if (conex != null) conex.close();
+            } catch(SQLException ex){
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+        return false;
+    }
 }

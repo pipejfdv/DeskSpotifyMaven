@@ -31,9 +31,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jBSongRead" min="-2" pref="125" max="-2" attributes="0"/>
-                          <Component id="jBSongUpdate" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jBSongRead" max="32767" attributes="0"/>
+                          <Component id="jBSongUpdate" max="32767" attributes="0"/>
+                          <Component id="jBDeleteSong" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -52,9 +53,11 @@
               <Component id="jTFSongName" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="jBSongUpdate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jBSongRead" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jBDeleteSong" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,6 +93,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFSongName">
+    </Component>
+    <Component class="javax.swing.JButton" name="jBDeleteSong">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete Song"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBDeleteSongActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

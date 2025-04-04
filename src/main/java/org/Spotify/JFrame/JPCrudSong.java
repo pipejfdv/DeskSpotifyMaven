@@ -6,6 +6,7 @@ package org.Spotify.JFrame;
 
 import javax.swing.JOptionPane;
 import org.Spotify.Controllers.SongController;
+import org.Spotify.Models.Song;
 
 /**
  *
@@ -43,6 +44,7 @@ public class JPCrudSong extends javax.swing.JPanel {
         jBSongRead = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTFSongName = new javax.swing.JTextField();
+        jBDeleteSong = new javax.swing.JButton();
 
         jBSongAdd.setText("Add Song");
         jBSongAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +69,13 @@ public class JPCrudSong extends javax.swing.JPanel {
 
         jLabel1.setText("Enter the name of the song to Up. or Re:");
 
+        jBDeleteSong.setText("Delete Song");
+        jBDeleteSong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeleteSongActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,9 +92,10 @@ public class JPCrudSong extends javax.swing.JPanel {
                         .addComponent(jBSongAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBSongRead, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBSongUpdate))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBSongRead, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBSongUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBDeleteSong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,9 +109,11 @@ public class JPCrudSong extends javax.swing.JPanel {
                 .addComponent(jTFSongName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jBSongUpdate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jBSongRead)
-                .addGap(27, 27, 27))
+                .addGap(18, 18, 18)
+                .addComponent(jBDeleteSong)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -109,6 +121,7 @@ public class JPCrudSong extends javax.swing.JPanel {
         String idSong = "";
         JFSong open = new JFSong(false, idSong);
         open.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jBSongAddActionPerformed
 
     private void jBSongUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSongUpdateActionPerformed
@@ -121,6 +134,7 @@ public class JPCrudSong extends javax.swing.JPanel {
         
         JFSong open = new JFSong(true, idSong);
         open.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jBSongUpdateActionPerformed
 
     private void jBSongReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSongReadActionPerformed
@@ -133,10 +147,37 @@ public class JPCrudSong extends javax.swing.JPanel {
         
         JFReadSong open = new JFReadSong(idSong);
         open.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jBSongReadActionPerformed
+
+    private void jBDeleteSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteSongActionPerformed
+        String idSong = getIdSong();
+        String idUser = JPLoginOfIndex.getIdUserLogin();
+        
+        System.out.println(idUser);
+        
+        if (idSong == null){
+            JOptionPane.showMessageDialog(this, "This Song isn't registered in the DB");
+            return;
+        }
+        
+        if(songCon.checkArtistInSong(idSong, idUser)){
+            Song song = new Song(idSong);
+            songCon.deleteSong(song);
+            JOptionPane.showMessageDialog(this, "Song deleted successfully");
+            jTFSongName.setText("");
+            return;
+        }else{
+            System.out.println(idUser);
+            JOptionPane.showMessageDialog(this, "You can't delete this song because you didn't participate in it");
+            return;
+        }
+        
+    }//GEN-LAST:event_jBDeleteSongActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBDeleteSong;
     private javax.swing.JButton jBSongAdd;
     private javax.swing.JButton jBSongRead;
     private javax.swing.JButton jBSongUpdate;

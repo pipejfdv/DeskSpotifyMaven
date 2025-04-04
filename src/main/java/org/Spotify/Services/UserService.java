@@ -303,9 +303,10 @@ public class UserService {
             pre.setString(1, nickname);
             ResultSet rs = pre.executeQuery();
             if(rs.next()){
+                String idUserDB = rs.getString("idUser");
                 String nicknameDB = rs.getString("nickname");
                 String passwordDB = rs.getString("passwordUser");
-                return User.credentials(nicknameDB, passwordDB);
+                return User.credentials(idUserDB, nicknameDB, passwordDB);
                 
             }
             else{

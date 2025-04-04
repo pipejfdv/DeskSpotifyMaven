@@ -49,4 +49,8 @@ public class SongController {
     public String getIdSong(String songName){
         return songService.getIdSongByName(songName);
     }
+    
+    public boolean checkArtistInSong(String idSong, String idUser){
+        return songService.checkIfUserPartcipatedInSong(idSong, idUser);
+    }
 }

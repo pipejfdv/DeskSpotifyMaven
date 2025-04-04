@@ -20,8 +20,9 @@ public class User {
     }
     
     //credentials user constructos static
-    public static User credentials(String nickname, String password){
+    public static User credentials(String idUser, String nickname, String password){
        User user = new User();
+       user.idUser = idUser;
        user.nickname = nickname;
        user.password = password;
        return user;
