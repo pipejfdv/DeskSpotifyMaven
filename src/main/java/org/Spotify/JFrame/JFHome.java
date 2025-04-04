@@ -204,7 +204,14 @@ public class JFHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jBSongsCrudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSongsCrudActionPerformed
-        // TODO add your handling code here:
+        JPCrudSong crudSongPanel = new JPCrudSong(this);
+        crudSongPanel.setSize(336, 370);
+        crudSongPanel.setLocation(0, 0);
+        
+        jPanelContenedorInfo.removeAll();
+        jPanelContenedorInfo.add(crudSongPanel, BorderLayout.CENTER);
+        jPanelContenedorInfo.revalidate();
+        jPanelContenedorInfo.repaint();
     }//GEN-LAST:event_jBSongsCrudActionPerformed
 
     /**

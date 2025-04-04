@@ -89,7 +89,11 @@ public class SongService {
             stmtUpdateSong.setBoolean(3, song.isLikeSong());
             stmtUpdateSong.setString(4, song.getDurationSong());
             stmtUpdateSong.setString(5, song.getGenderSong().getIdGenderOfMusic());
-            stmtUpdateSong.setString(6, song.getAlbumSong().getIdAlbum());
+            if (song.getAlbumSong() != null) {
+                stmtUpdateSong.setString(6, song.getAlbumSong().getIdAlbum());
+            } else {
+                stmtUpdateSong.setNull(6, java.sql.Types.VARCHAR);
+            }
             stmtUpdateSong.setString(7, song.getIdSong());
             stmtUpdateSong.executeUpdate();
 

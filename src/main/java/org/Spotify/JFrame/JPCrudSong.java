@@ -19,6 +19,7 @@ public class JPCrudSong extends javax.swing.JPanel {
     public JPCrudSong(JFHome home) {
         initComponents();
         this.home = home;
+        jTFSongName.setText("");
     }
     
     public String getIdSong(){
@@ -58,6 +59,11 @@ public class JPCrudSong extends javax.swing.JPanel {
         });
 
         jBSongRead.setText("Read Song");
+        jBSongRead.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSongReadActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Enter the name of the song to Up. or Re:");
 
@@ -80,7 +86,7 @@ public class JPCrudSong extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBSongRead, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBSongUpdate))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,20 +99,14 @@ public class JPCrudSong extends javax.swing.JPanel {
                 .addComponent(jTFSongName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jBSongUpdate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jBSongRead)
                 .addGap(27, 27, 27))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSongAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSongAddActionPerformed
-        String idSong = getIdSong();
-        
-        if (idSong == null){
-            JOptionPane.showMessageDialog(this, "This Song isn't registered in the DB");
-            return;
-        }
-        
+        String idSong = "";
         JFSong open = new JFSong(false, idSong);
         open.setVisible(true);
     }//GEN-LAST:event_jBSongAddActionPerformed
@@ -122,6 +122,18 @@ public class JPCrudSong extends javax.swing.JPanel {
         JFSong open = new JFSong(true, idSong);
         open.setVisible(true);
     }//GEN-LAST:event_jBSongUpdateActionPerformed
+
+    private void jBSongReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSongReadActionPerformed
+        String idSong = getIdSong();
+        
+        if (idSong == null){
+            JOptionPane.showMessageDialog(this, "This Song isn't registered in the DB");
+            return;
+        }
+        
+        JFReadSong open = new JFReadSong(idSong);
+        open.setVisible(true);
+    }//GEN-LAST:event_jBSongReadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

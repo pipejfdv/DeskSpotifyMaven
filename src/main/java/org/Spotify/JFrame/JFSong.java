@@ -36,27 +36,27 @@ public class JFSong extends javax.swing.JFrame {
         this.idSong = idSong;
         
         cargarGenders(jCBGenders);
-        jLArtistSong.setModel(modelArtists);
-        jLPersonSong.setModel(modelPersons);
+        jLiArtistSong.setModel(modelArtists);
+        jLiPersonSong.setModel(modelPersons);
         jBAddArtist.addActionListener(e -> agregarArtista());
         jBDeleteArtist.addActionListener(e -> eliminarArtista());
         jBAddPerson.addActionListener(e -> agregarPersona());
         jBDeletePerson.addActionListener(e -> eliminarPersona());
         
         if (update) {
-            jLTitle.setText("Update Song");
+            jLaTitle.setText("Update Song");
             jBSongAddUpd.setText("Update Song");
             cargarDatosCancion();
         } else {
-            jLTitle.setText("Add Song");
+            jLaTitle.setText("Add Song");
             jBSongAddUpd.setText("Add Song");
         }
         
-        jBSongAddUpd.addActionListener(e -> newSong(idSong));
+        jBSongAddUpd.addActionListener(e -> newSong(update, idSong));
     }
     
-    public void newSong(String idSong){
-        
+    public void newSong(boolean update, String idSong){
+         
         String nameSong = jTFNameSong.getText();
         
         String durationSong = jTFDurationSong.getText();
@@ -76,10 +76,13 @@ public class JFSong extends javax.swing.JFrame {
             return;
         }
         
-        if (checkSongsBD(nameSong)) {
-            JOptionPane.showMessageDialog(this, "This song name is already registered");
-            return;
+        if (!update){
+            if (checkSongsBD(nameSong)) {
+                JOptionPane.showMessageDialog(this, "This song name is already registered");
+                return;
+            }
         }
+        
             
         String genderName = jCBGenders.getSelectedItem().toString();
         String idGender = songCon.getIdGender(genderName);
@@ -135,7 +138,7 @@ public class JFSong extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLTitle = new javax.swing.JLabel();
+        jLaTitle = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -146,23 +149,23 @@ public class JFSong extends javax.swing.JFrame {
         jTFNameSong = new javax.swing.JTextField();
         jCBGenders = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jLArtistSong = new javax.swing.JList<>();
+        jLiArtistSong = new javax.swing.JList<>();
         jBAddArtist = new javax.swing.JButton();
         jBDeleteArtist = new javax.swing.JButton();
         jBSongAddUpd = new javax.swing.JButton();
         jTFArtistSong = new javax.swing.JTextField();
         jTFPersonSong = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jLPersonSong = new javax.swing.JList<>();
+        jLiPersonSong = new javax.swing.JList<>();
         jBAddPerson = new javax.swing.JButton();
         jBDeletePerson = new javax.swing.JButton();
         jTFAlbumSong = new javax.swing.JTextField();
-        jBBack = new javax.swing.JButton();
+        jBBackHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLTitle.setText("Add Song");
+        jLaTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLaTitle.setText("Add Song");
 
         jLabel2.setText("Name");
 
@@ -194,7 +197,7 @@ public class JFSong extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(jLArtistSong);
+        jScrollPane1.setViewportView(jLiArtistSong);
 
         jBAddArtist.setText("Add A.");
         jBAddArtist.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +215,7 @@ public class JFSong extends javax.swing.JFrame {
 
         jBSongAddUpd.setText("Add Song");
 
-        jScrollPane2.setViewportView(jLPersonSong);
+        jScrollPane2.setViewportView(jLiPersonSong);
 
         jBAddPerson.setText("Add P.");
         jBAddPerson.addActionListener(new java.awt.event.ActionListener() {
@@ -228,10 +231,10 @@ public class JFSong extends javax.swing.JFrame {
             }
         });
 
-        jBBack.setText("Back");
-        jBBack.addActionListener(new java.awt.event.ActionListener() {
+        jBBackHome.setText("Back");
+        jBBackHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBBackActionPerformed(evt);
+                jBBackHomeActionPerformed(evt);
             }
         });
 
@@ -244,7 +247,7 @@ public class JFSong extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(jLTitle)
+                        .addComponent(jLaTitle)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +280,7 @@ public class JFSong extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(251, 251, 251)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBBackHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBSongAddUpd)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,13 +301,13 @@ public class JFSong extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLTitle)
+                .addComponent(jLaTitle)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -347,10 +350,10 @@ public class JFSong extends javax.swing.JFrame {
                                 .addComponent(jBDeletePerson))
                             .addGap(101, 101, 101))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jBSongAddUpd)
                 .addGap(18, 18, 18)
-                .addComponent(jBBack)
+                .addComponent(jBBackHome)
                 .addGap(82, 82, 82))
         );
 
@@ -385,12 +388,12 @@ public class JFSong extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBDeletePersonActionPerformed
 
-    private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
+    private void jBBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackHomeActionPerformed
         JFHome open = new JFHome();
         limpiarCampos();
         open.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jBBackActionPerformed
+    }//GEN-LAST:event_jBBackHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -431,20 +434,20 @@ public class JFSong extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAddArtist;
     private javax.swing.JButton jBAddPerson;
-    private javax.swing.JButton jBBack;
+    private javax.swing.JButton jBBackHome;
     private javax.swing.JButton jBDeleteArtist;
     private javax.swing.JButton jBDeletePerson;
     private javax.swing.JButton jBSongAddUpd;
     private javax.swing.JComboBox<String> jCBGenders;
-    private javax.swing.JList<String> jLArtistSong;
-    private javax.swing.JList<String> jLPersonSong;
-    private javax.swing.JLabel jLTitle;
+    private javax.swing.JLabel jLaTitle;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JList<String> jLiArtistSong;
+    private javax.swing.JList<String> jLiPersonSong;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTFAlbumSong;
@@ -515,7 +518,7 @@ public class JFSong extends javax.swing.JFrame {
     }
 
     private void eliminarArtista() {
-        int index = jLArtistSong.getSelectedIndex();
+        int index = jLiArtistSong.getSelectedIndex();
         if (index != -1) {
             modelArtists.remove(index);
         }
@@ -523,7 +526,7 @@ public class JFSong extends javax.swing.JFrame {
 
     // Método para eliminar persona seleccionada
     private void eliminarPersona() {
-        int index = jLPersonSong.getSelectedIndex();
+        int index = jLiPersonSong.getSelectedIndex();
         if (index != -1) {
             modelPersons.remove(index);
         }
@@ -562,17 +565,17 @@ public class JFSong extends javax.swing.JFrame {
             jTFDurationSong.setText(song.getDurationSong());
 
             if (song.getAlbumSong() != null) {
-                jTFAlbumSong.setText(song.getAlbumSong().getIdAlbum());
+                jTFAlbumSong.setText(song.getAlbumSong().getNameAlbum());
             }
 
             jCBGenders.setSelectedItem(song.getGenderSong().getGenderOfMusic());
 
             for (User user : song.getArtistSong()) {
-                modelArtists.addElement(user.getNickname()); // Asumiendo que tienes un atributo nickname
+                modelArtists.addElement(user.getNickname()); 
             }
 
             for (Person person : song.getPersonSong()) {
-                modelPersons.addElement(person.getFirstName()); // Asumiendo que tienes un atributo firstName
+                modelPersons.addElement(person.getFirstName()); 
             }
         }
      }
