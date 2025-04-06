@@ -2,6 +2,7 @@ package org.Spotify.Main;
 
 
 
+import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import org.Spotify.Controllers.UserController;
@@ -11,6 +12,8 @@ import org.Spotify.Services.UserService;
 import javax.swing.*;
 import java.util.Scanner;
 import java.util.UUID;
+import org.Spotify.Controllers.GenderController;
+import org.Spotify.Controllers.SongController;
 import org.Spotify.Models.Album;
 import org.Spotify.Models.Comment;
 import org.Spotify.Models.GenderOfMusic;
@@ -25,6 +28,10 @@ import org.Spotify.Services.RolService;
 import org.Spotify.Services.SongService;
 import org.Spotify.Services.SongService;
 import org.Spotify.JFrame.Index;
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
 //import org.Spotify.Views.Index;
 
 public class App
@@ -32,15 +39,28 @@ public class App
     public static void main( String[] args )
     {
         /*----SERVICES INVOCADOS-----*/
-        RolService rolServ = new RolService();
-        PersonService personServ = new PersonService();
-        UserService userServ = new UserService();
+       
         GenderMusicService genderServ = new GenderMusicService();
         
-        Rol insertarRol = new Rol("f7922fcd-0935-4ad8-a738-3715ae02e595", "User");
-        rolServ.addRol(insertarRol);
-        rolServ.readRol("User");
         
+        
+        
+        GenderController genderController = new GenderController(genderServ);
+        GenderOfMusic genderMusic = genderController.showGenderMusic("550e8400-e29b-41d4-a716-446655440002");
+        
+        
+        
+       
+        Song song = new Song(UUID.randomUUID().toString(), 
+                "la tipica", 
+                "4444", 
+                "3:00", 
+                genderMusic, 
+                null, 
+                "src/main/java/org/Spotify/Music/La tipica.mp3");
+        
+        SongController songController = new SongController();
+        songController.insertSong(song);
         /*
         
        // Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");

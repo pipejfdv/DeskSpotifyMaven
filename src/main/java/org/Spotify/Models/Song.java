@@ -6,11 +6,12 @@ import java.util.ArrayList;
 public class Song {
     private String idSong;
     private String nameSong;
-    private Date creationSong;
+    private String creationSong;
     private boolean likeSong = false;
     private String durationSong;
     private GenderOfMusic genderSong;
     private Album albumSong;
+    private String pathFile;
     private ArrayList<User> artistSong = new ArrayList();
     private ArrayList<Person> personSong = new ArrayList();
     
@@ -21,8 +22,20 @@ public class Song {
     public Song(String idSong) {
         this.idSong = idSong;
     }
-
-    public Song(String idSong, String nameSong, Date creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
+    
+    /* Contructor para crear la canción en base de datos*/
+    public Song(String idSong, String nameSong, String creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong, String pathFile) {
+        this.idSong = idSong;
+        this.nameSong = nameSong;
+        this.creationSong = creationSong;
+        this.durationSong = durationSong;
+        this.genderSong = genderSong;
+        this.albumSong = albumSong;
+        this.pathFile = pathFile;
+    }
+    
+    
+    public Song(String idSong, String nameSong, String creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
         this.idSong = idSong;
         this.nameSong = nameSong;
         this.creationSong = creationSong;
@@ -31,7 +44,7 @@ public class Song {
         this.albumSong = albumSong;
     }
     
-    public Song(String idSong, String nameSong, Date creationSong, Boolean likeSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
+    public Song(String idSong, String nameSong, String creationSong, Boolean likeSong, String durationSong, GenderOfMusic genderSong, Album albumSong) {
         this.idSong = idSong;
         this.nameSong = nameSong;
         this.creationSong = creationSong;
@@ -41,7 +54,7 @@ public class Song {
         this.albumSong = albumSong;
     }
     
-    public Song(String idSong, String nameSong, Date creationSong, Boolean likeSong, String durationSong, GenderOfMusic genderSong, Album albumSong, ArrayList<User> artistSong, ArrayList<Person> personSong) {
+    public Song(String idSong, String nameSong, String creationSong, Boolean likeSong, String durationSong, GenderOfMusic genderSong, Album albumSong, ArrayList<User> artistSong, ArrayList<Person> personSong) {
         this.idSong = idSong;
         this.nameSong = nameSong;
         this.creationSong = creationSong;
@@ -53,7 +66,7 @@ public class Song {
         this.personSong = personSong;
     }
     
-    public Song(String idSong, String nameSong, Date creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong, ArrayList<User> artistSong, ArrayList<Person> personSong) {
+    public Song(String idSong, String nameSong, String creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong, ArrayList<User> artistSong, ArrayList<Person> personSong) {
         this.idSong = idSong;
         this.nameSong = nameSong;
         this.creationSong = creationSong;
@@ -81,11 +94,11 @@ public class Song {
         this.nameSong = nameSong;
     }
 
-    public Date getCreationSong() {
+    public String getCreationSong() {
         return creationSong;
     }
 
-    public void setCreationSong(Date creationSong) {
+    public void setCreationSong(String creationSong) {
         this.creationSong = creationSong;
     }
 
@@ -136,25 +149,13 @@ public class Song {
     public void setPersonSong(ArrayList<Person> personSong) {
         this.personSong = personSong;
     }
-    
-    /*public void playSong(){
-        
+
+    public String getPathFile() {
+        return pathFile;
     }
-    
-    public void nextSong(){
-        
+
+    public void setPathFile(String pathFile) {
+        this.pathFile = pathFile;
     }
-    
-    public void previousSong(){
-        
-    }
-    
-    public void stopSong(){
-        
-    }
-    
-    public void likeDislikeSong(){
-        
-    }*/
     
 }

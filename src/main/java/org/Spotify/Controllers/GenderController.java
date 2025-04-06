@@ -20,8 +20,8 @@ public class GenderController {
     public void insertGenderMusic(GenderOfMusic genderMusic) {
         genderService.addGender(genderMusic);
     }
-    public void showGenderMusic(String idGender) {
-        genderService.readGender(idGender);
+    public GenderOfMusic showGenderMusic(String idGender) {
+        return genderService.readGender(idGender);
     }
     public void deleteGenderMusic(GenderOfMusic genderMusic) {
         genderService.deleteGender(genderMusic);

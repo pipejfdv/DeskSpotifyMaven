@@ -33,6 +33,30 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.33</version>
     </dependency>
+    <!-- JavaFX reproductor -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>17.0.2</version> 
+    </dependency>
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-media</artifactId> <!-- Para reproducción de MP3 -->
+        <version>25-ea+11</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-swing</artifactId>
+      <version>25-ea+11</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+        <groupId>org</groupId>
+        <artifactId>jaudiotagger</artifactId>
+        <version>2.0.3</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
   
   <build>

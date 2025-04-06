@@ -112,14 +112,14 @@ public class JFSong extends javax.swing.JFrame {
         }
         
         if (update){
-            Song updateSong = new Song(idSong, nameSong, new Date(System.currentTimeMillis()), false, durationSong, genderSong, albumSong, artistas, personas);
+            Song updateSong = new Song(idSong, nameSong, "1111", false, durationSong, genderSong, albumSong, artistas, personas);
         
             songCon.updateSong(updateSong);
 
             JOptionPane.showMessageDialog(this, "Song updated successfully.");
 
         }else{
-            Song insertarSong = new Song(UUID.randomUUID().toString(), nameSong, new Date(System.currentTimeMillis()), durationSong, genderSong, albumSong, artistas, personas);
+            Song insertarSong = new Song(UUID.randomUUID().toString(), nameSong, "2222", durationSong, genderSong, albumSong, artistas, personas);
         
             songCon.insertSong(insertarSong);
 

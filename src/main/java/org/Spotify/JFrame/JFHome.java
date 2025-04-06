@@ -8,7 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import javafx.embed.swing.JFXPanel;
 /**
  *
  * @author pipejfdv
@@ -19,7 +19,8 @@ public class JFHome extends javax.swing.JFrame {
      * Creates new form JFHome
      */
     public JFHome() {
-        
+        //inicializar 
+        new JFXPanel();
         initComponents();
         JPListSongs JPListSong = new JPListSongs();
         JPListSong.setSize(394, 450);

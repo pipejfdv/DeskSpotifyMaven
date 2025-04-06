@@ -20,7 +20,7 @@ public class SongService {
 
     public void addSong(Song song) {
         Connection conex = DataBase.Conectar();
-        String sqlSong = "INSERT INTO Songs(idSong, nameSong, creationSong, likeSong, durationSong, idGender, idAlbum) VALUES (?, ?, ?, ?, ?, ? ,?)";
+        String sqlSong = "INSERT INTO Songs(idSong, nameSong, creationSong, likeSong, durationSong, idGender, idAlbum, pathFile) VALUES (?, ?, ?, ?, ?, ? ,?, ?)";
         String sqlSongUser = "INSERT INTO SongUsers(idSong, idArtist) VALUES (?, ?)";
         String sqlSongPerson = "INSERT INTO SongPersons(idSong, idPerson) VALUES (?, ?)";
 
@@ -30,7 +30,7 @@ public class SongService {
 
             stmtSong.setString(1, song.getIdSong());
             stmtSong.setString(2, song.getNameSong());
-            stmtSong.setDate(3, song.getCreationSong());
+            stmtSong.setString(3, song.getCreationSong());
             stmtSong.setBoolean(4, song.isLikeSong());
             stmtSong.setString(5, song.getDurationSong());
             stmtSong.setString(6, song.getGenderSong().getIdGenderOfMusic());
@@ -39,6 +39,7 @@ public class SongService {
             } else {
                 stmtSong.setNull(7, java.sql.Types.VARCHAR);
             }
+            stmtSong.setString(8, song.getPathFile());
             stmtSong.executeUpdate();
 
             // Insertar en la tabla SongUser
@@ -85,7 +86,7 @@ public class SongService {
              PreparedStatement stmtInsertSongPerson = conex.prepareStatement(sqlInsertSongPerson)) {
 
             stmtUpdateSong.setString(1, song.getNameSong());
-            stmtUpdateSong.setDate(2, song.getCreationSong());
+            stmtUpdateSong.setString(2, song.getCreationSong());
             stmtUpdateSong.setBoolean(3, song.isLikeSong());
             stmtUpdateSong.setString(4, song.getDurationSong());
             stmtUpdateSong.setString(5, song.getGenderSong().getIdGenderOfMusic());
@@ -200,7 +201,7 @@ public class SongService {
                 
                 song = new Song(datosSong.getString("idSong"), 
                                 datosSong.getString("nameSong"), 
-                                datosSong.getDate("creationSong"), 
+                                datosSong.getString("creationSong"), 
                                 datosSong.getBoolean("likeSong"), 
                                 datosSong.getString("durationSong"),
                                 gender, 
