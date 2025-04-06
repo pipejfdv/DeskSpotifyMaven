@@ -33,7 +33,8 @@ public class JPLoginOfIndex extends javax.swing.JPanel {
             JFHome home = new JFHome();
             home.setVisible(true);
             home.setLocationRelativeTo(null);
-            home.setSize(800, 600);
+            home.setSize(650, 450);
+            home.setResizable(false);
             index.setVisible(false);
         }
         else{
