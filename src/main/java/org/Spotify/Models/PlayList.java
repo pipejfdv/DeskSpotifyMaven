@@ -9,7 +9,7 @@ public class PlayList {
     private String idPlayList;
     private String namePlayList;
     private User userPlayList;
-    private ArrayList<PlaylistSong> songsPlayList;
+    //private Song song;
 
     public PlayList() {
     }
@@ -18,11 +18,11 @@ public class PlayList {
         this.idPlayList = idPlayList;
     }
 
-    public PlayList(String idPlayList, String namePlayList, User userPlayList, ArrayList<PlaylistSong> songsPlayList) {
+    public PlayList(String idPlayList, String namePlayList, User userPlayList/*, Song song*/) {
         this.idPlayList = idPlayList;
         this.namePlayList = namePlayList;
         this.userPlayList = userPlayList;
-        this.songsPlayList = songsPlayList;
+        //this.song = song;
     }
 
     public String getIdPlayList() {
@@ -49,11 +49,11 @@ public class PlayList {
         this.userPlayList = userPlayList;
     }
 
-    public ArrayList<PlaylistSong> getSongsPlayList() {
-        return songsPlayList;
+    /*public Song getSongsPlayList() {
+        return song;
     }
 
-    public void setSongsPlayList(ArrayList<PlaylistSong> songsPlayList) {
-        this.songsPlayList = songsPlayList;
-    }
+    public void setSongsPlayList(Song song) {
+        this.song = song;
+    }*/
 }
