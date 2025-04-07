@@ -1,6 +1,7 @@
 
 package org.Spotify.JFrame;
 
+import GlobalData.ArrayData;
 import java.awt.Component;
 import java.sql.Connection;
 import java.sql.Date;
@@ -73,17 +74,17 @@ public class JFSong extends javax.swing.JFrame {
         
         String durationSong = jTFDurationSong.getText();
         
-        ArrayList<User> artistas = new ArrayList<>();
+        
         
         for (int i = 0; i < modelArtists.size(); i++) {
             String nickname = modelArtists.getElementAt(i);
             String idUser = songCon.getUser(nickname);
             if (idUser != null) {
-                artistas.add(new User(idUser));
+                ArrayData.artistas.add(new User(idUser));
             }
         }
         
-        if (nameSong == null || durationSong == null || artistas.isEmpty()) {
+        if (nameSong == null || durationSong == null || ArrayData.artistas.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Name, Duration and at least one artist are required to create a song");
             return;
         }
@@ -114,17 +115,17 @@ public class JFSong extends javax.swing.JFrame {
             }
         }
 
-        ArrayList<Person> personas = new ArrayList<>();
+        
         for (int i = 0; i < modelPersons.size(); i++) {
             String firstName = modelPersons.getElementAt(i);
             String idPerson = songCon.getPerson(firstName);
             if (idPerson != null) {
-                personas.add(new Person(idPerson));
+                ArrayData.personas.add(new Person(idPerson));
             }
         }
         
         if (update){
-            Song updateSong = new Song(idSong, nameSong, "1111", false, durationSong, genderSong, albumSong, artistas, personas);
+            Song updateSong = new Song(idSong, nameSong, "1111", false, durationSong, genderSong, albumSong, ArrayData.artistas, ArrayData.personas);
         
             songCon.updateSong(updateSong);
 
@@ -133,7 +134,7 @@ public class JFSong extends javax.swing.JFrame {
         }else{
             String file = saveSong.uploadMP3Song();
             
-            Song song = new Song(UUID.randomUUID().toString(), jTFNameSong.getText(), jTYearRelease.getText(), jTFDurationSong.getText(), getSelectedGender(), null, file, artistas, personas);
+            Song song = new Song(UUID.randomUUID().toString(), jTFNameSong.getText(), jTYearRelease.getText(), jTFDurationSong.getText(), getSelectedGender(), null, file, ArrayData.artistas, ArrayData.personas);
         
             songCon.insertSong(song);
 
@@ -485,6 +486,15 @@ public class JFSong extends javax.swing.JFrame {
                 jTFArtistSong.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "This Artist isn't registered in the DB");
+                int answer = JOptionPane.showConfirmDialog(null, "You want to add a new record?","Yes o no", JOptionPane.YES_NO_OPTION);
+                boolean aceptado = (answer == JOptionPane.YES_OPTION);
+                if (aceptado){
+                    JFRegistryArtis open = new JFRegistryArtis();
+                    open.setVisible(true);
+                    open.setLocationRelativeTo(null);
+                    open.setResizable(false);
+                    this.setVisible(false);
+                }
                 return false;
             }
         } else{
@@ -502,6 +512,15 @@ public class JFSong extends javax.swing.JFrame {
                 jTFPersonSong.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "This Person isn't registered in the DB");
+                int answer = JOptionPane.showConfirmDialog(null, "You want to add a new record?","Yes o no", JOptionPane.YES_NO_OPTION);
+                boolean aceptado = (answer == JOptionPane.YES_OPTION);
+                if (aceptado){
+                    JFRegistryArtis open = new JFRegistryArtis();
+                    open.setVisible(true);
+                    open.setLocationRelativeTo(null);
+                    open.setResizable(false);
+                    this.setVisible(false);
+                }
                 return false;
             }
         } else{
