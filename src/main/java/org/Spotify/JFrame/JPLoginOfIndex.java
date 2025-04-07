@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import org.Spotify.Models.User;
 import org.Spotify.Services.UserService;
-
+import org.Spotify.Models.Session;
 /**
  *
  * @author pipejfdv
@@ -29,6 +29,7 @@ public class JPLoginOfIndex extends javax.swing.JPanel {
         User credentials = userService.singInDB(txtUser.getText());
         if(credentials.getNickname().equals(txtUser.getText())
                 && credentials.getPassword().equals(jPasswordUser.getText())){
+            Session.usuarioActual = credentials;
             idUserLogin = credentials.getIdUser();
             JFHome home = new JFHome();
             home.setVisible(true);

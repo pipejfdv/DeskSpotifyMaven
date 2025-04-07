@@ -9,7 +9,6 @@ public class PlayList {
     private String idPlayList;
     private String namePlayList;
     private User userPlayList;
-    //private Song song;
 
     public PlayList() {
     }
@@ -17,6 +16,7 @@ public class PlayList {
     public PlayList(String idPlayList) {
         this.idPlayList = idPlayList;
     }
+
 
     public PlayList(String idPlayList, String namePlayList, User userPlayList/*, Song song*/) {
         this.idPlayList = idPlayList;
@@ -49,11 +49,9 @@ public class PlayList {
         this.userPlayList = userPlayList;
     }
 
-    /*public Song getSongsPlayList() {
-        return song;
+    @Override
+    public String toString() {
+        return this.namePlayList;
     }
 
-    public void setSongsPlayList(Song song) {
-        this.song = song;
-    }*/
 }

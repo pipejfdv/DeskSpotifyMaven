@@ -494,4 +494,34 @@ public class SongService {
         }
         return false;
     }
+    
+    public ArrayList<Song> getAllSongs() {
+    ArrayList<Song> canciones = new ArrayList<>();
+    Connection conex = DataBase.Conectar();
+    String sql = "SELECT * FROM Songs";
+
+    try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Song song = new Song(
+                rs.getString("idSong"),
+                rs.getString("nameSong"),
+                rs.getDate("releaseDate"),
+                rs.getBoolean("state"),
+                rs.getString("duration"),
+                null,
+                null
+            );
+            canciones.add(song);
+        }
+    } catch (SQLException ex) {
+        System.out.println("Error al obtener canciones: " + ex.getMessage());
+    } finally {
+        DataBase.Desconection(conex);
+    }
+
+    return canciones;
+    }   
+
+    
 }

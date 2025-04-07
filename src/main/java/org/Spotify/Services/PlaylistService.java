@@ -3,10 +3,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import org.Spotify.DB.DataBase;
 import java.util.UUID;
 import org.Spotify.Models.PlayList;
 import org.Spotify.Models.User;
+import org.Spotify.Models.Song;
 
 public class PlaylistService {
     public void addPlaylist(PlayList playlist) {
@@ -217,6 +219,82 @@ public class PlaylistService {
         return playlist;
     }
     
+    public ArrayList<Song> getSongsByPlaylistId(String idPlaylist) {
+    ArrayList<Song> canciones = new ArrayList<>();
+    Connection conex = DataBase.Conectar();
+
+    String sql = "SELECT s.* FROM Songs s " +
+                 "JOIN PlaylistsSong ps ON s.idSong = ps.idSong " +
+                 "WHERE ps.idPlaylist = ?";
+
+    try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+        stmt.setString(1, idPlaylist);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Song song = new Song(
+                rs.getString("idSong"),
+                rs.getString("nameSong"),
+                rs.getDate("releaseDate"),
+                rs.getBoolean("state"),
+                rs.getString("duration"),
+                null, // aquí puedes cargar género, álbum, artistas si lo deseas
+                null
+            );
+            canciones.add(song);
+        }
+    } catch (SQLException ex) {
+        System.out.println("Error al obtener canciones de la playlist: " + ex.getMessage());
+        ex.printStackTrace();
+    } finally {
+        DataBase.Desconection(conex);
+    }
+
+    return canciones;
+    }
     
+    public void addSongToPlaylist(String idPlaylist, String idSong) {
+    Connection conex = DataBase.Conectar();
+
+    String sql = "INSERT INTO PlaylistsSong(idPlaylist, idSong) VALUES (?, ?)";
+
+    try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+        stmt.setString(1, idPlaylist);
+        stmt.setString(2, idSong);
+        stmt.executeUpdate();
+        System.out.println("Canción agregada a la playlist con éxito.");
+    } catch (SQLException ex) {
+        System.out.println("Error al agregar canción: " + ex.getMessage());
+    } finally {
+        DataBase.Desconection(conex);
+        }
+    }
+    
+    public ArrayList<PlayList> getAllPlaylists() {
+    ArrayList<PlayList> playlists = new ArrayList<>();
+    Connection conex = DataBase.Conectar();
+    String sql = "SELECT * FROM Playlists";
+
+    try (PreparedStatement stmt = conex.prepareStatement(sql)) {
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            String idPlaylist = rs.getString("idPlaylist");
+            String namePlaylist = rs.getString("namePlaylist");
+            String idUser = rs.getString("idUserPlaylist");
+            User user = getUserById(idUser);
+
+            PlayList playlist = new PlayList(idPlaylist, namePlaylist, user);
+            playlists.add(playlist);
+        }
+    } catch (SQLException ex) {
+        System.out.println("Error al obtener playlists: " + ex.getMessage());
+    } finally {
+        DataBase.Desconection(conex);
+        }
+
+    return playlists;
+    }   
+
+
     
 }

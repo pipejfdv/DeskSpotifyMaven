@@ -136,7 +136,10 @@ public class Song {
     public void setPersonSong(ArrayList<Person> personSong) {
         this.personSong = personSong;
     }
-    
+    @Override
+    public String toString() {
+        return this.nameSong;
+    }
     /*public void playSong(){
         
     }
