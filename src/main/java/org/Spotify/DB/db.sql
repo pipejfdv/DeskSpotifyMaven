@@ -112,3 +112,12 @@ INSERT INTO Roles (idRol, nameRol) VALUES
 ('a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d', 'Admin'),
 ('b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e', 'User'),
 ('c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f', 'Artist');
+
+INSERT INTO Albums (idAlbum, nameAlbum, creationAlbum, likeAlbum, idGenderAlbum) VALUES 
+('8b6f2d9a-4e60-11ee-b3ff-0242ac120003', 'No Need to Argue', '1994-10-03', FALSE, '550e8400-e29b-41d4-a716-446655440001'),
+('b52a3b0c-4e60-11ee-9d42-0242ac120004', 'Mil Siluetas', '1984-06-01', FALSE, '550e8400-e29b-41d4-a716-446655440000');
+
+INSERT INTO Songs (idSong, nameSong, creationSong, durationSong, idGender, idAlbum, pathFile) VALUES ('d3a7b8c2-4e5f-11ee-be56-0242ac120002', 'Psycho (Acoustic)', '2021','3:06', '550e8400-e29b-41d4-a716-446655440000', NULL, 'src/main/java/org/Spotify/Music/Psycho (Acoustic).mp3');
+INSERT INTO Songs (idSong, nameSong, creationSong, durationSong, idGender, idAlbum, pathFile) VALUES ('5f2c1d9a-4e60-11ee-b3ff-0242ac120002', 'Who love the Sun', '1970','2:50', '550e8400-e29b-41d4-a716-446655440012', NULL, 'src/main/java/org/Spotify/Music/Who love the sun.mp3');
+INSERT INTO Songs (idSong, nameSong, creationSong, durationSong, idGender, idAlbum, pathFile) VALUES ('8e4a3b0c-4e60-11ee-9d42-0242ac120002', 'Zombie', '1994','5:06', '550e8400-e29b-41d4-a716-446655440001', NULL, 'src/main/java/org/Spotify/Music/Zombie.mp3');
+INSERT INTO Songs (idSong, nameSong, creationSong, durationSong, idGender, idAlbum, pathFile) VALUES ('b76c2d8e-4e60-11ee-8e1f-0242ac120002', 'Hombre lobo en Paris', '1984','3:52', '550e8400-e29b-41d4-a716-446655440000', NULL, 'src/main/java/org/Spotify/Music/hombre lobo en Paris.mp3');

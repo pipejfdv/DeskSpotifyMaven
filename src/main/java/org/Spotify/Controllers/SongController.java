@@ -1,5 +1,7 @@
 package org.Spotify.Controllers;
 
+import java.util.List;
+import java.util.Map;
 import org.Spotify.Models.Song;
 import org.Spotify.Services.SongService;
 
@@ -52,5 +54,13 @@ public class SongController {
     
     public boolean checkArtistInSong(String idSong, String idUser){
         return songService.checkIfUserPartcipatedInSong(idSong, idUser);
+    }
+    
+    public List<Song> addListSong(){
+        return songService.getDataToTable();
+    }
+    
+    public String pathSong(String nameSong){
+        return songService.pathSong(nameSong);
     }
 }

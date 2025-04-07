@@ -22,6 +22,12 @@ public class Song {
     public Song(String idSong) {
         this.idSong = idSong;
     }
+    /* Constructor para la tabla */
+    public Song(String nameSong, String durationSong) {
+        this.nameSong = nameSong;
+        this.durationSong = durationSong;
+    }
+
     
     /* Contructor para crear la canción en base de datos con ruta y artista */
     public Song(String idSong, String nameSong, String creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong, String pathFile, ArrayList<User> artistSong, ArrayList<Person> personSong) {

@@ -19,9 +19,8 @@ public class JFHome extends javax.swing.JFrame {
      * Creates new form JFHome
      */
     public JFHome() {
-        //inicializar 
-        new JFXPanel();
         initComponents();
+        new JFXPanel();
         JPListSongs JPListSong = new JPListSongs();
         JPListSong.setSize(394, 450);
         JPListSong.setLocation(0, 0);

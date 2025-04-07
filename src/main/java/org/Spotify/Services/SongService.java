@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import javax.swing.table.DefaultTableModel;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Album;
 import org.Spotify.Models.GenderOfMusic;
@@ -494,5 +498,44 @@ public class SongService {
             }
         }
         return false;
+    }
+    
+    /* Busqueda de registro en la base de datos para traer al combo Box*/
+    public List<Song> getDataToTable(){
+        List<Song> canciones = new ArrayList<>();
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT * FROM Songs";
+        try (PreparedStatement prt = conex.prepareStatement(sql)){
+            ResultSet rs = prt.executeQuery();
+            while(rs.next()){
+                canciones.add(new Song(
+                        rs.getString("nameSong"),
+                        rs.getString("durationSong")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Fallo de inserción " +e);
+        } finally {
+            DataBase.Desconection(conex);
+        }
+        return canciones;
+    }
+    
+    public String pathSong(String nameSong){
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT pathFile FROM Songs WHERE nameSong = ?";
+        String path = null;
+        try (PreparedStatement ptr = conex.prepareStatement(sql)){
+            ptr.setString(1, nameSong);
+            ResultSet rs = ptr.executeQuery();
+            if(rs.next()){
+                path = rs.getString("pathFile");
+            }
+        } catch (SQLException e) {
+            System.out.println("Ruta no encontrada "+ e.getMessage());
+        } finally {
+            DataBase.Desconection(conex);
+        }
+        return path;
     }
 }

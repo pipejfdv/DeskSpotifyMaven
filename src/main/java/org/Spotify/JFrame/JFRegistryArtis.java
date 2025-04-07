@@ -1,7 +1,7 @@
 
 package org.Spotify.JFrame;
 
-import GlobalData.ArrayData;
+import org.Spotify.GlobalData.ArrayData;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;

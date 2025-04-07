@@ -4,7 +4,12 @@
  */
 package org.Spotify.JFrame;
 
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import org.Spotify.ConfigPlayer.mediaPlayer;
+import org.Spotify.Controllers.SongController;
+import org.Spotify.Models.Song;
 
 /**
  *
@@ -12,11 +17,21 @@ import org.Spotify.ConfigPlayer.mediaPlayer;
  */
 public class JPListSongs extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPListSongs
-     */
+    SongController songController = new SongController();
+    
     public JPListSongs() {
         initComponents();
+        agregar();
+        
+    }
+    
+    public void agregar(){
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) jComboBoxListSong.getModel();
+        model.removeAllElements();
+        List <Song> canciones = songController.addListSong();
+        for(Song cancion : canciones){
+            jComboBoxListSong.addItem(cancion.getNameSong());
+        }
     }
 
     /**
@@ -30,8 +45,7 @@ public class JPListSongs extends javax.swing.JPanel {
 
         jLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        jComboBoxListSong = new javax.swing.JComboBox<>();
 
         jLabel.setFont(new java.awt.Font("Noto Sans CJK SC", 1, 24)); // NOI18N
         jLabel.setText("Playlist");
@@ -43,18 +57,7 @@ public class JPListSongs extends javax.swing.JPanel {
             }
         });
 
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable);
+        jComboBoxListSong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -68,32 +71,35 @@ public class JPListSongs extends javax.swing.JPanel {
                             .addComponent(jLabel)
                             .addComponent(jButton1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addGap(83, 83, 83)
+                        .addComponent(jComboBoxListSong, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(jComboBoxListSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(57, 57, 57))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        mediaPlayer.play("src/main/java/org/Spotify/Music/La tipica.mp3");
+        String tituloSong = (String) jComboBoxListSong.getSelectedItem();
+        System.out.println("ruta selec"+ tituloSong);
+        String path = songController.pathSong(tituloSong);
+        System.out.println("ruta " + path);
+        mediaPlayer.play(path);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBoxListSong;
     private javax.swing.JLabel jLabel;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
 }

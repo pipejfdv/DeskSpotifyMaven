@@ -1,7 +1,7 @@
 
 package org.Spotify.JFrame;
 
-import GlobalData.ArrayData;
+import org.Spotify.GlobalData.ArrayData;
 import java.awt.Component;
 import java.sql.Connection;
 import java.sql.Date;
