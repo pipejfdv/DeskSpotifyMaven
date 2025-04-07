@@ -1,17 +1,25 @@
 
 package org.Spotify.JFrame;
 
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import org.Spotify.ConfigPlayer.saveSong;
+import org.Spotify.Controllers.GenderController;
 import org.Spotify.Controllers.SongController;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.Album;
@@ -20,10 +28,13 @@ import org.Spotify.Models.GenderOfMusic;
 import org.Spotify.Models.Person;
 import org.Spotify.Models.Song;
 import org.Spotify.Models.User;
+import org.Spotify.Services.GenderMusicService;
 import org.Spotify.Services.SongService;
 
 public class JFSong extends javax.swing.JFrame {
 
+    private Map<String, GenderOfMusic> genderMap;
+    
     SongController songCon = new SongController();
     private boolean update;
     private String idSong;
@@ -32,10 +43,11 @@ public class JFSong extends javax.swing.JFrame {
     
     public JFSong(boolean update, String idSong) {
         initComponents();
+        loadGenders();
+        
         this.update = update;
         this.idSong = idSong;
         
-        cargarGenders(jCBGenders);
         jLiArtistSong.setModel(modelArtists);
         jLiPersonSong.setModel(modelPersons);
         jBAddArtist.addActionListener(e -> agregarArtista());
@@ -119,14 +131,29 @@ public class JFSong extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Song updated successfully.");
 
         }else{
-            Song insertarSong = new Song(UUID.randomUUID().toString(), nameSong, "2222", durationSong, genderSong, albumSong, artistas, personas);
+            String file = saveSong.uploadMP3Song();
+            
+            Song song = new Song(UUID.randomUUID().toString(), jTFNameSong.getText(), jTYearRelease.getText(), jTFDurationSong.getText(), getSelectedGender(), null, file, artistas, personas);
         
-            songCon.insertSong(insertarSong);
+            songCon.insertSong(song);
 
             JOptionPane.showMessageDialog(this, "Song added successfully.");
 
             limpiarCampos();
         }
+    }
+    
+    private void loadGenders(){
+        GenderController genderController = new GenderController(new GenderMusicService());
+        genderMap = genderController.genders();
+        for(String genderName : genderMap.keySet()){
+            jCBGenders.addItem(genderName);
+        }
+    }
+    
+    private GenderOfMusic getSelectedGender(){
+        String selectGender = (String) jCBGenders.getSelectedItem();
+        return genderMap.get(selectGender);
     }
 
     /**
@@ -161,6 +188,8 @@ public class JFSong extends javax.swing.JFrame {
         jBDeletePerson = new javax.swing.JButton();
         jTFAlbumSong = new javax.swing.JTextField();
         jBBackHome = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jTYearRelease = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -214,6 +243,11 @@ public class JFSong extends javax.swing.JFrame {
         });
 
         jBSongAddUpd.setText("Add Song");
+        jBSongAddUpd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSongAddUpdActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(jLiPersonSong);
 
@@ -238,19 +272,49 @@ public class JFSong extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Year of release");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLaTitle)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(195, 195, 195)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jBBackHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jBSongAddUpd, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jBAddArtist)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jBDeleteArtist))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(49, 49, 49)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(96, 96, 96)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jBAddPerson)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jBDeletePerson))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(48, 48, 48)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(jLaTitle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8)
                             .addComponent(jTFArtistSong, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
@@ -267,41 +331,19 @@ public class JFSong extends javax.swing.JFrame {
                                     .addComponent(jTFPersonSong, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCBGenders, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addGap(155, 155, 155)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCBGenders, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addGap(155, 155, 155))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTYearRelease, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(166, 166, 166)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addComponent(jTFAlbumSong, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBBackHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBSongAddUpd)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(jBAddArtist)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBDeleteArtist))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(96, 96, 96)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBAddPerson)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBDeletePerson))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                                    .addComponent(jTFAlbumSong, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,15 +361,22 @@ public class JFSong extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTFDurationSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCBGenders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFAlbumSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTFAlbumSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTYearRelease, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCBGenders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
@@ -350,11 +399,11 @@ public class JFSong extends javax.swing.JFrame {
                                 .addComponent(jBDeletePerson))
                             .addGap(101, 101, 101))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jBSongAddUpd)
                 .addGap(18, 18, 18)
                 .addComponent(jBBackHome)
-                .addGap(82, 82, 82))
+                .addGap(98, 98, 98))
         );
 
         pack();
@@ -395,41 +444,10 @@ public class JFSong extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jBBackHomeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    //COMENTARIO UNA LINEA public static void main(String args[]) { 
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        /*COMENTARIO BLOQUEtry { 
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFSong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFSong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFSong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFSong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }*/
-        //</editor-fold>
-        //</editor-fold>
-
-        /* COMENTARIO BLOQUE Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFSong().setVisible(true);
-            }
-        });
-    }*/
+    private void jBSongAddUpdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSongAddUpdActionPerformed
+        //newSongAdd(boolean update, String idSong);
+        
+    }//GEN-LAST:event_jBSongAddUpdActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAddArtist;
@@ -446,6 +464,7 @@ public class JFSong extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JList<String> jLiArtistSong;
     private javax.swing.JList<String> jLiPersonSong;
     private javax.swing.JScrollPane jScrollPane1;
@@ -455,41 +474,10 @@ public class JFSong extends javax.swing.JFrame {
     private javax.swing.JTextField jTFDurationSong;
     private javax.swing.JTextField jTFNameSong;
     private javax.swing.JTextField jTFPersonSong;
+    private javax.swing.JTextField jTYearRelease;
     // End of variables declaration//GEN-END:variables
-
-    private void cargarGenders(JComboBox cb) {
-        DefaultComboBoxModel combo = new DefaultComboBoxModel();
-        cb.setModel(combo);
-        GenderList genderList = new GenderList();
-        
-        Connection conex = DataBase.Conectar();
-        String sqlGender = "SELECT nameGender FROM Genders";
-        
-        try (PreparedStatement stmtGender = conex.prepareStatement(sqlGender)){
-            ResultSet datosGender = stmtGender.executeQuery();
-            
-            while (datosGender.next()){
-                GenderOfMusic genderMusic = new GenderOfMusic();
-                
-                genderMusic.setGenderOfMusic(datosGender.getString(1));
-                
-                genderList.addGendersList(genderMusic);
-                
-                combo.addElement(genderMusic.getGenderOfMusic());
-            }
-        }catch (SQLException ex){
-            System.out.println("Error al obtener el gender: " + ex.getMessage());
-            ex.printStackTrace();
-        } finally {
-            try {
-                if (conex != null) conex.close();
-            } catch (SQLException ex) {
-                System.out.println("Error al cerrar conexión: " + ex.getMessage());
-            }
-        }
-    }
     
-    private void agregarArtista() {
+    private boolean agregarArtista() {
         String artista = jTFArtistSong.getText().trim();
         if (!artista.isEmpty()) {
             if (checkUsersBD(artista)) {
@@ -497,13 +485,16 @@ public class JFSong extends javax.swing.JFrame {
                 jTFArtistSong.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "This Artist isn't registered in the DB");
+                return false;
             }
         } else{
             JOptionPane.showMessageDialog(this, "To add an Artist you need to write his/her nickname");
+            return false;
         }
+        return true;
     }
     
-    private void agregarPersona() {
+    private boolean agregarPersona() {
         String persona = jTFPersonSong.getText().trim();
         if (!persona.isEmpty()) {
             if (checkPersonsBD(persona)) {
@@ -511,10 +502,14 @@ public class JFSong extends javax.swing.JFrame {
                 jTFPersonSong.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "This Person isn't registered in the DB");
+                return false;
             }
         } else{
-            JOptionPane.showMessageDialog(this, "To add a Person you need to write his/her first name");
+            int answer = JOptionPane.showConfirmDialog(null, "You want to add a new record?","Yes o no", JOptionPane.YES_NO_OPTION);
+            
+            return false;
         }
+        return true;
     }
 
     private void eliminarArtista() {

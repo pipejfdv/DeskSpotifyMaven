@@ -5,6 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import org.Spotify.DB.DataBase;
 import org.Spotify.Models.GenderOfMusic;
 
@@ -141,5 +145,29 @@ public class GenderMusicService {
         }
         return genderMusic;
     }
-    
+    /* load gender of music key : value*/
+    public Map<String, GenderOfMusic> getAllGenders(){
+        Map<String, GenderOfMusic> genders = new LinkedHashMap<>();
+        
+        Connection conex = DataBase.Conectar();
+        String sql = "SELECT idGender, nameGender FROM Genders";
+        
+        try(PreparedStatement stmtGender = conex.prepareStatement(sql)){
+            ResultSet result = stmtGender.executeQuery();
+            while(result.next()){
+                GenderOfMusic gender = new GenderOfMusic(
+                        result.getString("idGender"),
+                        result.getString("nameGender")
+                );
+            genders.put(gender.getGenderOfMusic(), gender);
+            }
+        }
+        catch(SQLException e){
+            System.out.println("Consulta de generos errada "+e);
+        }
+        finally{
+            DataBase.Desconection(conex);
+        }
+        return genders;
+    }
 }

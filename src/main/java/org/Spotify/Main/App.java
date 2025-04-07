@@ -40,12 +40,8 @@ public class App
     {
         /*----SERVICES INVOCADOS-----*/
        
-        GenderMusicService genderServ = new GenderMusicService();
-        
-        
-        
-        
-        GenderController genderController = new GenderController(genderServ);
+       /*
+        GenderController genderController = new GenderController(new GenderMusicService());
         GenderOfMusic genderMusic = genderController.showGenderMusic("550e8400-e29b-41d4-a716-446655440002");
         
         
@@ -61,6 +57,9 @@ public class App
         
         SongController songController = new SongController();
         songController.insertSong(song);
+        */
+        
+        
         /*
         
        // Rol insertarRol = new Rol(UUID.randomUUID().toString(), "Administrador");

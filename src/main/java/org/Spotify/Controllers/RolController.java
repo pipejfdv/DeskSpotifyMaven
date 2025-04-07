@@ -22,4 +22,7 @@ public class RolController {
     public void updateRol(Rol rol) {
         rolService.updateRol(rol);
     }
+    public Rol readRol(String nameRol){
+        return rolService.readRol(nameRol);
+    }
 }

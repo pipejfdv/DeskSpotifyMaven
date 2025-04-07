@@ -23,8 +23,8 @@ public class Song {
         this.idSong = idSong;
     }
     
-    /* Contructor para crear la canción en base de datos*/
-    public Song(String idSong, String nameSong, String creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong, String pathFile) {
+    /* Contructor para crear la canción en base de datos con ruta y artista */
+    public Song(String idSong, String nameSong, String creationSong, String durationSong, GenderOfMusic genderSong, Album albumSong, String pathFile, ArrayList<User> artistSong, ArrayList<Person> personSong) {
         this.idSong = idSong;
         this.nameSong = nameSong;
         this.creationSong = creationSong;
@@ -32,6 +32,8 @@ public class Song {
         this.genderSong = genderSong;
         this.albumSong = albumSong;
         this.pathFile = pathFile;
+        this.artistSong = artistSong;
+        this.personSong = personSong;
     }
     
     

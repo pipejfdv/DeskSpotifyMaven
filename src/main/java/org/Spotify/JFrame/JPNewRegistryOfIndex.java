@@ -1,8 +1,10 @@
 package org.Spotify.JFrame;
 
+import java.awt.Color;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import org.Spotify.Controllers.RolController;
 import org.Spotify.Models.Person;
 import org.Spotify.Models.Rol;
 import org.Spotify.Models.User;
@@ -13,7 +15,7 @@ import org.Spotify.Services.UserService;
 public class JPNewRegistryOfIndex extends javax.swing.JPanel {
 
     private Index index;
-    
+    public boolean rolActive = false;
     public JPNewRegistryOfIndex(Index index) {
         initComponents();
         this.index = index;
@@ -27,9 +29,19 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
         index.addPlaceHolderStyle(jPasswordConfirmPassword);
     }
     
+    private Rol activeRol(boolean rolAcive){
+        RolController rol = new RolController(new RolService());
+        if(rolAcive){
+            jTArtis.setBackground(new Color(160, 57, 67));
+            return rol.readRol("Artist");
+        }
+        else{
+            return rol.readRol("User");
+        }
+    }
+    
     private void newUserRegistry(){
         UserService userService = new UserService();
-        RolService rolService = new RolService();
         PersonService personService = new PersonService();
         String id = UUID.randomUUID().toString();
         //validation Second name and Second lastname
@@ -39,7 +51,7 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
         
         Person newPerson = new Person(id,jTextFirstName.getText(), secondName, jTextFirtsLastName.getText(), secondLastName, jTextEmail.getText());
         personService.addPerson(newPerson);
-        User newuser = new User(id, jTextNickname.getText(), jPasswordUser.getText(), rolService.readRol("User"), newPerson);
+        User newuser = new User(id, jTextNickname.getText(), jPasswordUser.getText(), activeRol(rolActive), newPerson);
         userService.addUser(newuser);
     }
     
@@ -81,6 +93,7 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jLabelIMG = new javax.swing.JLabel();
         jLabelRegistry = new javax.swing.JLabel();
@@ -102,10 +115,12 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
         jPasswordUser = new javax.swing.JPasswordField();
         jPasswordConfirmPassword = new javax.swing.JPasswordField();
         jButtonReturnLogin = new javax.swing.JButton();
+        jLabelRegistry9 = new javax.swing.JLabel();
+        jTArtis = new javax.swing.JToggleButton();
+
+        jRadioButton1.setText("jRadioButton1");
 
         setPreferredSize(new java.awt.Dimension(680, 479));
-
-        jLabelIMG.setIcon(new javax.swing.ImageIcon("/home/pipejfdv/Desktop/programs/DeskSpotifyMaven/src/main/java/org/Spotify/Views/Img/edit.png")); // NOI18N
 
         jLabelRegistry.setFont(new java.awt.Font("Noto Sans CJK SC", 1, 18)); // NOI18N
         jLabelRegistry.setText("Register for good music");
@@ -209,6 +224,7 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
         });
 
         jPasswordUser.setText("password");
+        jPasswordUser.setEchoChar('\u0000');
         jPasswordUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordUserFocusGained(evt);
@@ -219,6 +235,7 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
         });
 
         jPasswordConfirmPassword.setText("confirm password");
+        jPasswordConfirmPassword.setEchoChar('\u0000');
         jPasswordConfirmPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordConfirmPasswordFocusGained(evt);
@@ -234,6 +251,16 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
         jButtonReturnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonReturnLoginActionPerformed(evt);
+            }
+        });
+
+        jLabelRegistry9.setFont(new java.awt.Font("Noto Sans CJK SC", 1, 14)); // NOI18N
+        jLabelRegistry9.setText("Are you artis?");
+
+        jTArtis.setText("Yes");
+        jTArtis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTArtisActionPerformed(evt);
             }
         });
 
@@ -266,7 +293,9 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
                                 .addComponent(jLabelRegistry8)
                                 .addComponent(jLabelRegistry3)
                                 .addComponent(jLabelRegistry2)
-                                .addComponent(jTextSecondLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextSecondLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelRegistry9)
+                                .addComponent(jTArtis)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,7 +304,7 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jButtonReturnLogin)
                                 .addComponent(jPasswordConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
                 .addComponent(jLabelIMG)
                 .addGap(50, 50, 50))
         );
@@ -307,9 +336,13 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
                         .addGap(8, 8, 8)
                         .addComponent(jTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelRegistry7)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelRegistry7)
+                            .addComponent(jLabelRegistry9))
                         .addGap(22, 22, 22)
-                        .addComponent(jTextNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTArtis))
                         .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelRegistry5)
@@ -483,6 +516,15 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFirstNameActionPerformed
 
+    private void jTArtisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTArtisActionPerformed
+        if(jTArtis.isSelected()){
+            rolActive = true;
+        }
+        else{
+            rolActive = false;
+        }
+    }//GEN-LAST:event_jTArtisActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCreateUser;
@@ -497,9 +539,12 @@ public class JPNewRegistryOfIndex extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelRegistry6;
     private javax.swing.JLabel jLabelRegistry7;
     private javax.swing.JLabel jLabelRegistry8;
+    private javax.swing.JLabel jLabelRegistry9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordConfirmPassword;
     private javax.swing.JPasswordField jPasswordUser;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JToggleButton jTArtis;
     private javax.swing.JTextField jTextEmail;
     private javax.swing.JTextField jTextFirstName;
     private javax.swing.JTextField jTextFirtsLastName;
