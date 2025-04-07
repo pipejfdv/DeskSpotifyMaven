@@ -14,8 +14,8 @@ public class AlbumController {
     public void insertAlbum(Album album) {
         albumService.addAlbum(album);
     }
-    public void showAlbum(String album) {
-        albumService.readAlbum(album);
+    public Album showAlbum(String album) {
+        return albumService.readAlbum(album);
     }
     public void deleteAlbum(Album album) {
         albumService.deleteAlbum(album);
